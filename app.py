@@ -58,12 +58,12 @@ def chatbot_response(user_message: str) -> str:
         Nominal Duration: 316 hours<br>  
         Learn basic and advanced cooking techniques for hot meals, desserts, and food safety.
         """
-    elif "computer systems servicing" in user_message:
-        return """
-        Nominal Duration: 280 hours<br>  
-        Learn the necessary skills to install, configure, and maintain computer systems and networks.
-        """
-    # Add more elif blocks for other qualifications...
+   elif any(keyword in user_message for keyword in ["computer", "css", "computer systems servicing"]):
+    return """💻 **Computer Systems Servicing NC II**<br>
+    Nominal Duration: 280 hours<br>  
+    Covers installation, maintenance, and repair of computer hardware and networks in various settings."""
+
+# Add more elif blocks for other qualifications...
 
    
    
