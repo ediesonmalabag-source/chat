@@ -57,7 +57,7 @@ def chatbot_response(user_message: str) -> str:
 
 
     else:
-        return "❓ I didn’t understand that. Try typing 'enrolment' or 'assessment'"
+        return "❓ I didn’t catch that. Try typing qualifications, enrolment, assessment, or contact—or just use the buttons above."
         
 # --------------------------
 # Page config and session
