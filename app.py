@@ -11,7 +11,7 @@ def chatbot_response(user_message: str) -> str:
     user_message = user_message.lower().strip()
 
     if user_message in ["hi", "hello", "hey", "haha"]:
-        return "👋 Hello! Welcome to TESDA Assessment Chatbot. How can I assist you with your assessment schedule?"
+        return "🤖 Hello! I'm the TESDA BIT Chatbot. Need help with enrolment or assessment? Just type your question or use the buttons below."
 
     elif "enrolment" in user_message:
         return "📋 Enrolment requirements include: PSA Birth Certificate (photocopy), Marriage Certificate, if Married(photocopy)."
@@ -30,7 +30,7 @@ st.set_page_config(page_title="Simple Chatbot", page_icon="🤖", layout="wide")
 
 if "messages" not in st.session_state:
     # messages is a list of tuples: (role, text)
-    st.session_state.messages = [("Bot", "👋 Hi! Welcome to TESDA BIT Chatbot. Type 'help' to see options.")]
+    st.session_state.messages = [("Bot", "🤖 Hello! I'm the TESDA BIT Chatbot. Need help with enrolment or assessment? Just type your question or use the buttons below.")]
 
 # last_action will hold a quick-action command when a button is clicked
 if "last_action" not in st.session_state:
