@@ -11,7 +11,7 @@ def chatbot_response(user_message: str) -> str:
     user_message = user_message.lower().strip()
 
     if user_message in ["hi", "hello", "hey", "haha"]:
-        return "👋 Hello! Welcome to TESDA Assessment Chatbot. How can I assist you with your assessment schedule?"
+        return "👋 Hello! Welcome to TESDA BIT Chatbot. How can I assist you?"
 
     elif "requirements" in user_message:
         return "📋 Assessment requirements include: valid ID, completed training, and filled application form. Check with your nearest TESDA center for specifics."
@@ -68,8 +68,8 @@ st.markdown("<br>", unsafe_allow_html=True)
 # Title with TESDA branding and subtitle
 st.markdown("""
     <div style='text-align: center;'>
-        <h1 style='color: #4CAF50;'>🤖 TESDA Assessment Chatbot</h1>
-        <p style='font-size:18px; color: #555;'>Your assistant for assessment requirements, schedules, and results</p>
+        <h3 style='color: #4CAF50;'>🤖 TESDA BIT Chatbot</h1>
+        <p style='font-size:18px; color: #555;'>Your assistant for enrolment and assessmentinquiries.</p>
     </div>
 """, unsafe_allow_html=True)
 
