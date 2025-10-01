@@ -1,5 +1,31 @@
 import streamlit as st
 import time
+# --------------------------
+# Top title
+# --------------------------
+# Display banner image
+st.image("https://raw.githubusercontent.com/ediesonmalabag-source/chat/main/bit_banner.png", use_container_width=True)
+
+# Add spacing after image
+st.markdown("<br>", unsafe_allow_html=True)
+
+# Title with TESDA branding and subtitle
+st.markdown("""
+    <div style='text-align: center;'>
+        <h2 style='color: #003366;'>🤖 TESDA BIT Chatbot</h2>
+    </div>
+""", unsafe_allow_html=True)
+
+# --------------------------
+# Quick action buttons (safe pattern)
+# --------------------------
+col1, col2, col3 = st.columns(3)
+if col1.button("📋 Enrolment"):
+    st.session_state.last_action = "enrolment"
+if col2.button("🗓 Assessment"):
+    st.session_state.last_action = "assessment"
+
+
 
 # --------------------------
 # Simple rule-based chatbot function
@@ -53,37 +79,6 @@ with st.sidebar:
         st.session_state.last_action = None
         st.experimental_rerun()
 
-
-# --------------------------
-# Top title
-# --------------------------
-# Display banner image
-st.image("https://raw.githubusercontent.com/ediesonmalabag-source/chat/main/bit_banner.png", use_container_width=True)
-
-# Add spacing after image
-st.markdown("<br>", unsafe_allow_html=True)
-
-# Title with TESDA branding and subtitle
-st.markdown("""
-    <div style='text-align: center;'>
-        <h2 style='color: #003366;'>🤖 TESDA BIT Chatbot</h2>
-        <p style='font-size:18px; color: #555;'>Your assistant for enrolment and assessment inquiries.</p>
-    </div>
-""", unsafe_allow_html=True)
-
-# Instruction text
-st.write("Use the quick action buttons below or type your message to begin.")
-
-
-
-# --------------------------
-# Quick action buttons (safe pattern)
-# --------------------------
-col1, col2, col3 = st.columns(3)
-if col1.button("📋 Enrolment"):
-    st.session_state.last_action = "enrolment"
-if col2.button("🗓 Assessment"):
-    st.session_state.last_action = "assessment"
 
 
 # --------------------------
