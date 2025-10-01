@@ -16,7 +16,7 @@ def chatbot_response(user_message: str) -> str:
     elif "enrolment" in user_message:
         return "📋 Enrolment requirements include: PSA Birth Certificate (photocopy), Marriage Certificate, if Married(photocopy)."
 
-    elif "assesment" in user_message:
+    elif "assessment" in user_message:
         return "🗓️ You can inquire about assessment schedules at your local TESDA office or through the official portal. <a href='https://www.tesda.gov.ph/assessmentcenters'>https://www.tesda.gov.ph/assessmentcenters</a>"
 
 
@@ -48,7 +48,7 @@ with st.sidebar:
     
     """)
     if st.button("🔄 Reset Chat"):
-        st.session_state.messages = [("Bot", "👋 Hi! Welcome to TESDA Chatbot. Type 'help' to see options.")]
+        st.session_state.messages = [("Bot", "👋 Hi! Welcome to TESDA BIT Chatbot. Type 'help' to see options.")]
         st.session_state.last_action = None
         st.experimental_rerun()
 
@@ -79,9 +79,9 @@ st.write("Use the quick action buttons below or type your message to begin.")
 # --------------------------
 col1, col2, col3 = st.columns(3)
 if col1.button("📋 Enrolment"):
-    st.session_state.last_action = "requirements"
+    st.session_state.last_action = "enrolment"
 if col2.button("🗓 Assessment"):
-    st.session_state.last_action = "schedule"
+    st.session_state.last_action = "assessment"
 
 
 # --------------------------
