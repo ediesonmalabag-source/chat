@@ -87,7 +87,7 @@ with st.sidebar:
     if st.button("🔄 Reset Chat"):
         st.session_state.messages = [("Bot", "👋 Hi! Welcome to TESDA Chatbot. How may I help you?")]
         st.session_state.last_action = None
-        st.experimental_rerun()
+        st.rerun()
 
 
 
