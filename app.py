@@ -13,9 +13,10 @@ def chatbot_response(user_message: str) -> str:
     if user_message in ["hi", "hello", "hey", "haha"]:
         return "👋 Hello! Welcome to TESDA BIT Chatbot. How can I assist you?"
 
-  elif "enrolment" in user_message:
+   elif "schedule" in user_message:
         return "📋 **Enrolment Requirements:**"
 
+  
     elif "schedule" in user_message:
         return "🗓️ You can inquire about assessment schedules at your local TESDA office or through the official portal. <a href='https://www.tesda.gov.ph/assessmentcenters'>https://www.tesda.gov.ph/assessmentcenters</a>"
 
