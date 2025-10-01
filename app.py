@@ -4,7 +4,7 @@ import time
 # --------------------------
 # Simple rule-based chatbot function
 # --------------------------
-st.image("https://github.com/ediesonmalabag-source/chat/main/bit_banner.png", use_container_width=True)
+st.image("https://raw.githubusercontent.com/ediesonmalabag-source/chat/main/bit_banner.png", use_container_width=True)
 
 
 def chatbot_response(user_message: str) -> str:
