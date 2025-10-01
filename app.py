@@ -17,6 +17,8 @@ st.markdown("""
 # Quick action buttons (safe pattern)
 # --------------------------
 col1, col2, col3, col4, col5 = st.columns([1, 2, 2, 2, 1])
+with col1:
+    st.empty()  # left padding
 with col2:
     if st.button("🎓 Qualifications Offered"):
         st.session_state.last_action = "qualifications"
@@ -27,8 +29,13 @@ with col4:
     if st.button("📊 Assessment"):
         st.session_state.last_action = "assessment"
 with col5:
+    st.empty()  # right padding
+
+colA, colB, colC = st.columns([3, 2, 3])
+with colB:
     if st.button("📞 Contact Us"):
         st.session_state.last_action = "contact"
+
 
 
 
