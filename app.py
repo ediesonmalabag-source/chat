@@ -9,7 +9,7 @@ st.image("https://raw.githubusercontent.com/ediesonmalabag-source/chat/main/bit_
 # Title with TESDA branding and subtitle
 st.markdown("""
     <div style='text-align: center;'>
-        <h2 style='color: #003366;'>🤖 TESDA BIT Chatbot</h2>
+        <h3 style='color: #003366;'>🤖 TESDA BIT Chatbot</h3>
     </div>
 """, unsafe_allow_html=True)
 
@@ -24,7 +24,7 @@ with col3:
     if st.button("🗓 Assessment"):
         st.session_state.last_action = "assessment"
 with col4:
-    if st.button("📞 Contact TESDA BIT"):
+    if st.button("📞 Contact Us"):
         st.session_state.last_action = "contact"
 
 
