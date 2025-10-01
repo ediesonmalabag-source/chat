@@ -43,13 +43,13 @@ with st.sidebar:
     st.title("ℹ️ About this Chatbot")
     st.write("This is a simple **rule-based chatbot** built with Streamlit. You can:")
     st.markdown("""
-    - 📋 View assessment requirements  
-    - 🗓️ Ask about assessment schedules  
-    - 📊 Inquire about assessment results
+    - 📋 Inquire on enrolment procedures an requirements  
+    - 🗓️ Ask about assessment requiremends and schedules  
+    
     
     """)
     if st.button("🔄 Reset Chat"):
-        st.session_state.messages = [("Bot", "👋 Hi! Welcome to TESDA Chatbot. Type 'help' to see options.")]
+        st.session_state.messages = [("Bot", "👋 Hi! Welcome to TESDA Chatbot. How may I help you?")]
         st.session_state.last_action = None
         st.experimental_rerun()
 
