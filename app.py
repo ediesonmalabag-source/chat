@@ -79,10 +79,10 @@ with st.sidebar:
     st.title("ℹ️ About this Chatbot")
     st.write("This is a simple rule-based chatbot built with Streamlit to help users explore TESDA-BIT qualifications, check enrolment and assessment info, or contact TESDA BIT directly.")
     st.markdown("""
-    - 📋 Inquire on enrolment procedures an requirements  
-    - 🗓️ Ask about assessment requiremends and schedules  
-    
-    
+    - 🎓 Explore TESDA qualifications
+    - 📝 Check enrolment requirements
+    - 📊 View assessment info and schedules
+    - 📞 Contact TESDA BIT for assistance
     """)
     if st.button("🔄 Reset Chat"):
         st.session_state.messages = [("Bot", "👋 Hi! Welcome to TESDA Chatbot. How may I help you?")]
