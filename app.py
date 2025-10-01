@@ -54,10 +54,12 @@ def chatbot_response(user_message: str) -> str:
     elif "enrolment" in user_message:
         return """
         📋 **Enrolment Requirements**<br>
+        To enrol at TESDA BIT, please prepare the following:<br><br>
         • PSA Birth Certificate (photocopy)<br>
         • Marriage Certificate, if married (photocopy)<br>
         • 2 pcs 1x1 ID picture<br>
-        • Filled-up Registration Form / download here: <a href='https://bit.ly/3IOR8g8'>https://bit.ly/3IOR8g8</a>
+        • Filled-up Registration Form - <a href='https://bit.ly/3IOR8g8'>https://bit.ly/3IOR8g8</a><br><br>
+        📌 Submit all requirements personally at the TESDA BIT Admin Office, or email them to <a href='mailto:bit@tesda.gov.ph'>bit@tesda.gov.ph</a>.
         """        
 
 
