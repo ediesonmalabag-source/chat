@@ -13,24 +13,6 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
-# --------------------------
-# Quick action buttons (safe pattern)
-# --------------------------
-col1, col2, col3, col4, col5 = st.columns([1, 2, 2, 2, 2])
-with col1:
-    st.empty()  # left padding
-with col2:
-    if st.button("🎓 Qualifications Offered"):
-        st.session_state.last_action = "qualifications"
-with col3:
-    if st.button("📝 Enrolment"):
-        st.session_state.last_action = "enrolment"
-with col4:
-    if st.button("📊 Assessment"):
-        st.session_state.last_action = "assessment"
-with col5:
-    if st.button("📞 Contact Us"):
-        st.session_state.last_action = "contact"
 
 
 
@@ -192,3 +174,49 @@ for entry in st.session_state.messages:
             f"🤖 <b>{role}:</b> {msg}</div>",
             unsafe_allow_html=True,
         )
+
+# --------------------------
+# Fixed bottom button bar
+# --------------------------
+st.markdown("""
+    <style>
+    .fixed-bottom {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #f9f9f9;
+        padding: 10px 20px;
+        box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+        z-index: 9999;
+    }
+    .button-row {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+    .button-row > div {
+        flex: 1;
+        margin: 5px;
+    }
+    </style>
+    <div class="fixed-bottom">
+        <div class="button-row">
+            <div><button onclick="streamlitSend('qualifications')">🎓 Qualifications Offered</button></div>
+            <div><button onclick="streamlitSend('enrolment')">📝 Enrolment</button></div>
+            <div><button onclick="streamlitSend('assessment')">📊 Assessment</button></div>
+            <div><button onclick="streamlitSend('contact')">📞 Contact Us</button></div>
+        </div>
+    </div>
+    <script>
+    function streamlitSend(action) {
+        const input = window.parent.document.querySelector('input[type="text"]');
+        if (input) {
+            input.value = action;
+            input.dispatchEvent(new Event('input', { bubbles: true }));
+            input.form.dispatchEvent(new Event('submit'));
+        }
+    }
+    </script>
+""", unsafe_allow_html=True)
+
