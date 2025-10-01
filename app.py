@@ -150,24 +150,7 @@ except Exception:
             user_input = typed
 
 
-# --------------------------
-# Bottom-aligned buttons (mobile-friendly)
-# --------------------------
-st.markdown("<br><br>", unsafe_allow_html=True)  # Spacer
 
-col1, col2, col3, col4 = st.columns(4)
-with col1:
-    if st.button("🎓 Qualifications"):
-        st.session_state.last_action = "qualifications"
-with col2:
-    if st.button("📝 Enrolment"):
-        st.session_state.last_action = "enrolment"
-with col3:
-    if st.button("📊 Assessment"):
-        st.session_state.last_action = "assessment"
-with col4:
-    if st.button("📞 Contact"):
-        st.session_state.last_action = "contact"
 
 
 
@@ -217,3 +200,21 @@ for entry in st.session_state.messages:
             unsafe_allow_html=True,
         )
 
+# --------------------------
+# Bottom-aligned buttons (mobile-friendly)
+# --------------------------
+st.markdown("<br><br>", unsafe_allow_html=True)  # Spacer
+
+col1, col2, col3, col4 = st.columns(4)
+with col1:
+    if st.button("🎓 Qualifications"):
+        st.session_state.last_action = "qualifications"
+with col2:
+    if st.button("📝 Enrolment"):
+        st.session_state.last_action = "enrolment"
+with col3:
+    if st.button("📊 Assessment"):
+        st.session_state.last_action = "assessment"
+with col4:
+    if st.button("📞 Contact"):
+        st.session_state.last_action = "contact"
