@@ -49,7 +49,25 @@ def chatbot_response(user_message: str) -> str:
         return "👋 Hi! I'm the TESDA BIT Chatbot. Ask about qualifications, enrolment, assessment, or contact us—just tap a button or type below."
 
     elif "qualifications" in user_message:
-        return "🗓️ You can inquire about qualifications offered at your local TESDA office or through the official portal. <a href='https://www.tesda.gov.ph/assessmentcenters'>https://www.tesda.gov.ph/assessmentcenters</a>"
+        elif "qualification" in user_message:
+            if "cookery" in user_message:
+                return """👨‍🍳 **Cookery NC II**
+                    Nominal Duration: 316 hours  
+                    Learn basic and advanced cooking techniques for hot meals, desserts, and food safety."""
+                elif "electrical installation" in user_message:
+                    return """🔌 **Electrical Installation & Maintenance NC II**
+                    Nominal Duration: 402 hours  
+                    Train in residential and commercial wiring, safety protocols, and basic troubleshooting."""
+                elif "automotive servicing" in user_message:
+                    return """🚗 **Automotive Servicing NC II**
+                    Nominal Duration: 588 hours  
+                    Covers engine tune-up, underchassis servicing, and electrical systems.""
+                    
+    # Add more elif blocks for other qualifications...
+
+    else:
+        return """🎓 TESDA BIT offers 13 qualifications. Type a specific one (e.g., 'Cookery') to learn more."""
+
 
     elif "enrolment" in user_message:
         return """
