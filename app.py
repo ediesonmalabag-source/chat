@@ -131,7 +131,7 @@ for role, msg in st.session_state.messages:
 # --------------------------
 # Bottom-aligned buttons
 # --------------------------
-st.markdown("<br><br>", unsafe_allow_html=True)
+st.markdown("<br>", unsafe_allow_html=True)
 col1, col2, col3, col4 = st.columns(4)
 with col1:
     if st.button("🎓 Qualifications"):
