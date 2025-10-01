@@ -179,13 +179,9 @@ if user_input:
         st.session_state.typed_value = ""
 
 
-# --------------------------
-# Display conversation safely
-# --------------------------
+# ✅ Display messages first
 for entry in st.session_state.messages:
-        # defensive check to avoid unpacking errors
     if not (isinstance(entry, (list, tuple)) and len(entry) == 2):
-        # skip malformed entries
         continue
     role, msg = entry
     if role == "You":
@@ -200,8 +196,10 @@ for entry in st.session_state.messages:
             f"🤖 <b>{role}:</b> {msg}</div>",
             unsafe_allow_html=True,
         )
+
 # ✅ Then show the input box once, at the bottom
 chat_in = st.chat_input("Type your message here...")
+
 
 # --------------------------
 # Bottom-aligned buttons (mobile-friendly)
