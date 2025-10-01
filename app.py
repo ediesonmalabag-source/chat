@@ -49,7 +49,6 @@ def chatbot_response(user_message: str) -> str:
         return "👋 Hi! I'm the TESDA BIT Chatbot. Ask about qualifications, enrolment, assessment, or contact us—just tap a button or type below."
 
     elif "qualifications" in user_message:
-        elif "qualification" in user_message:
             if "cookery" in user_message:
                 return """👨‍🍳 **Cookery NC II**
                     Nominal Duration: 316 hours  
