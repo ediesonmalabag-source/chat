@@ -14,12 +14,12 @@ def chatbot_response(user_message: str) -> str:
         return "👋 Hello! Welcome to TESDA BIT Chatbot. How can I assist you?"
 
   elif "enrolment" in user_message:
-        return """📋 **Enrolment Requirements:**
+        return "📋 **Enrolment Requirements:**
 - PSA Birth Certificate *(photocopy)*
 - Marriage Certificate *(if married, photocopy)*
 - Valid ID *(government-issued)*
 - Completed enrolment form *(from training center)*
-"""
+"
 
 
     elif "schedule" in user_message:
