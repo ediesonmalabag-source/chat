@@ -47,22 +47,10 @@ with st.sidebar:
     - 🗓️ Ask about assessment requirements and schedules  
     
     """)
-
 if st.button("🔄 Reset Chat"):
-    # Safely reset all session keys
-    st.session_state.messages = [("Bot", "👋 Hi! Welcome to TESDA BIT Chatbot. Type 'help' to see options.")]
-    st.session_state.last_action = None
-    st.session_state.typed_value = ""  # Optional: if you're using text_input fallback
-    st.experimental_rerun()
-if "messages" not in st.session_state:
-    st.session_state.messages = [("Bot", "👋 Hi! Welcome to TESDA BIT Chatbot. Type 'help' to see options.")]
-
-if "last_action" not in st.session_state:
-    st.session_state.last_action = None
-
-if "typed_value" not in st.session_state:
-    st.session_state.typed_value = ""
-
+        st.session_state.messages = [("Bot", "👋 Hi! Welcome to TESDA Chatbot. Type 'help' to see options.")]
+        st.session_state.last_action = None
+        st.experimental_rerun()
 
 # --------------------------
 # Top title
