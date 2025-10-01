@@ -17,21 +17,21 @@ st.markdown("""
 # --------------------------
 # Quick action buttons (safe pattern)
 # --------------------------
-col1, col2, col3, col4, col5 = st.columns([1, 2, 2, 2, 2])
-with col1:
-    st.empty()  # left padding
-with col2:
-    if st.button("🎓 Qualifications Offered"):
-        st.session_state.last_action = "qualifications"
-with col3:
-    if st.button("📝 Enrolment"):
-        st.session_state.last_action = "enrolment"
-with col4:
-    if st.button("📊 Assessment"):
-        st.session_state.last_action = "assessment"
-with col5:
-    if st.button("📞 Contact Us"):
-        st.session_state.last_action = "contact"
+# 3col1, col2, col3, col4, col5 = st.columns([1, 2, 2, 2, 2])
+# with col1:
+#    st.empty()  # left padding
+# with col2:
+#    if st.button("🎓 Qualifications Offered"):
+#        st.session_state.last_action = "qualifications"
+# with col3:
+ #   if st.button("📝 Enrolment"):
+ #       st.session_state.last_action = "enrolment"
+# with col4:
+#    if st.button("📊 Assessment"):
+#        st.session_state.last_action = "assessment"
+# with col5:
+#    if st.button("📞 Contact Us"):
+#        st.session_state.last_action = "contact"
 
 
 
@@ -149,6 +149,28 @@ except Exception:
         if typed and (len(st.session_state.messages) == 0 or st.session_state.messages[-1] != ("You", typed)):
             user_input = typed
 
+
+# --------------------------
+# Bottom-aligned buttons (mobile-friendly)
+# --------------------------
+st.markdown("<br><br>", unsafe_allow_html=True)  # Spacer
+
+col1, col2, col3, col4 = st.columns(4)
+with col1:
+    if st.button("🎓 Qualifications"):
+        st.session_state.last_action = "qualifications"
+with col2:
+    if st.button("📝 Enrolment"):
+        st.session_state.last_action = "enrolment"
+with col3:
+    if st.button("📊 Assessment"):
+        st.session_state.last_action = "assessment"
+with col4:
+    if st.button("📞 Contact"):
+        st.session_state.last_action = "contact"
+
+
+
 # --------------------------
 # Process a single user_input (if any)
 # --------------------------
@@ -171,6 +193,7 @@ if user_input:
     # If using the text_input fallback, clear stored value after processing
     if "typed_value" in st.session_state:
         st.session_state.typed_value = ""
+
 
 # --------------------------
 # Display conversation safely
