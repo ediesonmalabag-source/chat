@@ -13,19 +13,14 @@ def chatbot_response(user_message: str) -> str:
     if user_message in ["hi", "hello", "hey", "haha"]:
         return "👋 Hello! Welcome to TESDA BIT Chatbot. How can I assist you?"
 
-   elif "schedule" in user_message:
+   elif "enrolment" in user_message:
         return "📋 **Enrolment Requirements:**"
 
-  
-    elif "schedule" in user_message:
+    elif "assessment" in user_message:
         return "🗓️ You can inquire about assessment schedules at your local TESDA office or through the official portal. <a href='https://www.tesda.gov.ph/assessmentcenters'>https://www.tesda.gov.ph/assessmentcenters</a>"
 
-
-    elif "results" in user_message:
-        return "📊 Assessment results are usually released within a few days. You can follow up with your assessor or check your email."
-
     else:
-        return "❓ I didn’t understand that. Try typing 'requirements', 'schedule', or 'results'"
+        return "❓ I didn’t understand that. Try typing 'enrolment', , or 'assessment'"
     
 # --------------------------
 # Page config and session
@@ -47,9 +42,8 @@ with st.sidebar:
     st.title("ℹ️ About this Chatbot")
     st.write("This is a simple **rule-based chatbot** built with Streamlit. You can:")
     st.markdown("""
-    - 📋 View assessment requirements  
-    - 🗓️ Ask about assessment schedules  
-    - 📊 Inquire about assessment results
+    - 📋 View enrolment requirements  
+    - 🗓️ Ask about assessment requirements  
     
     """)
     if st.button("🔄 Reset Chat"):
@@ -83,12 +77,11 @@ st.write("Use the quick action buttons below or type your message to begin.")
 # Quick action buttons (safe pattern)
 # --------------------------
 col1, col2, col3 = st.columns(3)
-if col1.button("📋 Requirements"):
+if col1.button("📋 Enrolment"):
     st.session_state.last_action = "requirements"
-if col2.button("🗓 Schedule"):
+if col2.button("🗓 Assessment"):
     st.session_state.last_action = "schedule"
-if col3.button("📊 Results"):
-    st.session_state.last_action = "results"
+
 
 # --------------------------
 # Determine user_input:
