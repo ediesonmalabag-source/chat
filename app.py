@@ -85,7 +85,7 @@ with st.sidebar:
     - 📞 Contact TESDA BIT for assistance
     """)
     if st.button("🔄 Reset Chat"):
-        st.session_state.messages = [("Bot", "👋 Hi! Welcome to TESDA Chatbot. How may I help you?")]
+        st.session_state.messages = [("Bot", "👋 Hi! I'm the TESDA BIT Chatbot. Ask about qualifications, enrolment, assessment, or contact us—just tap a button or type below.")]
         st.session_state.last_action = None
         st.rerun()
 
