@@ -53,7 +53,7 @@ def chatbot_response(user_message: str) -> str:
     elif "qualifications" in user_message:
         return "TESDA BIT offers 13 qualifications. Type a specific one (e.g., 'Cookery') to learn more."
     
-    elif any(keyword in user_message for keyword in ["cookery", "cok", "cookery nc2"]):
+    elif any(keyword in user_message for keyword in ["cookery", "cook", "cookery nc2"]):
         return """👨‍🍳 Cookery NC II<br>
         Nominal Duration: 316 hours<br>  
        Description: Learn how to prepare hot meals, cold dishes, desserts, and appetizers using safe and hygienic kitchen practices. 
