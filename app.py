@@ -4,7 +4,7 @@ import time
 # --------------------------
 # Simple rule-based chatbot function
 # --------------------------
-st.image("https://raw.githubusercontent.com/ediesonmalabag-source/chat/main/bit_banner.png", use_container_width=True)
+
 
 
 def chatbot_response(user_message: str) -> str:
@@ -59,8 +59,24 @@ with st.sidebar:
 # --------------------------
 # Top title
 # --------------------------
-st.markdown("<h1 style='text-align: center; color: #4CAF50;'>🤖 Rule-Based Chatbot</h1>", unsafe_allow_html=True)
-st.write("Interact with the chatbot by typing or using quick action buttons below.")
+# Display banner image
+st.image("https://raw.githubusercontent.com/ediesonmalabag-source/chat/main/bit_banner.png", use_container_width=True)
+
+# Add spacing after image
+st.markdown("<br>", unsafe_allow_html=True)
+
+# Title with TESDA branding and subtitle
+st.markdown("""
+    <div style='text-align: center;'>
+        <h1 style='color: #4CAF50;'>🤖 TESDA Assessment Chatbot</h1>
+        <p style='font-size:18px; color: #555;'>Your assistant for assessment requirements, schedules, and results</p>
+    </div>
+""", unsafe_allow_html=True)
+
+# Instruction text
+st.write("Use the quick action buttons below or type your message to begin.")
+
+
 
 # --------------------------
 # Quick action buttons (safe pattern)
