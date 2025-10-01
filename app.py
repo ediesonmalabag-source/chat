@@ -32,7 +32,9 @@ with col5:
     if st.button("📞 Contact Us"):
         st.session_state.last_action = "contact"
 
-
+# ✅ Display message box after button click
+if "last_action" in st.session_state:
+    action = st.session_state.last_action
 
 
 
