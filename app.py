@@ -64,8 +64,8 @@ def chatbot_response(user_message: str) -> str:
                     
     # Add more elif blocks for other qualifications...
 
-    else:
-        return """TESDA BIT offers 13 qualifications. Type a specific one (e.g., 'Cookery') to learn more."""
+    # else:
+     #   return """TESDA BIT offers 13 qualifications. Type a specific one (e.g., 'Cookery') to learn more."""
 
 
 
