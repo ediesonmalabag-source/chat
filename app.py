@@ -18,10 +18,10 @@ st.markdown("""
 # --------------------------
 col1, col2, col3, col4, col5 = st.columns([1, 2, 2, 2, 1])
 with col2:
-    if st.button("📋 Enrolment"):
-        st.session_state.last_action = "enrolment"
+    if st.button("📋 Qualifications Offered"):
+        st.session_state.last_action = "qualifications"
 with col3:
-    if st.button("🗓 Assessment"):
+    if st.button("🗓 Enrolment"):
         st.session_state.last_action = "assessment"
 with col4:
     if st.button("📞 Contact Us"):
@@ -42,11 +42,12 @@ def chatbot_response(user_message: str) -> str:
     if user_message in ["hi", "hello", "hey", "haha"]:
         return "👋 Hi there! I'm the TESDA BIT Chatbot. For enrolment or assessment inquiries, use the quick action buttons or type your question."
 
+    elif "qualifications" in user_message:
+        return "🗓️ You can inquire about qualifications offered at your local TESDA office or through the official portal. <a href='https://www.tesda.gov.ph/assessmentcenters'>https://www.tesda.gov.ph/assessmentcenters</a>"
+
     elif "enrolment" in user_message:
         return "📋 Enrolment requirements include: PSA Birth Certificate (photocopy), Marriage Certificate, if Married(photocopy)."
 
-    elif "assessment" in user_message:
-        return "🗓️ You can inquire about assessment schedules at your local TESDA office or through the official portal. <a href='https://www.tesda.gov.ph/assessmentcenters'>https://www.tesda.gov.ph/assessmentcenters</a>"
 
 
     else:
