@@ -15,7 +15,6 @@ def chatbot_response(user_message: str) -> str:
 
    elif "enrolment" in user_message:
     return """📋 **Enrolment Requirements:**
-
 - PSA Birth Certificate *(photocopy)*
 - Marriage Certificate *(if married, photocopy)*
 - Valid ID *(government-issued)*
