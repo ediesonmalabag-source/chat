@@ -47,7 +47,8 @@ with st.sidebar:
     - 🗓️ Ask about assessment requirements and schedules  
     
     """)
-   if st.button("🔄 Reset Chat"):
+
+if st.button("🔄 Reset Chat"):
     # Safely reset all session keys
     st.session_state.messages = [("Bot", "👋 Hi! Welcome to TESDA BIT Chatbot. Type 'help' to see options.")]
     st.session_state.last_action = None
