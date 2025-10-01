@@ -22,8 +22,11 @@ with col2:
         st.session_state.last_action = "qualifications"
 with col3:
     if st.button("📝 Enrolment"):
-        st.session_state.last_action = "assessment"
+        st.session_state.last_action = "enrolment"
 with col4:
+    if st.button("📊 Assessment"):
+        st.session_state.last_action = "assessment"
+with col5:
     if st.button("📞 Contact Us"):
         st.session_state.last_action = "contact"
 
