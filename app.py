@@ -175,23 +175,7 @@ for entry in st.session_state.messages:
             unsafe_allow_html=True,
         )
 
-# --------------------------
-# Display conversation first
-# --------------------------
-for entry in st.session_state.messages:
-    role, msg = entry
-    if role == "You":
-        st.markdown(
-            f"<div style='background-color:#DCF8C6; padding:10px; border-radius:15px; margin:5px; text-align:right;'>"
-            f"🧑 <b>{role}:</b> {msg}</div>",
-            unsafe_allow_html=True,
-        )
-    else:
-        st.markdown(
-            f"<div style='background-color:#E6E6FA; padding:10px; border-radius:15px; margin:5px; text-align:left;'>"
-            f"🤖 <b>{role}:</b> {msg}</div>",
-            unsafe_allow_html=True,
-        )
+
 
 # --------------------------
 # Spacer to push buttons down
