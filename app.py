@@ -56,7 +56,8 @@ def chatbot_response(user_message: str) -> str:
         📋 **Enrolment Requirements**<br>
         • PSA Birth Certificate (photocopy)<br>
         • Marriage Certificate, if married (photocopy)<br>
-        • Filled-up Registration Form (download here)
+        • Filled-up Registration Form<br>
+        download here: <a href='https://drive.google.com/file/d/1QruW23BTVZepT-YYc20y-MSAUCsf6PRm/view?usp=sharing'>https://drive.google.com/file/d/1QruW23BTVZepT-YYc20y-MSAUCsf6PRm/view?usp=sharing</a>
         """        
 
 
