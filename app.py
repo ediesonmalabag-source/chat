@@ -56,13 +56,14 @@ def chatbot_response(user_message: str) -> str:
     elif any(keyword in user_message for keyword in ["cookery", "cook", "cookery nc2"]):
         return """👨‍🍳 Cookery NC II<br>
         Nominal Duration: 316 hours<br>  
-       Description: Learn how to prepare hot meals, cold dishes, desserts, and appetizers using safe and hygienic kitchen practices. 
-       This course covers basic cooking techniques, plating, and food preparation for commercial and non-commercial settings."""
+       Description: This qualification consists of competencies that a person must achieve to clean kitchen areas, prepare hot, cold meals 
+       and desserts for guests in various food and beverage service facilities ."""
     
     elif any(keyword in user_message for keyword in ["computer", "css", "computer systems servicing"]):
         return """💻 **Computer Systems Servicing NC II**<br>
         Nominal Duration: 280 hours<br>  
-        Covers installation, maintenance, and repair of computer hardware and networks in various settings."""
+        Description: This qualification consists of competencies that a person  must possess to enable to install and configure computers systems, set-up computer 
+        networks and servers and to maintain and repair computer systems and networks."""
 
 # Add more elif blocks for other qualifications...
 
