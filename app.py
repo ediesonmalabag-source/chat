@@ -68,7 +68,7 @@ st.markdown("<br>", unsafe_allow_html=True)
 # Title with TESDA branding and subtitle
 st.markdown("""
     <div style='text-align: center;'>
-        <h3 style='color: #4CAF50;'>🤖 TESDA BIT Chatbot</h1>
+        <h2 style='color: #003366;'>🤖 TESDA BIT Chatbot</h1>
         <p style='font-size:18px; color: #555;'>Your assistant for enrolment and assessmentinquiries.</p>
     </div>
 """, unsafe_allow_html=True)
