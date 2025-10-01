@@ -19,11 +19,17 @@ st.markdown("""
 # --------------------------
 # Quick action buttons (safe pattern)
 # --------------------------
-col1, col2, col3 = st.columns(3)
-if col1.button("📋 Enrolment"):
-    st.session_state.last_action = "enrolment"
-if col2.button("🗓 Assessment"):
-    st.session_state.last_action = "assessment"
+col1, col2, col3, col4, col5 = st.columns([1, 2, 2, 2, 1])
+with col2:
+    if st.button("📋 Enrolment"):
+        st.session_state.last_action = "enrolment"
+with col3:
+    if st.button("🗓 Assessment"):
+        st.session_state.last_action = "assessment"
+with col4:
+    if st.button("📞 Contact TESDA BIT"):
+        st.session_state.last_action = "contact"
+
 
 
 
