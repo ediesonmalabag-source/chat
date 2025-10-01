@@ -69,7 +69,7 @@ st.markdown("<br>", unsafe_allow_html=True)
 st.markdown("""
     <div style='text-align: center;'>
         <h2 style='color: #003366;'>🤖 TESDA BIT Chatbot</h2>
-        <p style='font-size:18px; color: #555;'>Your assistant for enrolment and assessmentinquiries.</p>
+        <p style='font-size:18px; color: #555;'>Your assistant for enrolment and assessment inquiries.</p>
     </div>
 """, unsafe_allow_html=True)
 
