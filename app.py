@@ -46,7 +46,7 @@ def chatbot_response(user_message: str) -> str:
     user_message = user_message.lower().strip()
 
     if user_message in ["hi", "hello", "hey", "haha"]:
-        return "👋 Hi there! I'm the TESDA BIT Chatbot. For enrolment or assessment inquiries, use the quick action buttons or type your question."
+        return "👋 Hi! I'm the TESDA BIT Chatbot. Ask about qualifications, enrolment, assessment, or contact us—just tap a button or type below."
 
     elif "qualifications" in user_message:
         return "🗓️ You can inquire about qualifications offered at your local TESDA office or through the official portal. <a href='https://www.tesda.gov.ph/assessmentcenters'>https://www.tesda.gov.ph/assessmentcenters</a>"
