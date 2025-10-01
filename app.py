@@ -183,6 +183,7 @@ if user_input:
 # Display conversation safely
 # --------------------------
 for entry in st.session_state.messages:
+    chat_in = st.chat_input("Type your message here...")
     # defensive check to avoid unpacking errors
     if not (isinstance(entry, (list, tuple)) and len(entry) == 2):
         # skip malformed entries
