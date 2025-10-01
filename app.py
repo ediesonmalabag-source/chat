@@ -14,6 +14,25 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
+# --------------------------
+# Quick action buttons (safe pattern)
+# --------------------------
+col1, col2, col3, col4, col5 = st.columns([1, 2, 2, 2, 2])
+with col1:
+    st.empty()  # left padding
+with col2:
+    if st.button("🎓 Qualifications Offered"):
+        st.session_state.last_action = "qualifications"
+with col3:
+    if st.button("📝 Enrolment"):
+        st.session_state.last_action = "enrolment"
+with col4:
+    if st.button("📊 Assessment"):
+        st.session_state.last_action = "assessment"
+with col5:
+    if st.button("📞 Contact Us"):
+        st.session_state.last_action = "contact"
+
 
 
 
@@ -175,28 +194,3 @@ for entry in st.session_state.messages:
             unsafe_allow_html=True,
         )
 
-
-
-# --------------------------
-# Spacer to push buttons down
-# --------------------------
-st.markdown("<br><br><br><br><br>", unsafe_allow_html=True)
-
-# --------------------------
-# Bottom-aligned buttons
-# --------------------------
-col1, col2, col3, col4, col5 = st.columns([1, 2, 2, 2, 2])
-with col1:
-    st.empty()
-with col2:
-    if st.button("🎓 Qualifications Offered"):
-        st.session_state.last_action = "qualifications"
-with col3:
-    if st.button("📝 Enrolment"):
-        st.session_state.last_action = "enrolment"
-with col4:
-    if st.button("📊 Assessment"):
-        st.session_state.last_action = "assessment"
-with col5:
-    if st.button("📞 Contact Us"):
-        st.session_state.last_action = "contact"
