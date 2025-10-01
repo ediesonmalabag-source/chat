@@ -6,9 +6,6 @@ import time
 # Display banner image
 st.image("https://raw.githubusercontent.com/ediesonmalabag-source/chat/main/bit_banner.png", use_container_width=True)
 
-# Add spacing after image
-st.markdown("<br>", unsafe_allow_html=True)
-
 # Title with TESDA branding and subtitle
 st.markdown("""
     <div style='text-align: center;'>
