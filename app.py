@@ -11,17 +11,21 @@ def chatbot_response(user_message: str) -> str:
     user_message = user_message.lower().strip()
 
     if user_message in ["hi", "hello", "hey", "haha"]:
-        return "👋 Hello! Welcome to TESDA BIT Chatbot. How can I assist you?"
+        return "👋 Hello! Welcome to TESDA Assessment Chatbot. How can I assist you with your assessment schedule?"
 
-  elif "enrolment" in user_message:
-        return "📋 Enrolment requirements include: valid ID, completed training, and filled application form. Check with your nearest TESDA center for specifics."
+    elif "requirements" in user_message:
+        return "📋 Assessment requirements include: valid ID, completed training, and filled application form. Check with your nearest TESDA center for specifics."
 
-    elif "assessment" in user_message:
+    elif "schedule" in user_message:
         return "🗓️ You can inquire about assessment schedules at your local TESDA office or through the official portal. <a href='https://www.tesda.gov.ph/assessmentcenters'>https://www.tesda.gov.ph/assessmentcenters</a>"
 
+
+    elif "results" in user_message:
+        return "📊 Assessment results are usually released within a few days. You can follow up with your assessor or check your email."
+
     else:
-        return "❓ I didn’t understand that. Try typing 'enrolment', , or 'assessment'"
-    
+        return "❓ I didn’t understand that. Try typing 'requirements', 'schedule', or 'results'"
+        
 # --------------------------
 # Page config and session
 # --------------------------
