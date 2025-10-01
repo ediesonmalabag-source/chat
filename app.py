@@ -52,11 +52,11 @@ def chatbot_response(user_message: str) -> str:
         return "🗓️ You can inquire about qualifications offered at your local TESDA office or through the official portal. <a href='https://www.tesda.gov.ph/assessmentcenters'>https://www.tesda.gov.ph/assessmentcenters</a>"
 
     elif "enrolment" in user_message:
-        return 
-        st.markdown("""📋 **Enrolment Requirements**
-        <br>• PSA Birth Certificate (photocopy)
-        <br>• Marriage Certificate, if married (photocopy)
-""", unsafe_allow_html=True)
+        return st.markdown("""
+        📋 **Enrolment Requirements**<br>
+        • PSA Birth Certificate (photocopy)<br>
+        • Marriage Certificate, if married (photocopy)
+        """, unsafe_allow_html=True)
         
         
         
