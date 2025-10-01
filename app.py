@@ -18,10 +18,10 @@ st.markdown("""
 # --------------------------
 col1, col2, col3, col4, col5 = st.columns([1, 2, 2, 2, 1])
 with col2:
-    if st.button("📋 Qualifications Offered"):
+    if st.button("🎓 Qualifications Offered"):
         st.session_state.last_action = "qualifications"
 with col3:
-    if st.button("🗓 Enrolment"):
+    if st.button("📝 Enrolment"):
         st.session_state.last_action = "assessment"
 with col4:
     if st.button("📞 Contact Us"):
