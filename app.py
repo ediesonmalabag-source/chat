@@ -35,6 +35,18 @@ with col5:
 # ✅ Display message box after button click
 if "last_action" in st.session_state:
     action = st.session_state.last_action
+if action == "qualifications":
+        st.markdown("🎓 TESDA BIT offers 13 qualifications. Type a specific one (e.g., 'Cookery') to learn more.")
+elif action == "enrolment":
+        st.markdown("""
+📋 **Enrolment Requirements**<br>
+To enrol at TESDA BIT, please prepare the following:<br><br>
+• PSA Birth Certificate (photocopy)<br>
+• Marriage Certificate, if married (photocopy)<br>
+• 2 pcs 1x1 ID picture<br>
+• Filled-up Registration Form – <a href='https://bit.ly/3IOR8g8'>Download here</a><br><br>
+📌 Submit all requirements personally at the TESDA BIT Admin Office, or email them to <a href='mailto:bit@tesda.gov.ph'>bit@tesda.gov.ph</a>.
+""", unsafe_allow_html=True)
 
 
 
