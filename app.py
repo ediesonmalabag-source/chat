@@ -33,7 +33,7 @@ st.set_page_config(page_title="Simple Chatbot", page_icon="🤖", layout="wide")
 
 if "messages" not in st.session_state:
     # messages is a list of tuples: (role, text)
-    st.session_state.messages = [("Bot", "👋 Hi! Welcome to TESDA Assessment Chatbot. Type 'help' to see options.")]
+    st.session_state.messages = [("Bot", "👋 Hi! Welcome to TESDA BIT Chatbot. Type 'help' to see options.")]
 
 # last_action will hold a quick-action command when a button is clicked
 if "last_action" not in st.session_state:
