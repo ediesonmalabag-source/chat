@@ -213,9 +213,14 @@ with col4:
 
 #AVOID COVERING MESSAGE BOX ON MOBILE
 
-st.markdown("<div style='height:80px;'></div>", unsafe_allow_html=True)  # Spacer above input
+# Add spacer above input box
+st.markdown("<div style='height:80px;'></div>", unsafe_allow_html=True)
+
+# Chat input must be standalone
 chat_in = st.chat_input("Type your message here...")
-st.markdown("<div style='height:120px;'></div>", unsafe_allow_html=True)  # Spacer below input
+
+# Optional: Add extra bottom space to help with keyboard overlap
+st.markdown("<div style='height:120px;'></div>", unsafe_allow_html=True)
 
 
 
