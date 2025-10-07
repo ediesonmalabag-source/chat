@@ -120,7 +120,7 @@ def chatbot_response(user_message: str) -> str:
 
     elif any(kw in user_message for kw in ["what is cookery", "cookery", "cookery nc ii"]):
         return """🍳<b>Cookery NC II</b><br>
-        ⏱️Nominal Duration: 316 hours<br>  
+        ⏱️Nominal Duration: 316 hours<br>
         📚Description:<br>
         This qualification consists of competencies that a person must achieve to clean kitchen areas, prepare hot, cold meals 
         and desserts for guests in various food and beverage service facilities.
