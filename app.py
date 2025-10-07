@@ -53,7 +53,7 @@ def chatbot_response(user_message: str) -> str:
     # ------------
     # ENROLMENT
     # -------------
-    elif any(keyword in user_message for keyword in ["enrollment", "enroll", "enrol"]):
+    elif any(keyword in user_message for keyword in ["enrollment", "enroll", "enrol"])
     return """
     <b>📋 Enrolment Procedures:</b><br>
     To begin your enrolment at TESDA BIT, follow these steps carefully:<br><br>
