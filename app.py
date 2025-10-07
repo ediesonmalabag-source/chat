@@ -102,8 +102,8 @@ def chatbot_response(user_message: str) -> str:
         •🔩Shielded Metal Arc Welding (SMAW) NC II<br><br>
          🧑‍🏫 <b>Trainer Qualification:</b><br>
         •🏘️Community-Based Trainers Methodology Course<br>
-        •📋Trainer's Methodology Level I (for aspiring trainers and assessors)<br><br>  
-        ⏱️ <b>Training Duration:</b><br>
+        •📋Trainer's Methodology Level I (for aspiring trainers and assessors)<br>
+        ⏱️<b>Training Duration:</b><br>
         • Varies per qualification<br>
         • Includes classroom instruction, hands-on activities, and competency assessment<br><br>
         📜 <b>Certification:</b><br>
