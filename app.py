@@ -122,19 +122,12 @@ if user_input:
 # --------------------------
 # Display chat history
 # --------------------------
-for role, msg in st.session_state.messages:
-    if role == "You":
-        st.markdown(
-            f"<div style='background-color:#DCF8C6; padding:10px; border-radius:15px; margin:5px; text-align:right;'>"
-            f"🧑 <b>{role}:</b> {msg}</div>",
-            unsafe_allow_html=True,
-        )
-    else:
-        st.markdown(
-            f"<div style='background-color:#E6E6FA; padding:10px; border-radius:15px; margin:5px; text-align:left;'>"
-            f"🤖 <b>{role}:</b> {msg}</div>",
-            unsafe_allow_html=True,
-        )
+with st.chat_message("user"):
+    st.markdown(user_input)
+
+with st.chat_message("assistant"):
+    st.markdown(bot_reply, unsafe_allow_html=True)
+
 
 # --------------------------
 # Bottom-aligned buttons
