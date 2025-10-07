@@ -122,12 +122,12 @@ def chatbot_response(user_message: str) -> str:
         return """🍳<b>Cookery NC II</b><br>
         ⏱️ <b>Nominal Duration:</b> 316 hours (approx. 40 days)<br><br>
         📚 <b>Qualification Description:</b><br>
-        This qualification consists of competencies that a person must achieve to clean and maintain kitchen premises, prepare hot and cold meals, and create desserts for guests in food and beverage service facilities.<br><br>
+        This qualification consists of competencies that a person must achieve to clean kitchen areas, prepare hot, cold meals 
+        and desserts for guests in various food and beverage service facilities.<br><br>
         🧰 <b>Core Competencies:</b><br>
-        • Prepare stocks, sauces, and soups<br>
-        • Prepare appetizers, salads, and sandwiches<br>
-        • Prepare hot and cold desserts<br>
-        • Clean and maintain kitchen equipment and areas<br><br>
+        • Prepare and Cook Hot Meals<br>
+        • Prepare Cold Meals<br>
+        • Prepare Sweets<br>
         📌 <b>Entry Requirements:</b><br>
         • Able to communicate orally and in writing<br>
         • Physically fit<br>
