@@ -1,7 +1,5 @@
 import streamlit as st
-import streamlit.components.v1 as components  # ✅ Required for iframe
 import time
-
 
 # --------------------------
 # Page config (must be first)
@@ -146,16 +144,9 @@ with col1:
 with col2:
     if st.button("📝 Enrolment"):
         st.session_state.last_action = "enrolment"
-        st.session_state.show_pdf = True  # ✅ Set a flag to show the PDF
 with col3:
     if st.button("📊 Assessment"):
         st.session_state.last_action = "assessment"
 with col4:
     if st.button("📞 Contact"):
         st.session_state.last_action = "contact"
-# ✅ Embed PDF viewer below buttons
-if st.session_state.get("show_pdf"):
-    st.markdown("<br>", unsafe_allow_html=True)
-    st.subheader("📄 Registration Form Preview")
-    components.iframe("https://github.com/ediesonmalabag-source/chat/raw/main/BIT_Registration_Form_Fillable_v1.pdf", height=600)
-
