@@ -110,7 +110,8 @@ def chatbot_response(user_message: str) -> str:
         • TM Level I passers are qualified to deliver and assess CBT programs<br>
         • Certificates are recognized nationwide and valued globally, especially in hospitality and technical fields.<br><br>
         📅 <i>Note: All qualifications follow TESDA’s Competency-Based Training (CBT) format and are aligned with industry standards.</i><br><br>
-        ✅ <b>Need help choosing a qualification?</b> Tap the 📞 Contact button below or ask about course details.
+        ✅ Need help choosing a qualification? Tap the 📞 Contact button below or ask about course details.<br>
+        ✅ Already selected a course? Tap the 📝 Enrol button below to begin your registration.
         """
 
     elif any(keyword in user_message for keyword in ["cookery", "cook", "cookery nc2"]):
