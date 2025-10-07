@@ -88,18 +88,25 @@ def chatbot_response(user_message: str) -> str:
     elif "qualifications" in user_message:
         return """<b>🎓 TESDA-BIT Qualifications Offered</b><br><br>
         📌 <b>National Certificate II (NC II) Programs:</b><br>
-        • Housekeeping NC II<br>
-        • Food and Beverage Services NC II<br>
-        • Cookery NC II<br>
         • Bread and Pastry Production NC II<br>
-        • Front Office Services NC II<br>
-        • Computer Systems Servicing NC II<br><br>
+        • Computer Systems Servicing NC II<br>
+        • Cookery NC II<br>
+        • Driving NC II<br>
+        • Food and Beverage Services NC II<br>
+        • Food Processing NC II<br>
+        • Housekeeping NC II<br>
+        • Masonry NC II<br>
+        • Motorcycle/Small Engine Servicing NC II<br>
+        • Organic Agriculture Production NC II<br>
+        • Shielded Metal Arc Welding (SMAW) NC I<br>
+        • Shielded Metal Arc Welding (SMAW) NC II<br>
+        • Trainer's Methodology Level I (Trainer/Assessor)<br>        
         📌 <b>Training Duration:</b><br>
         • Varies per qualification (typically 264 to 436 hours)<br>
         • Includes classroom instruction, hands-on activities, and competency assessment<br><br>
         📌 <b>Certification:</b><br>
         • Trainees who pass the assessment will receive a TESDA National Certificate (NC II)<br>
-        • Certificates are recognized nationwide and by TESDA-accredited employers<br><br>
+        • Certificates are recognized nationwide and valued globally, especially in hospitality and technical fields.<br><br>
         📅 <i>Note: All qualifications follow TESDA’s Competency-Based Training (CBT) format and are aligned with industry standards.</i><br><br>
         ✅ <b>Need help choosing a qualification?</b> Tap the 📞 Contact button below or ask about course details.
         """
