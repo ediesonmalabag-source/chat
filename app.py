@@ -209,3 +209,13 @@ with col3:
 with col4:
     if st.button("📞 Contact"):
         st.session_state.last_action = "contact"
+
+
+#AVOID COVERING MESSAGE BOX ON MOBILE
+
+st.markdown("""
+    <script>
+        window.scrollTo(0, document.body.scrollHeight);
+    </script>
+""", unsafe_allow_html=True)
+
