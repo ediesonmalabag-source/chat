@@ -103,7 +103,7 @@ def chatbot_response(user_message: str) -> str:
          📌 <b>Trainer Qualification:</b><br>
         • Trainer's Methodology Level I (for aspiring trainers and assessors)<br><br>  
         📌 <b>Training Duration:</b><br>
-        • Varies per qualification (typically 264 to 436 hours)<br>
+        • Varies per qualification<br>
         • Includes classroom instruction, hands-on activities, and competency assessment<br><br>
         📌 <b>Certification:</b><br>
         • Trainees who pass the national assessment will receive a TESDA National Certificate (NC I or NC II)<br>
