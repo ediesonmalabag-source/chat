@@ -66,13 +66,21 @@ def chatbot_response(user_message: str) -> str:
 
     elif any(keyword in user_message for keyword in ["enrollment", "enroll", "enrol"]):
         return """
-        📋 **Enrolment Requirements**<br>
-        To enrol at TESDA BIT, please prepare the following:<br><br>
-        • PSA Birth Certificate (photocopy)<br>
-        • Marriage Certificate, if married (photocopy)<br>
+        📋 Enrolment Procedures<br>
+        To begin your enrolment at TESDA BIT, follow these steps carefully:<br><br>
+        📥 Download the Fillable PDF Registration Form – <a href='https://github.com/ediesonmalabag-source/chat/raw/main/BIT_Registration_Form_FIllable_v1.pdf'>Download here</a><br>
+        🖥️ Open the form using any PDF reader (e.g., Adobe Acrobat, browser, Foxit)<br>
+        ✍️ Fill in your personal details digitally using the fillable fields<br>
+        🖨️ Print the completed form<br>
+        ✒️ Write your full name and signature in the spaces provided<br>
+        🖼️ Attach two (2) recent 1x1 ID photo taken within the last 6 months in the indicated box<br><br>
+
+        📋 Additional Enrolment Requirements<br>
+        • photocopy of PSA Birth Certificate<br>
+        • photocopy of Marriage Certificate, if married<br>
         • 2 pcs 1x1 ID picture<br>
-        • Filled-up Registration Form – <a href='https://github.com/ediesonmalabag-source/chat/raw/main/BIT_Registration_Form_FIllable_v1.pdf'>Download here</a><br><br>
-        📌 Submit all requirements personally at the TESDA BIT Admin Office, or email them to <a href='mailto:bit@tesda.gov.ph'>bit@tesda.gov.ph</a>.
+       
+        📌 Submit the following documents along with your completed registration form personally at the TESDA BIT Admin Office, or email them to <a href='mailto:bit@tesda.gov.ph'>bit@tesda.gov.ph</a>.
         """
 
     elif "assessment" in user_message:
