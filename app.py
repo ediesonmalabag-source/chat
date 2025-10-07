@@ -124,18 +124,18 @@ def chatbot_response(user_message: str) -> str:
         📚 <b>Qualification Description:</b><br>
         This qualification consists of competencies that a person must achieve to clean kitchen areas, prepare hot, cold meals 
         and desserts for guests in various food and beverage service facilities.<br><br>
-        🧰 <b>Core Competencies:</b><br>
+        🧰 <b>Cluster of Core Units of Competencies:</b><br>
         • Prepare and Cook Hot Meals<br>
         • Prepare Cold Meals<br>
         • Prepare Sweets<br><br>
         📌 <b>Entry Requirements:</b><br>
-        • Able to communicate orally and in writing<br>
-        • Physically fit<br>
-        • With basic math skills<br><br>
+        • can communicate both in oral and written<br> 
+        • physically and mentally fit<br> 
+        • with good moral character<br> 
+        • can perform basic mathematical computation<br><br>
         🏨 <b>Career Opportunities:</b><br>
-        • Assistant Cook<br>
-        • Kitchen Staff<br>
-        • Food Service Crew in hotels, restaurants, and catering services<br><br>
+        • Cook or Commis<br>
+        • Assistant Cook<br><br>
         ✅ <i>Want to enrol?</i> Tap the 📝 <b>Enrolment</b> button below
         """
 
