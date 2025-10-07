@@ -87,7 +87,7 @@ def chatbot_response(user_message: str) -> str:
  # -------------
     elif any(kw in user_message.lower() for kw in ["qualification", "course", "program", "nc ii", "nc i", "tm level i", "training", "offered", "available courses"]):
         return """<b>🎓 TESDA-BIT Qualifications Offered</b><br><br>
-        📌 <b>National Certificate Programs:</b><br>
+        🎓 <b>National Certificate Programs:</b><br>
         • Bread and Pastry Production NC II<br>
         • Computer Systems Servicing NC II<br>
         • Cookery NC II<br>
@@ -100,12 +100,12 @@ def chatbot_response(user_message: str) -> str:
         • Organic Agriculture Production NC II<br>
         • Shielded Metal Arc Welding (SMAW) NC I<br>
         • Shielded Metal Arc Welding (SMAW) NC II<br><br>
-         📌 <b>Trainer Qualification:</b><br>
+         🧑‍🏫 <b>Trainer Qualification:</b><br>
         • Trainer's Methodology Level I (for aspiring trainers and assessors)<br><br>  
-        📌 <b>Training Duration:</b><br>
+        ⏱️ <b>Training Duration:</b><br>
         • Varies per qualification<br>
         • Includes classroom instruction, hands-on activities, and competency assessment<br><br>
-        📌 <b>Certification:</b><br>
+        📜 <b>Certification:</b><br>
         • Trainees who pass the national assessment will receive a TESDA National Certificate (NC I or NC II)<br>
         • TM Level I passers are qualified to deliver and assess CBT programs<br>
         • Certificates are recognized nationwide and valued globally, especially in hospitality and technical fields.<br><br>
