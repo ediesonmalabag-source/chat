@@ -94,17 +94,6 @@ def chatbot_response(user_message: str) -> str:
         • Bread and Pastry Production NC II<br>
         • Front Office Services NC II<br>
         • Computer Systems Servicing NC II<br><br>
-        
-        📌 <b>Training Duration:</b><br>
-        • Varies per qualification (typically 264 to 436 hours)<br>
-        • Includes classroom instruction, hands-on activities, and competency assessment<br><br>
-        
-        📌 <b>Certification:</b><br>
-        • Trainees who pass the assessment will receive a TESDA National Certificate (NC II)<br>
-        • Certificates are recognized nationwide and by TESDA-accredited employers<br><br>
-        
-        📅 <i>Note: All qualifications follow TESDA’s Competency-Based Training (CBT) format and are aligned with industry standards.</i><br><br>
-        ✅ <b>Need help choosing a qualification?</b> Tap the 📞 Contact button below or ask about course details.
         """
 
     elif any(keyword in user_message for keyword in ["cookery", "cook", "cookery nc2"]):
