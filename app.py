@@ -213,14 +213,6 @@ with col4:
 
 #AVOID COVERING MESSAGE BOX ON MOBILE
 
-# Create a placeholder for spacing
-spacer = st.empty()
-spacer.markdown("<div style='height:100px;'></div>", unsafe_allow_html=True)
-
-# Place chat input safely below
-chat_in = st.chat_input("Type your message here...")
-
-
 
 
 
