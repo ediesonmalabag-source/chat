@@ -120,10 +120,26 @@ def chatbot_response(user_message: str) -> str:
 
     elif any(kw in user_message for kw in ["what is cookery", "cookery", "cookery nc ii"]):
         return """🍳<b>Cookery NC II</b><br>
-        ⏱️Nominal Duration: 316 hours<br>
-        📚Description:<br>
-        This qualification consists of competencies that a person must achieve to clean kitchen areas, prepare hot, cold meals 
-        and desserts for guests in various food and beverage service facilities.
+        ⏱️ <b>Nominal Duration:</b> 316 hours (approx. 40 days)<br><br>
+        📚 <b>Qualification Description:</b><br>
+        This qualification consists of competencies that a person must achieve to clean and maintain kitchen premises, prepare hot and cold meals, and create desserts for guests in food and beverage service facilities.<br><br>
+        🧰 <b>Core Competencies:</b><br>
+        • Prepare stocks, sauces, and soups<br>
+        • Prepare appetizers, salads, and sandwiches<br>
+        • Prepare hot and cold desserts<br>
+        • Clean and maintain kitchen equipment and areas<br><br>
+        📌 <b>Entry Requirements:</b><br>
+        • Able to communicate orally and in writing<br>
+        • Physically fit<br>
+        • With basic math skills<br><br>
+        📝 <b>Assessment & Certification:</b><br>
+        • Competency-based assessment conducted by TESDA-accredited assessors<br>
+        • National Certificate (NC II) issued upon successful completion<br><br>
+        🏨 <b>Career Opportunities:</b><br>
+        • Assistant Cook<br>
+        • Kitchen Staff<br>
+        • Food Service Crew in hotels, restaurants, and catering services<br><br>
+        ✅ <i>Want to enrol?</i> Tap the 📝 <b>Enrolment</b> button below
         """
 
     elif any(keyword in user_message for keyword in ["computer", "css", "computer systems servicing"]):
