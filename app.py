@@ -127,14 +127,11 @@ def chatbot_response(user_message: str) -> str:
         🧰 <b>Core Competencies:</b><br>
         • Prepare and Cook Hot Meals<br>
         • Prepare Cold Meals<br>
-        • Prepare Sweets<br>
+        • Prepare Sweets<br><br>
         📌 <b>Entry Requirements:</b><br>
         • Able to communicate orally and in writing<br>
         • Physically fit<br>
         • With basic math skills<br><br>
-        📝 <b>Assessment & Certification:</b><br>
-        • Competency-based assessment conducted by TESDA-accredited assessors<br>
-        • National Certificate (NC II) issued upon successful completion<br><br>
         🏨 <b>Career Opportunities:</b><br>
         • Assistant Cook<br>
         • Kitchen Staff<br>
