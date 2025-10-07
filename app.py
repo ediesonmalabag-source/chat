@@ -52,8 +52,7 @@ def chatbot_response(user_message: str) -> str:
 
     # ------------
     # ENROLMENT
-    # -------------
-
+    # ------------
     elif any(keyword in user_message for keyword in ["enrollment", "enroll", "enrol"]):
         return """<b>📋 Enrolment Procedures:</b><br>
         📥 <b>Download the Fillable PDF Registration Form</b> – <a href='https://github.com/ediesonmalabag-source/chat/raw/main/BIT_Registration_Form_Fillable_v1.pdf' target='_blank' style='color:#003366; font-weight:bold;'>Click here to download</a><br>
@@ -70,7 +69,20 @@ def chatbot_response(user_message: str) -> str:
         ✅ <b>Need help?</b> Tap the <b>📞 Contact</b> button below for assistance.
         """
     
-    
+    # ------------
+    # CONTACT
+    # -------------
+
+    elif "contact" in user_message:
+        return """<b>📞 TESDA BIT Contact Information</b><br><br>
+        📱 <b>Cellphone No.:</b> 0908-860-0955<br>
+        📧 <b>Email:</b> <a href='mailto:bit@tesda.gov.ph'>bit@tesda.gov.ph</a><br>
+        📍 <b>Office Address:</b> TESDA-Bangui Institute of Technology Admin Office, Brgy. Manayon, Bangui, Ilocos Norte<br><br>
+        🕒 <b>Office Hours:</b> Monday to Friday, 8:00 AM – 5:00 PM<br>
+        📅 <b>Walk-in Inquiries:</b> No appointment needed during office hours<br><br>
+        
+        ✅ <i>For enrolment assistance, document submission, or qualification inquiries, feel free to reach out anytime.</i>
+        """
 
     elif "qualifications" in user_message:
         return "🎓 TESDA BIT offers 13 qualifications. Type a specific one (e.g., 'Cookery') to learn more."
@@ -89,8 +101,7 @@ def chatbot_response(user_message: str) -> str:
     elif "assessment" in user_message:
         return "📊 Assessment schedules and requirements vary by qualification. Please contact TESDA BIT for details."
 
-    elif "contact" in user_message:
-        return "📞 You may reach TESDA BIT via email at [bit@tesda.gov.ph](mailto:bit@tesda.gov.ph) or visit the Admin Office during working hours."
+    
 
     else:
         return "❓ I didn’t catch that. Try typing qualifications, enrolment, assessment, or contact—or just use the buttons below."
