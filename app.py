@@ -88,9 +88,9 @@ def chatbot_response(user_message: str) -> str:
     elif any(kw in user_message.lower() for kw in ["qualification", "course", "program", "nc ii", "nc i", "tm level i", "training", "offered", "available courses"]):
         return """<b>🧰 TESDA-BIT Qualifications Offered</b><br><br>
         🎓 <b>National Certificate Programs:</b><br>
-        • Bread and Pastry Production NC II<br>
-        • Computer Systems Servicing NC II<br>
-        • Cookery NC II<br>
+        •🧁Bread and Pastry Production NC II<br>
+        •💻Computer Systems Servicing NC II<br>
+        •🍳Cookery NC II<br>
         • Driving NC II<br>
         • Food and Beverage Services NC II<br>
         • Food Processing NC II<br>
