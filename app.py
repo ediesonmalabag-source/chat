@@ -40,18 +40,8 @@ with st.sidebar:
         st.session_state.messages = [("Bot", "👋 Hi! I'm the TESDA BIT Chatbot. Ask about qualifications, enrolment, assessment, or contact us—just tap a button or type below.")]
         st.session_state.last_action = None
         st.rerun()
-#----------------
-# TRIGGER
-# --------------
-import streamlit as st
-import time
 
-# --------------------------
-# Page config (must be first)
-# --------------------------
-st.set_page_config(page_title="Simple Chatbot", page_icon="🤖", layout="wide")
 
-# --------------------------
 # Session state setup
 # --------------------------
 if "messages" not in st.session_state:
