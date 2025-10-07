@@ -95,16 +95,14 @@ To begin your enrolment at TESDA BIT, follow these steps carefully:<br><br>
 # --------------------------
 # Determine user input
 # --------------------------
-user_input = None
+chat_in = st.chat_input("Type your message here...")
+if chat_in:
+    user_input = chat_in
 
 if st.session_state.last_action:
     user_input = st.session_state.last_action
     st.session_state.last_action = None
 
-if user_input is None:
-    chat_in = st.chat_input("Type your message here...")
-    if chat_in:
-        user_input = chat_in
 
 # --------------------------
 # Process user input
