@@ -89,6 +89,8 @@ def chatbot_response(user_message: str) -> str:
         return """<b>🧰 TESDA-BIT Qualifications Offered</b><br><br>
         🎓 <b>National Certificate Programs:</b><br>
         •🧁Bread and Pastry Production NC II<br>
+        🕒 Approx. 141 hours<br>
+        📋 <button onclick="showDetails('bread_pastry')">View Course Details</button><br><br>
         •💻Computer Systems Servicing NC II<br>
         •🍳Cookery NC II<br>
         •🚗Driving NC II<br>
