@@ -1,5 +1,6 @@
 import streamlit as st
 import time
+import re
 
 # --------------------------
 # Page config (must be first)
@@ -46,6 +47,7 @@ with st.sidebar:
 # --------------------------
 def chatbot_response(user_message: str) -> str:
     user_message = user_message.lower().strip()
+    user_message = re.sub(r'[^\w\s]', '', user_message)  # ✅ Removes punctuation like ? . ! etc.
 
     if user_message in ["hi", "hello", "hey", "haha"]:
         return "👋 Hi! I'm the TESDA BIT Chatbot. Ask about qualifications, enrolment, assessment, or contact us—just tap a button or type below."
