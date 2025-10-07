@@ -100,7 +100,7 @@ def chatbot_response(user_message: str) -> str:
         • Organic Agriculture Production NC II<br>
         • Shielded Metal Arc Welding (SMAW) NC I<br>
         • Shielded Metal Arc Welding (SMAW) NC II<br><br>
-         📌 <b>Trainer Qualification:</b><br><br>
+         📌 <b>Trainer Qualification:</b><br>
         • Trainer's Methodology Level I (for aspiring trainers and assessors)<br><br>  
         📌 <b>Training Duration:</b><br>
         • Varies per qualification (typically 264 to 436 hours)<br>
