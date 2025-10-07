@@ -55,9 +55,8 @@ def chatbot_response(user_message: str) -> str:
     # -------------
 
     elif any(keyword in user_message for keyword in ["enrollment", "enroll", "enrol"]):
-        return """
-       <b>📋 Enrolment Procedures:</b><br>
- 📥 <b>Download the Fillable PDF Registration Form</b> – <a href='https://github.com/ediesonmalabag-source/chat/blob/main/BIT_Registration_Form_Fillable_v1.pdf' target='_blank' style='color:#003366; font-weight:bold;'>Click here to open</a><br>
+        return """<b>📋 Enrolment Procedures:</b><br>
+        📥 <b>Download the Fillable PDF Registration Form</b> – <a href='https://github.com/ediesonmalabag-source/chat/blob/main/BIT_Registration_Form_Fillable_v1.pdf' target='_blank' style='color:#003366; font-weight:bold;'>Click here to open</a><br>
         🖥️ Open the form using any PDF reader (e.g., Adobe Acrobat, browser, Foxit)<br>
         ✍️ Fill in your personal details digitally using the fillable fields<br>
         🖨️ Print the completed form<br>
@@ -71,8 +70,8 @@ def chatbot_response(user_message: str) -> str:
         📅 <i>Note: Enrolment is open year-round, but slots are limited. Submit early to secure your schedule.</i><br><br>
         
         📌 <b>Submit all documents</b> personally at the TESDA BIT Admin Office, or email them to <a href='mailto:bit@tesda.gov.ph'>bit@tesda.gov.ph</a><br>
-        ✅ <b>Need help?</b> Contact us anytime for assistance.
-    """
+        ✅ <b>Need help?</b> Contact us anytime for assistance
+        """
     
     
 
