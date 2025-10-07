@@ -91,8 +91,6 @@ def chatbot_response(user_message: str) -> str:
         return """<b>🧰 TESDA-BIT Qualifications Offered</b><br><br>
         🎓 <b>National Certificate Programs:</b><br>
         •🧁Bread and Pastry Production NC II<br>
-        🕒 Approx. 141 hours<br>
-        📋 <button onclick="showDetails('bread_pastry')">View Course Details</button><br><br>
         •💻Computer Systems Servicing NC II<br>
         •🍳Cookery NC II<br>
         •🚗Driving NC II<br>
@@ -120,11 +118,12 @@ def chatbot_response(user_message: str) -> str:
         ✅ Already selected a course? Tap the 📝 Enrolment button below to begin your registration.
         """
 
-    elif any(keyword in user_message for keyword in ["cookery", "cook", "cookery nc2"]):
-        return """👨‍🍳 Cookery NC II<br>
-        Nominal Duration: 316 hours<br>  
-        Description: This qualification consists of competencies that a person must achieve to clean kitchen areas, prepare hot, cold meals 
-        and desserts for guests in various food and beverage service facilities."""
+    elif any(kw in user_message for kw in ["what is cookery", "cookery", "cookery nc ii"]):
+        return """🍳<b>Cookery NC II</b><br>
+        ⏱️Nominal Duration: 316 hours<br>  
+        📚Description: This qualification consists of competencies that a person must achieve to clean kitchen areas, prepare hot, cold meals 
+        and desserts for guests in various food and beverage service facilities.
+        """
 
     elif any(keyword in user_message for keyword in ["computer", "css", "computer systems servicing"]):
         return """💻 Computer Systems Servicing NC II<br>
