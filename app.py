@@ -80,8 +80,6 @@ def chatbot_response(user_message: str) -> str:
         📍 <b>Office Address:</b> TESDA-Bangui Institute of Technology Admin Office, Brgy. Manayon, Bangui, Ilocos Norte<br><br>
         🕒 <b>Office Hours:</b> Monday to Friday, 8:00 AM – 5:00 PM<br>
         📅 <b>Walk-in Inquiries:</b> No appointment needed during office hours<br><br>
-        
-        ✅ <i>For enrolment assistance, document submission, or qualification inquiries, feel free to reach out anytime.</i>
         """
 
     elif "qualifications" in user_message:
