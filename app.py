@@ -101,13 +101,15 @@ def chatbot_response(user_message: str) -> str:
         • Shielded Metal Arc Welding (SMAW) NC I<br>
         • Shielded Metal Arc Welding (SMAW) NC II<br><br>
          🧑‍🏫 <b>Trainer Qualification:</b><br>
+        • Community-Based Trainers Methodology Course
         • Trainer's Methodology Level I (for aspiring trainers and assessors)<br><br>  
         ⏱️ <b>Training Duration:</b><br>
         • Varies per qualification<br>
         • Includes classroom instruction, hands-on activities, and competency assessment<br><br>
         📜 <b>Certification:</b><br>
         • Trainees who pass the national assessment will receive a TESDA National Certificate (NC I or NC II)<br>
-        • TM Level I passers are qualified to deliver and assess CBT programs<br>
+        • TM Level I passers are qualified to deliver and assess Competency-Based Training programs<br>
+        • CBTMC passers are qualified to deliver community-based trainings
         • Certificates are recognized nationwide and valued globally, especially in hospitality and technical fields.<br><br>
         📅 <i>Note: All qualifications follow TESDA’s Competency-Based Training (CBT) format and are aligned with industry standards.</i><br><br>
         ✅ Need help choosing a qualification? Tap the 📞 Contact button below or ask about course details.<br>
