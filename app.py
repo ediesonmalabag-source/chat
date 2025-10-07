@@ -85,7 +85,7 @@ def chatbot_response(user_message: str) -> str:
  # ------------
  # QUALIFICATION
  # -------------
-    elif "qualifications" in user_message:
+    elif any(kw in user_message.lower() for kw in ["qualification", "course", "program", "nc ii", "nc i", "tm level i", "training", "offered", "available courses"]):
         return """<b>🎓 TESDA-BIT Qualifications Offered</b><br><br>
         📌 <b>National Certificate Programs:</b><br>
         • Bread and Pastry Production NC II<br>
@@ -106,8 +106,8 @@ def chatbot_response(user_message: str) -> str:
         • Varies per qualification (typically 264 to 436 hours)<br>
         • Includes classroom instruction, hands-on activities, and competency assessment<br><br>
         📌 <b>Certification:</b><br>
-        • Trainees who pass the assessment will receive a TESDA National Certificate (NC I or NC II)<br>
-        • TM Level I completers are qualified to deliver and assess CBT programs<br>
+        • Trainees who pass the national assessment will receive a TESDA National Certificate (NC I or NC II)<br>
+        • TM Level I passers are qualified to deliver and assess CBT programs<br>
         • Certificates are recognized nationwide and valued globally, especially in hospitality and technical fields.<br><br>
         📅 <i>Note: All qualifications follow TESDA’s Competency-Based Training (CBT) format and are aligned with industry standards.</i><br><br>
         ✅ <b>Need help choosing a qualification?</b> Tap the 📞 Contact button below or ask about course details.
