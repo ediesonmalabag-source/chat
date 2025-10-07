@@ -87,7 +87,7 @@ def chatbot_response(user_message: str) -> str:
  # ------------
  # QUALIFICATION
  # -------------
-    elif any(kw in user_message.lower() for kw in ["qualification", "course", "program", "nc ii", "nc i", "tm level i", "training", "offered", "available courses"]):
+    elif any(kw in user_message.lower() for kw in ["qualification", "course", "program", "training", "offered", "available courses"]):
         return """<b>🧰 TESDA-BIT Qualifications Offered</b><br><br>
         🎓 <b>National Certificate Programs:</b><br>
         •🧁Bread and Pastry Production NC II<br>
