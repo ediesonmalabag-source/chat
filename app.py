@@ -91,18 +91,18 @@ def chatbot_response(user_message: str) -> str:
         •🧁Bread and Pastry Production NC II<br>
         •💻Computer Systems Servicing NC II<br>
         •🍳Cookery NC II<br>
-        • Driving NC II<br>
-        • Food and Beverage Services NC II<br>
-        • Food Processing NC II<br>
-        • Housekeeping NC II<br>
-        • Masonry NC II<br>
-        • Motorcycle/Small Engine Servicing NC II<br>
-        • Organic Agriculture Production NC II<br>
-        • Shielded Metal Arc Welding (SMAW) NC I<br>
-        • Shielded Metal Arc Welding (SMAW) NC II<br><br>
+        •🚗Driving NC II<br>
+        •🍽️Food and Beverage Services NC II<br>
+        •🏭Food Processing NC II<br>
+        •🧹Housekeeping NC II<br>
+        •🧱Masonry NC II<br>
+        •🔧Motorcycle/Small Engine Servicing NC II<br>
+        •🌱Organic Agriculture Production NC II<br>
+        •🔩Shielded Metal Arc Welding (SMAW) NC I<br>
+        •🔩Shielded Metal Arc Welding (SMAW) NC II<br><br>
          🧑‍🏫 <b>Trainer Qualification:</b><br>
-        • Community-Based Trainers Methodology Course<br>
-        • Trainer's Methodology Level I (for aspiring trainers and assessors)<br><br>  
+        •🏘️Community-Based Trainers Methodology Course<br>
+        •📋Trainer's Methodology Level I (for aspiring trainers and assessors)<br><br>  
         ⏱️ <b>Training Duration:</b><br>
         • Varies per qualification<br>
         • Includes classroom instruction, hands-on activities, and competency assessment<br><br>
