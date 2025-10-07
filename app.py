@@ -144,6 +144,7 @@ with col1:
 with col2:
     if st.button("📝 Enrolment"):
         st.session_state.last_action = "enrolment"
+        components.iframe("https://github.com/ediesonmalabag-source/chat/raw/main/BIT_Registration_Form_Fillable_v1.pdf", height=600)
 with col3:
     if st.button("📊 Assessment"):
         st.session_state.last_action = "assessment"
