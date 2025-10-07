@@ -77,8 +77,8 @@ To begin your enrolment at TESDA BIT, follow these steps carefully:<br><br>
 🖼️ Attach <b>two (2) recent 1x1 ID photos</b> taken within the last 6 months in the designated box<br><br>
 
 <b>📋 Additional Enrolment Requirements:</b><br>
-• Photocopy of PSA Birth Certificate<br>
-• Photocopy of Marriage Certificate, if married<br><br>
+• Photocopy of <b>PSA Birth Certificate</b><br>
+• Photocopy of <b>Marriage Certificate</b>, if married<br><br>
 
 📌 <b>Submit all documents</b> personally at the TESDA BIT Admin Office, or email them to <a href='mailto:bit@tesda.gov.ph'>bit@tesda.gov.ph</a>.
     """
