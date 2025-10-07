@@ -66,7 +66,7 @@ def chatbot_response(user_message: str) -> str:
 
     elif any(keyword in user_message for keyword in ["enrollment", "enroll", "enrol"]):
         return """
-        📋 Enrolment Procedures<br>
+        <b>📋 Enrolment Procedures</b><br>
     To begin your enrolment at TESDA BIT, follow these steps carefully:<br><br>
     📥 Download the Fillable PDF Registration Form – <a href='https://github.com/ediesonmalabag-source/chat/raw/main/BIT_Registration_Form_Fillable_v1.pdf'>Download here</a><br>
     🖥️ Open the form using any PDF reader (e.g., Adobe Acrobat, browser, Foxit)<br>
