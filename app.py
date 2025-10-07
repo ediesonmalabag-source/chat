@@ -71,7 +71,7 @@ def chatbot_response(user_message: str) -> str:
         • PSA Birth Certificate (photocopy)<br>
         • Marriage Certificate, if married (photocopy)<br>
         • 2 pcs 1x1 ID picture<br>
-        • Filled-up Registration Form – <a href='https://bit.ly/3IOR8g8'>Download here</a><br><br>
+        • Filled-up Registration Form – <a href='https://github.com/ediesonmalabag-source/chat/raw/main/BIT_Registration_Form_FIllable_v1.pdf'>Download here</a><br><br>
         📌 Submit all requirements personally at the TESDA BIT Admin Office, or email them to <a href='mailto:bit@tesda.gov.ph'>bit@tesda.gov.ph</a>.
         """
 
