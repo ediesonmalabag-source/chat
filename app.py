@@ -213,18 +213,9 @@ with col4:
 
 #AVOID COVERING MESSAGE BOX ON MOBILE
 
-st.markdown("""
-<script>
-    const observer = new MutationObserver(() => {
-        window.scrollTo(0, document.body.scrollHeight);
-    });
-    observer.observe(document.body, { childList: true, subtree: true });
-</script>
-""", unsafe_allow_html=True)
-
-st.markdown("""
-<div style='height:100px;'></div>
-""", unsafe_allow_html=True)
+st.markdown("<div style='height:80px;'></div>", unsafe_allow_html=True)  # Spacer above input
+chat_in = st.chat_input("Type your message here...")
+st.markdown("<div style='height:120px;'></div>", unsafe_allow_html=True)  # Spacer below input
 
 
 
