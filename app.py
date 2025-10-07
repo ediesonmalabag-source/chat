@@ -214,11 +214,13 @@ with col4:
 #AVOID COVERING MESSAGE BOX ON MOBILE
 
 st.markdown("""
-    <script>
+<script>
+    const observer = new MutationObserver(() => {
         window.scrollTo(0, document.body.scrollHeight);
-    </script>
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+</script>
 """, unsafe_allow_html=True)
 
-st.markdown("<br><br><br><br><br>", unsafe_allow_html=True)
 
 
