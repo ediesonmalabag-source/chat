@@ -1,5 +1,7 @@
 import streamlit as st
+import streamlit.components.v1 as components  # ✅ Required for iframe
 import time
+
 
 # --------------------------
 # Page config (must be first)
@@ -156,3 +158,4 @@ if st.session_state.get("show_pdf"):
     st.markdown("<br>", unsafe_allow_html=True)
     st.subheader("📄 Registration Form Preview")
     components.iframe("https://github.com/ediesonmalabag-source/chat/raw/main/BIT_Registration_Form_Fillable_v1.pdf", height=600)
+
