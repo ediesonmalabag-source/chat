@@ -67,7 +67,7 @@ def chatbot_response(user_message: str) -> str:
         • <b>Photocopy of Marriage Certificate</b>, if married<br><br>
         📅 <i>Note: Enrolment is open year-round, but slots are limited. Submit early to secure your schedule.</i><br><br>
         📌 <b>Submit all documents</b> personally at the TESDA BIT Admin Office, or email them to <a href='mailto:bit@tesda.gov.ph'>bit@tesda.gov.ph</a><br>
-        ✅ <b>Need help?</b> Contact us anytime for assistance.
+        ✅ <b>Need help?</b> Tap the <b>📞 Contact</b> button below for assistance.
         """
     
     
