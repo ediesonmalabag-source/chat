@@ -54,9 +54,9 @@ cookery_response = """<h4 style='color:#003366; font-weight:bold;'>🍳Cookery N
        🏨 <b>Career Opportunities:</b><br>
         • Cook or Commis<br>
         • Assistant Cook<br><br>
-        ✅ <i>Want to enrol?</i> Tap the 📝 <b>Enrolment</b> button below<br>
-        📅 <i>Ready for assessment?</i> Tap the 📊 <b>Assessment</b> button below<br>
-        📞 <i>Need help or have questions?</i> Tap the 📞 <b>Contact</b> button below<br>
+        📝 <i>Want to enrol?</i> Tap the <b>Enrolment</b> button below<br>
+        📊 <i>Ready for assessment?</i> Tap the <b>Assessment</b> button below<br>
+        📞 <i>Need help or have questions?</i> Tap the <b>Contact</b> button below<br>
         🎓 <i>Want to explore other courses?</i> Type <b>css</b>, <b>baking</b> or <b>welding</b> to view more qualifications
         """
 
