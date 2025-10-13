@@ -49,7 +49,7 @@ cookery_response = """<h4 style='color:#003366; font-weight:bold;'>🍳Cookery N
        • <a href='https://yourdomain.com/forms/self-assessment-guide-cookery.pdf' target='_blank'>📥 Download Self-Assessment Guide (PDF)</a> or request a printed copy<br>
        <b>Eligibility:</b> Assessment is open to:<br>
        • Trainees who have successfully completed Cookery NC II training<br>
-       • Industry workers with relevant experience and a valid Certificate of Employment<br><br>
+       • Industry workers with relevant experience and a valid Certificate of Employment<br>
        <b>Certification:</b> Passers receive a TESDA National Certificate (NC II), valid for 5 years and recognized both nationwide and internationally.<br><br>
         🏨 <b>Career Opportunities:</b><br>
         • Cook or Commis<br>
