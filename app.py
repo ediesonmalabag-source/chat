@@ -38,22 +38,22 @@ cookery_response = """<h4 style='color:#003366; font-weight:bold;'>🍳Cookery N
         • Prepare Cold Meals<br>
         • Prepare Sweets<br><br>
         📌 <b>Entry Requirements:</b><br>
-        • can communicate both in oral and written<br> 
-        • physically and mentally fit<br> 
-        • with good moral character<br> 
-        • can perform basic mathematical computation<br><br>
+        • Can communicate both in oral and written<br> 
+        • Physically and mentally fit<br> 
+        • With good moral character<br> 
+        • Can perform basic mathematical computation<br><br>
        📊 <b>Assessment Information:</b><br>
        • Held at the TESDA-BIT Assessment Center<br>
        • Covers practical cooking tasks, food safety, and presentation<br>
-       • <b>Assessment fee: ₱978</b> — <b>Free for TESDA scholars</b> (present scholarship ID or enrolment proof)<br>
+       • <b>Assessment fee: ₱978</b> — <b>Free for TESDA scholars</b> (just present your scholarship ID or enrolment proof)<br>
        • <a href='https://drive.google.com/file/d/1Z5vTvtxIRkiLTrGQPfy7g064scP7X_DG/view?usp=sharing' target='_blank'>📥 Download Self-Assessment Guide (PDF)</a> or request a printed copy<br><br>
        <b>Eligibility:</b><br>
        • Trainees who have successfully completed Cookery NC II training<br>
        • Industry workers with relevant experience and a valid Certificate of Employment<br><br>
        <b>Certification:</b> Passers receive a TESDA National Certificate (NC II), valid for 5 years and recognized both nationwide and internationally.<br><br>
        🏨 <b>Career Opportunities:</b><br>
-        • Cook or Commis<br>
-        • Assistant Cook<br><br>
+        • Cook or Commis - in hotels, restaurants or catering services<br>
+        • Assistant Cook - in institutional or commercial kitchens<br><br>
         📝 <i>Want to enrol?</i> Tap the <b>Enrolment</b> button below<br>
         📊 <i>Ready for assessment?</i> Tap the <b>Assessment</b> button below<br>
         📞 <i>Need help or have questions?</i> Tap the <b>Contact</b> button below<br>
