@@ -113,11 +113,21 @@ def chatbot_response(user_message: str) -> str:
         if keyword in user_message:
             return response
     # If no match was found, return fallback message
-    return """❓ Sorry, I couldn't find that qualification. Try asking about:
-    • Cookery NC II
-    • Computer Systems Servicing NC II
-    • Bread and Pastry Production NC II
-    Or type 'qualification' to see the full list.
+    return """❓ Sorry, I couldn’t find that qualification.
+    
+    You can try asking about:
+    • 🍳 Cookery NC II  
+    • 🖥️ Computer Systems Servicing NC II  
+    • 🍞 Bread and Pastry Production NC II  
+    
+    Or type **qualification** to see the full list.
+    
+    You can also ask about:
+    • 📝 Enrolment  
+    • 🧪 Assessment  
+    • 📞 Contact  
+    
+    Or just tap the buttons below!
     """
     
     # 👋 Greetings
