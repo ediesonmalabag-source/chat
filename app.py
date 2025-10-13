@@ -42,13 +42,13 @@ cookery_response = """<h4 style='color:#003366; font-weight:bold;'>🍳Cookery N
         • physically and mentally fit<br> 
         • with good moral character<br> 
         • can perform basic mathematical computation<br><br>
-        📊 <b>Assessment Information:</b><br>
-        • Conducted at TESDA-BIT Assessment Center<br>
-        • Includes practical cooking tasks and food presentation<br>
-        • <b>Assessment fee: ₱978 or Free for TESDA scholars</b><br>
-        • Self-Assessment Guide available upon request or download<br>
-        • <b>Only trainees who have successfully completed the Cookery NC II training are eligible to take the assessment</b><br>
-        • Successful candidates receive a National Certificate (NC II), valid for 5 years<br><br>
+       📊 <b>Assessment Information:</b><br
+       • Held at the TESDA-BIT Assessment Center<br>
+       • Covers practical cooking tasks, food safety, and presentation<br>
+       • <b>Assessment fee: ₱978</b> — <b>Free for TESDA scholars</b> (present scholarship ID or enrolment proof)<br>
+       • <a href='https://yourdomain.com/forms/self-assessment-guide-cookery.pdf' target='_blank'>📥 Download Self-Assessment Guide (PDF)</a> or request a printed copy<br>
+       • <b>Eligibility:</b> Only trainees who have successfully completed Cookery NC II training may take the assessment<br>
+       • <b>Certification:</b> Passers receive a TESDA National Certificate (NC II), valid for 5 years and recognized nationwide<br><br>
         🏨 <b>Career Opportunities:</b><br>
         • Cook or Commis<br>
         • Assistant Cook<br><br>
