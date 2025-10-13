@@ -33,25 +33,26 @@ cookery_response = """<h4 style='color:#003366; font-weight:bold;'>🍳Cookery N
         <h5 style='color:#003366;'>📚 Qualification Description:</h5>
         This qualification consists of competencies that a person must achieve to clean kitchen areas, prepare hot, cold meals 
         and desserts for guests in various food and beverage service facilities.<br><br>
-        🧰 <b>Cluster of Core Units of Competencies:</b><br>
+        <h5 style='color:#003366;'>🧰 Cluster of Core Units of Competencies:</h5>
         • Prepare and Cook Hot Meals<br>
         • Prepare Cold Meals<br>
         • Prepare Sweets<br><br>
-        📌 <b>Entry Requirements:</b><br>
+        <h5 style='color:#003366;'>📌 <b>Entry Requirements:</h5>
         • Can communicate both in oral and written<br> 
         • Physically and mentally fit<br> 
         • With good moral character<br> 
         • Can perform basic mathematical computation<br><br>
-       📊 <b>Assessment Information:</b><br>
+       <h5 style='color:#003366;'>📊 Assessment Information:</h5>
        • Held at the TESDA-BIT Assessment Center<br>
        • Covers practical cooking tasks, food safety, and presentation<br>
        • <b>Assessment fee: ₱978</b> — <b>Free for TESDA scholars</b> (just present your scholarship ID or enrolment proof)<br>
        • <a href='https://drive.google.com/file/d/1Z5vTvtxIRkiLTrGQPfy7g064scP7X_DG/view?usp=sharing' target='_blank'>📥 Download Self-Assessment Guide (PDF)</a> or request a printed copy<br><br>
-       <b>Eligibility:</b><br>
+       <h5 style='color:#003366;'>Eligibility:</h5>
        • Trainees who have successfully completed Cookery NC II training<br>
        • Industry workers with relevant experience and a valid Certificate of Employment<br><br>
-       <b>Certification:</b> Passers receive a TESDA National Certificate (NC II), valid for 5 years and recognized both nationwide and internationally.<br><br>
-       🏨 <b>Career Opportunities:</b><br>
+       <h5 style='color:#003366;'>Certification:</h5> 
+       Passers receive a TESDA National Certificate (NC II), valid for 5 years and recognized both nationwide and internationally.<br><br>
+       <h5 style='color:#003366;'>🏨 Career Opportunities:</h5>
         • Cook or Commis - in hotels, restaurants or catering services<br>
         • Assistant Cook - in institutional or commercial kitchens<br><br>
         📝 <i>Want to enrol?</i> Tap the <b>Enrolment</b> button below<br>
