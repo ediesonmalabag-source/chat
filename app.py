@@ -43,7 +43,7 @@ if screen_width < 768 and st.session_state.show_mobile_warning:
         <b>Mobile Tip:</b><br>
         If you're viewing this inside Messenger or another in-app browser, some features may not work properly.<br>
         Tap the <b>⋮ three-dot menu</b> and choose <b>'Open in Chrome'</b> or <b>'Open in Browser'</b> for full access.<br><br>
-        ✅ If you're already in Chrome or Safari, you can dismiss this message.
+        ✅ If you're already in Chrome, Edge, Firefox, or another mobile browser, you can dismiss this message.
         </div>
         """, unsafe_allow_html=True)
         if st.button("Dismiss this message"):
