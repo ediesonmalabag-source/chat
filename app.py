@@ -25,6 +25,9 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
+# ✅ Messenger browser warning — shows immediately
+st.warning("📱 You're viewing this in Messenger's browser. Some features may not work properly. Tap the ⋮ menu and choose 'Open in Chrome' or 'Open in Browser' for full access.")
+
 # ------------------------------------
 # DEFINING QUALIFICATION RESPONSES
 # -------------------------------------
