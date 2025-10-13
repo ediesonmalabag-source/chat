@@ -112,20 +112,7 @@ def chatbot_response(user_message: str) -> str:
     for keyword, response in qualification_responses.items():
         if keyword in user_message:
             return response
-    
-    # If no match was found, return fallback message
-    return """❓ Sorry, I couldn’t find that qualification.<br><br>
-    You can try asking about:<br>
-    • 🍳 Cookery NC II<br>
-    • 🖥️ Computer Systems Servicing NC II<br>
-    • 🍞 Bread and Pastry Production NC II<br><br>
-    Or type <b>qualification</b> to see the full list.<br><br>
-    You can also ask about:<br>
-    • 📝 Enrolment<br>
-    • 🧪 Assessment<br>
-    • 📞 Contact<br><br>
-    Or just tap the buttons below!"""
-    
+            
     # 👋 Greetings
     if user_message in ["hi", "hello", "hey", "haha"]:
         return "👋 Hi! I'm the TESDA BIT Chatbot. Ask about qualifications, enrolment, assessment, or contact us—just tap a button or type below."
@@ -205,7 +192,20 @@ def chatbot_response(user_message: str) -> str:
 
     
 
-    # else:
+    else:
+    # If no match was found, return fallback message
+        return """❓ Sorry, I couldn’t find that qualification.<br><br>
+        You can try asking about:<br>
+        • 🍳 Cookery NC II<br>
+        • 🖥️ Computer Systems Servicing NC II<br>
+        • 🍞 Bread and Pastry Production NC II<br><br>
+        Or type <b>qualification</b> to see the full list.<br><br>
+        You can also ask about:<br>
+        • 📝 Enrolment<br>
+        • 🧪 Assessment<br>
+        • 📞 Contact<br><br>
+        Or just tap the buttons below!
+        """
     #    return "❓ I didn’t catch that. Try typing qualifications, enrolment, assessment, or contact—or just use the buttons below."
 
 # --------------------------
