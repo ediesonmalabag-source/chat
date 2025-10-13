@@ -194,15 +194,16 @@ def chatbot_response(user_message: str) -> str:
 
     else:
     # If no match was found, return fallback message
-        return """❓ Sorry, I couldn’t find that qualification.<br><br>
-        You can try asking about:<br>
+        return """❓ <b>I couldn’t match your message to a specific qualification, enrolment detail, or assessment info.</b><br><br>
+        Here are some examples of what you can ask about:<br>
         • 🍳 Cookery NC II<br>
-        • 🖥️ Computer Systems Servicing NC II<br>
-        • 🍞 Bread and Pastry Production NC II<br><br>
-        Or type <b>qualification</b> to see the full list.<br><br>
+        • 💻 Computer Systems Servicing NC II<br>
+        • 🧁 Bread and Pastry Production NC II<br>
+        (…and many more!)<br><br>
+        Type <b>qualification</b> to see the full list.<br><br>
         You can also ask about:<br>
         • 📝 Enrolment<br>
-        • 🧪 Assessment<br>
+        • 📊 Assessment<br>
         • 📞 Contact<br><br>
         Or just tap the buttons below!
         """
