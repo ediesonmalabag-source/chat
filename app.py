@@ -60,6 +60,7 @@ bread_pastry_response = """<h4 style='color:#003366; font-weight:bold;'>🧁Brea
 # -------------------------------------
 
 qualification_responses = {
+    "cookery nc ii": cookery_response,
     "cookery": cookery_response,
     "cook": cookery_response,
     "computer": css_response,
