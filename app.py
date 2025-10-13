@@ -157,7 +157,7 @@ def chatbot_response(user_message: str) -> str:
  # -------------
     elif any(kw in user_message.lower() for kw in ["qualification", "course", "program", "training", "offered", "available courses"]):
         return """<h4 style='color:#003366; font-weight:bold;'>🎓 TESDA-BIT Qualifications Offered</h4>
-        🧰 <b>National Certificate Programs:</b><br>
+        <h5 style='color:#003366;'>🧰 National Certificate Programs:</h5>
         •🧁Bread and Pastry Production NC II<br>
         •💻Computer Systems Servicing NC II<br>
         •🍳Cookery NC II<br>
@@ -170,13 +170,13 @@ def chatbot_response(user_message: str) -> str:
         •🌱Organic Agriculture Production NC II<br>
         •🔩Shielded Metal Arc Welding (SMAW) NC I<br>
         •🔩Shielded Metal Arc Welding (SMAW) NC II<br><br>
-         🧑‍🏫 <b>Trainer Qualification:</b><br>
+         <h5 style='color:#003366;'>🧑‍🏫 Trainer Qualification:</h5>
         •🏘️Community-Based Trainers Methodology Course<br>
         •📋Trainer's Methodology Level I (for aspiring trainers and assessors)<br><br>
-        ⏱️<b>Training Duration:</b><br>
+        <h5 style='color:#003366;'>⏱️<b>Training Duration:</h5>
         • Varies per qualification<br>
         • Includes classroom instruction, hands-on activities, and competency assessment<br><br>
-        📜 <b>Certification:</b><br>
+        <h5 style='color:#003366;'>📜 Certification:</h5>
         • Trainees who pass the national assessment will receive a TESDA National Certificate (NC I or NC II)<br>
         • TM Level I passers are qualified to deliver and assess Competency-Based Training programs<br>
         • CBTMC passers are qualified to deliver community-based trainings<br>
