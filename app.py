@@ -26,10 +26,17 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ✅ Messenger browser warning — only on mobile
+# Initialize session state
+if "show_mobile_warning" not in st.session_state:
+    st.session_state.show_mobile_warning = True
+
 # Detect screen width
 screen_width = st_javascript("""window.innerWidth""")
+if screen_width is None:
+    screen_width = 768  # fallback to desktop
+
 # Show warning only on mobile and if not dismissed
-if screen_width and screen_width < 768 and st.session_state.show_mobile_warning:
+if screen_width < 768 and st.session_state.show_mobile_warning:
     with st.expander("📱 Mobile Tip: Tap to dismiss", expanded=True):
         st.markdown("""
         <div style='background-color:#fff3cd; padding:10px; border-radius:5px; border:1px solid #ffeeba;'>
@@ -41,7 +48,6 @@ if screen_width and screen_width < 768 and st.session_state.show_mobile_warning:
         """, unsafe_allow_html=True)
         if st.button("Dismiss this message"):
             st.session_state.show_mobile_warning = False
-
 
 # ------------------------------------
 # DEFINING QUALIFICATION RESPONSES
