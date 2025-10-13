@@ -114,18 +114,17 @@ def chatbot_response(user_message: str) -> str:
             return response
     
     # If no match was found, return fallback message
-    return """❓ Sorry, I couldn’t find that qualification.
-    You can try asking about:
-    • 🍳 Cookery NC II  
-    • 🖥️ Computer Systems Servicing NC II  
-    • 🍞 Bread and Pastry Production NC II  
-    Or type **qualification** to see the full list.
-    You can also ask about:
-    • 📝 Enrolment  
-    • 🧪 Assessment  
-    • 📞 Contact  
-    Or just tap the buttons below!
-    """
+    return """❓ Sorry, I couldn’t find that qualification.<br><br>
+    You can try asking about:<br>
+    • 🍳 Cookery NC II<br>
+    • 🖥️ Computer Systems Servicing NC II<br>
+    • 🍞 Bread and Pastry Production NC II<br><br>
+    Or type <b>qualification</b> to see the full list.<br><br>
+    You can also ask about:<br>
+    • 📝 Enrolment<br>
+    • 🧪 Assessment<br>
+    • 📞 Contact<br><br>
+    Or just tap the buttons below!"""
     
     # 👋 Greetings
     if user_message in ["hi", "hello", "hey", "haha"]:
