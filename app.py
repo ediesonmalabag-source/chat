@@ -24,6 +24,7 @@ st.markdown("""
         <h3 style='color: #003366;'>🤖 TESDA BIT Chatbot</h3>
     </div>
 """, unsafe_allow_html=True)
+
 # ✅ Messenger browser warning — only on mobile
 # Detect screen width
 screen_width = st_javascript("""window.innerWidth""")
@@ -39,7 +40,7 @@ if screen_width and screen_width < 768 and st.session_state.show_mobile_warning:
         </div>
         """, unsafe_allow_html=True)
         if st.button("Dismiss this message"):
-            st.session_state.show_mobile_warning = 
+            st.session_state.show_mobile_warning = False
 
 
 # ------------------------------------
