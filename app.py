@@ -100,6 +100,7 @@ def chatbot_response(user_message: str) -> str:
     for keyword, response in qualification_responses.items():
         if keyword in user_message:
             return response
+    
     # 👋 Greetings
     if user_message in ["hi", "hello", "hey", "haha"]:
         return "👋 Hi! I'm the TESDA BIT Chatbot. Ask about qualifications, enrolment, assessment, or contact us—just tap a button or type below."
@@ -168,8 +169,10 @@ def chatbot_response(user_message: str) -> str:
         • CBTMC passers are qualified to deliver community-based trainings<br>
         • Certificates are recognized nationwide and valued globally, especially in hospitality and technical fields.<br><br>
         📅 <i>Note: All qualifications follow TESDA’s Competency-Based Training (CBT) format and are aligned with industry standards.</i><br><br>
-        ✅ Need help choosing a qualification? Tap the 📞 Contact button below or ask about course details.<br>
-        ✅ Already selected a course? Tap the 📝 Enrolment button below to begin your registration.
+        💡 <b>Want to explore a course?</b><br>
+        Just type the name of a qualification (e.g., <i>cookery</i>, <i>css</i>, or <i>bread and pastry</i>) to view full details — including duration, core competencies, and career opportunities.<br><br>
+        📞 <b>Need help deciding?</b> Tap the <b>Contact</b> button below to reach us directly.<br>
+        📝 <b>Ready to enrol?</b> Tap the <b>Enrolment</b> button to begin your registration.
         """
 
     elif "assessment" in user_message:
