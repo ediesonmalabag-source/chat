@@ -205,8 +205,8 @@ def chatbot_response(user_message: str) -> str:
 
     
 
-    else:
-        return "❓ I didn’t catch that. Try typing qualifications, enrolment, assessment, or contact—or just use the buttons below."
+    # else:
+    #    return "❓ I didn’t catch that. Try typing qualifications, enrolment, assessment, or contact—or just use the buttons below."
 
 # --------------------------
 # Determine user input
