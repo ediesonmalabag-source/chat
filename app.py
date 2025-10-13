@@ -25,6 +25,52 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
+# ------------------------------------
+# DEFINING QUALIFICATION RESPONSES
+# -------------------------------------
+cookery_response = """<h4 style='color:#003366; font-weight:bold;'>🍳Cookery NC II</h4>
+        ⏱️ <b>Nominal Duration:</b> 316 hours (approx. 40 days)<br><br>
+        📚 <b>Qualification Description:</b><br>
+        This qualification consists of competencies that a person must achieve to clean kitchen areas, prepare hot, cold meals 
+        and desserts for guests in various food and beverage service facilities.<br><br>
+        🧰 <b>Cluster of Core Units of Competencies:</b><br>
+        • Prepare and Cook Hot Meals<br>
+        • Prepare Cold Meals<br>
+        • Prepare Sweets<br><br>
+        📌 <b>Entry Requirements:</b><br>
+        • can communicate both in oral and written<br> 
+        • physically and mentally fit<br> 
+        • with good moral character<br> 
+        • can perform basic mathematical computation<br><br>
+        🏨 <b>Career Opportunities:</b><br>
+        • Cook or Commis<br>
+        • Assistant Cook<br><br>
+        ✅ <i>Want to enrol?</i> Tap the 📝 <b>Enrolment</b> button below
+        """
+
+css_response = """<h4 style='color:#003366; font-weight:bold;'>💻Computer Systems Servicing NC II</h4>
+... (your full HTML block here)
+"""
+
+bread_pastry_response = """<h4 style='color:#003366; font-weight:bold;'>🧁Bread and Pastry Production NC II</h4>
+... (your full HTML block here)
+"""
+# ------------------------------------
+# CREATE KEYWORD RESPONSE DICTIONARY
+# -------------------------------------
+
+qualification_responses = {
+    "cookery": cookery_response,
+    "cook": cookery_response,
+    "computer": css_response,
+    "css": css_response,
+    "computer servicing": css_response,
+    "bread": bread_pastry_response,
+    "pastry": bread_pastry_response,
+    "baking": bread_pastry_response,
+    "bread and pastry": bread_pastry_response,
+}
+
 # --------------------------
 # Sidebar Info + Reset
 # --------------------------
@@ -48,7 +94,12 @@ with st.sidebar:
 def chatbot_response(user_message: str) -> str:
     user_message = user_message.lower().strip()
     user_message = re.sub(r'[^\w\s]', '', user_message)  # ✅ Removes punctuation like ? . ! etc.
-
+ 
+    # 🔍 Match specific qualifications first
+    for keyword, response in qualification_responses.items():
+        if keyword in user_message:
+            return response
+    # 👋 Greetings
     if user_message in ["hi", "hello", "hey", "haha"]:
         return "👋 Hi! I'm the TESDA BIT Chatbot. Ask about qualifications, enrolment, assessment, or contact us—just tap a button or type below."
 
@@ -119,32 +170,6 @@ def chatbot_response(user_message: str) -> str:
         ✅ Need help choosing a qualification? Tap the 📞 Contact button below or ask about course details.<br>
         ✅ Already selected a course? Tap the 📝 Enrolment button below to begin your registration.
         """
-
-    elif any(kw in user_message for kw in ["what is cookery", "cookery", "cookery nc ii"]):
-        return """<h4 style='color:#003366; font-weight:bold;'>🍳Cookery NC II</h4>
-        ⏱️ <b>Nominal Duration:</b> 316 hours (approx. 40 days)<br><br>
-        📚 <b>Qualification Description:</b><br>
-        This qualification consists of competencies that a person must achieve to clean kitchen areas, prepare hot, cold meals 
-        and desserts for guests in various food and beverage service facilities.<br><br>
-        🧰 <b>Cluster of Core Units of Competencies:</b><br>
-        • Prepare and Cook Hot Meals<br>
-        • Prepare Cold Meals<br>
-        • Prepare Sweets<br><br>
-        📌 <b>Entry Requirements:</b><br>
-        • can communicate both in oral and written<br> 
-        • physically and mentally fit<br> 
-        • with good moral character<br> 
-        • can perform basic mathematical computation<br><br>
-        🏨 <b>Career Opportunities:</b><br>
-        • Cook or Commis<br>
-        • Assistant Cook<br><br>
-        ✅ <i>Want to enrol?</i> Tap the 📝 <b>Enrolment</b> button below
-        """
-
-    elif any(keyword in user_message for keyword in ["computer", "css", "computer systems servicing"]):
-        return """💻 Computer Systems Servicing NC II<br>
-        Nominal Duration: 280 hours<br>  
-        Description: This qualification consists of competencies that a person must possess to install and configure computer systems, set up networks and servers, and maintain and repair them."""
 
     elif "assessment" in user_message:
         return "📊 Assessment schedules and requirements vary by qualification. Please contact TESDA BIT for details."
