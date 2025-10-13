@@ -37,7 +37,7 @@ cookery_response = """<h4 style='color:#003366; font-weight:bold;'>🍳Cookery N
         • Prepare and Cook Hot Meals<br>
         • Prepare Cold Meals<br>
         • Prepare Sweets<br><br>
-        <h5 style='color:#003366;'>📌 <b>Entry Requirements:</h5>
+        <h5 style='color:#003366;'>📌 Entry Requirements:</h5>
         • Can communicate both in oral and written<br> 
         • Physically and mentally fit<br> 
         • With good moral character<br> 
