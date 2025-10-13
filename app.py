@@ -37,10 +37,10 @@ if screen_width is None:
 
 # Show warning only on mobile and if not dismissed
 if screen_width < 768 and st.session_state.show_mobile_warning:
-    with st.expander("📱 Mobile Tip: Tap to dismiss", expanded=True):
+    with st.expander("📱 Tap to dismiss", expanded=True):
         st.markdown("""
         <div style='background-color:#fff3cd; padding:10px; border-radius:5px; border:1px solid #ffeeba;'>
-        📱 <b>Mobile Tip:</b><br>
+        <b>Mobile Tip:</b><br>
         If you're viewing this inside Messenger or another in-app browser, some features may not work properly.<br>
         Tap the <b>⋮ three-dot menu</b> and choose <b>'Open in Chrome'</b> or <b>'Open in Browser'</b> for full access.<br><br>
         ✅ If you're already in Chrome or Safari, you can dismiss this message.
