@@ -44,7 +44,7 @@ cookery_response = """<h4 style='color:#003366; font-weight:bold;'>🍳Cookery N
         • Can perform basic mathematical computation<br><br>
        <h5 style='color:#003366;'>📊 Assessment Information:</h5>
        • Held at the TESDA-BIT Assessment Center<br>
-       • Covers practical cooking tasks, food safety, and presentation<br>
+       • Covers hands-on cooking tasks, food safety, portioning, plating techniques, and kitchen sanitation based on TESDA standards.<br>
        • <b>Assessment fee: ₱978</b> — <b>Free for TESDA scholars</b> (just present your scholarship ID or enrolment proof)<br>
        • <a href='https://drive.google.com/file/d/1Z5vTvtxIRkiLTrGQPfy7g064scP7X_DG/view?usp=sharing' target='_blank'>📥 Download Self-Assessment Guide (PDF)</a> or request a printed copy<br><br>
        <h5 style='color:#003366;'>Eligibility:</h5>
