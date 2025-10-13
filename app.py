@@ -28,7 +28,7 @@ st.markdown("""
 # ✅ Messenger browser warning — only on mobile
 screen_width = st_javascript("""window.innerWidth""")
 if screen_width and screen_width < 768:
-    st.warning("📱 If you're viewing this in Messenger's browser, some features may not work properly. Tap the ⋮ menu and choose 'Open in Chrome' or 'Open in Browser' for full access.")
+    st.warning("📱 If you're viewing this in Messenger's browser, some features may not work properly. Tap the <b>⋮ three-dot menu</b> in the top-right corner and choose 'Open in Chrome' or 'Open in Browser' for full access.")
 
 # ------------------------------------
 # DEFINING QUALIFICATION RESPONSES
