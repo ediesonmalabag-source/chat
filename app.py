@@ -158,18 +158,18 @@ def chatbot_response(user_message: str) -> str:
     elif any(kw in user_message.lower() for kw in ["qualification", "course", "program", "training", "offered", "available courses"]):
         return """<h4 style='color:#003366; font-weight:bold;'>🎓 TESDA-BIT Qualifications Offered</h4>
         <h5 style='color:#003366;'>🧰 National Certificate Programs:</h5>
-        •🧁Bread and Pastry Production NC II<br>
-        •💻Computer Systems Servicing NC II<br>
-        •🍳Cookery NC II<br>
-        •🚗Driving NC II<br>
-        •🍽️Food and Beverage Services NC II<br>
-        •🏭Food Processing NC II<br>
-        •🧹Housekeeping NC II<br>
-        •🧱Masonry NC II<br>
-        •🔧Motorcycle/Small Engine Servicing NC II<br>
-        •🌱Organic Agriculture Production NC II<br>
-        •🔩Shielded Metal Arc Welding (SMAW) NC I<br>
-        •🔩Shielded Metal Arc Welding (SMAW) NC II<br><br>
+        •🧁<b>Bread and Pastry Production NC II</b><br>
+        •💻<b>Computer Systems Servicing NC II</b><br>
+        •🍳<b>Cookery NC II</b><br>
+        •🚗<b>Driving NC II</b><br>
+        •🍽️<b>Food and Beverage Services NC II</b><br>
+        •🏭<b>Food Processing NC II</b><br>
+        •🧹<b>Housekeeping NC II</b><br>
+        •🧱<b>Masonry NC II</b><br>
+        •🔧VMotorcycle/Small Engine Servicing NC II</b><br>
+        •🌱<b>Organic Agriculture Production NC II</b><br>
+        •🔩<b>Shielded Metal Arc Welding (SMAW) NC I</b><br>
+        •🔩VShielded Metal Arc Welding (SMAW) NC II</b><br><br>
          <h5 style='color:#003366;'>🧑‍🏫 Trainer Qualification:</h5>
         •🏘️Community-Based Trainers Methodology Course<br>
         •📋Trainer's Methodology Level I (for aspiring trainers and assessors)<br><br>
@@ -177,8 +177,8 @@ def chatbot_response(user_message: str) -> str:
         • Varies per qualification<br>
         • Includes classroom instruction, hands-on activities, and competency assessment<br><br>
         <h5 style='color:#003366;'>📜 Certification:</h5>
-        • Trainees who pass the national assessment will receive a TESDA National Certificate (NC I or NC II)<br>
-        • TM Level I passers are qualified to deliver and assess Competency-Based Training programs<br>
+        • Trainees who pass the national assessment will receive a <b>TESDA National Certificate (NC I or NC II)</b><br>
+        • <b>Trainer’s Methodology Level I</b> passers are qualified to deliver and assess Competency-Based Training programs<br>
         • CBTMC passers are qualified to deliver community-based trainings<br>
         • Certificates are recognized nationwide and valued globally, especially in hospitality and technical fields.<br><br>
         📅 <i>Note: All qualifications follow TESDA’s Competency-Based Training (CBT) format and are aligned with industry standards.</i><br><br>
