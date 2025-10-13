@@ -112,11 +112,13 @@ def chatbot_response(user_message: str) -> str:
     for keyword, response in qualification_responses.items():
         if keyword in user_message:
             return response
-            return """❓ Sorry, I couldn't find that qualification. Try asking about:
-            • Cookery NC II
-            • Computer Systems Servicing NC II
-            • Bread and Pastry Production NC II
-            Or type 'qualification' to see the full list."""
+    # If no match was found, return fallback message
+    return """❓ Sorry, I couldn't find that qualification. Try asking about:
+    • Cookery NC II
+    • Computer Systems Servicing NC II
+    • Bread and Pastry Production NC II
+    Or type 'qualification' to see the full list.
+    """
     
     # 👋 Greetings
     if user_message in ["hi", "hello", "hey", "haha"]:
