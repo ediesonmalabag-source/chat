@@ -1,7 +1,7 @@
 import streamlit as st
 import time
 import re
-
+from streamlit_javascript import st_javascript
 # --------------------------
 # Page config (must be first)
 # --------------------------
@@ -25,8 +25,10 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
-# ✅ Messenger browser warning — shows immediately
-st.warning("📱 If you're viewing this in Messenger's browser, some features may not work properly. Tap the ⋮ menu and choose 'Open in Chrome' or 'Open in Browser' for full access.")
+# ✅ Messenger browser warning — only on mobile
+screen_width = st_javascript("""window.innerWidth""")
+if screen_width and screen_width < 768:
+    st.warning("📱 If you're viewing this in Messenger's browser, some features may not work properly. Tap the ⋮ menu and choose 'Open in Chrome' or 'Open in Browser' for full access.")
 
 # ------------------------------------
 # DEFINING QUALIFICATION RESPONSES
