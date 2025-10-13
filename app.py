@@ -77,8 +77,8 @@ def chatbot_response(user_message: str) -> str:
 
     elif any(kw in user_message.lower() for kw in ["contact", "help", "assist", "support", "reach out", "call", "email"]):
         return """<h4 style='color:#003366; font-weight:bold;'>📞 TESDA-BIT Contact Information</h4>
-       🌐 <b>Facebook Page:</b> <a href='https://www.facebook.com/profile.php?id=61561653118631' target='_blank' style='color:#003366; font-weight:italic;'>Bangui Institute of Technology TESDA</a><br>
-        💬 <b>Messenger Chat:</b> <a href='https://www.facebook.com/messages/t/309890725813939' target='_blank' style='color:#003366; font-weight:bold;'>Send a message via Messenger</a><br>
+        🌐 <b>Facebook Page:</b> <a href='https://www.facebook.com/profile.php?id=61561653118631' target='_blank' style='color:#003366; font-weight:italic;'>Bangui Institute of Technology TESDA</a><br>
+        💬 <b>Messenger Chat:</b> <a href='https://www.facebook.com/messages/t/61561653118631' target='_blank' style='color:#003366; font-weight:italic;'>Send a message via Messenger</a><br>
         📱 <b>Cellphone No.:</b> 0908-860-0955<br>
         📧 <b>Email:</b> <a href='mailto:bit@tesda.gov.ph'>bit@tesda.gov.ph</a><br>
         📍 <b>Office Address:</b> TESDA-Bangui Institute of Technology, Brgy. Manayon, Bangui, Ilocos Norte<br><br>
