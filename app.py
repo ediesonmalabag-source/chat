@@ -194,7 +194,7 @@ def chatbot_response(user_message: str) -> str:
     else:
     # If no match was found, return fallback message
         return """❓ <b>I couldn’t match your message to a specific qualification, enrolment steps, or assessment details.</b><br><br>
-        Here are some examples of what you can ask about:<br>
+        Here are a few examples of what you can ask about:<br>
         • 🍳 Cookery NC II<br>
         • 💻 Computer Systems Servicing NC II<br>
         • 🧁 Bread and Pastry Production NC II<br>
@@ -206,6 +206,7 @@ def chatbot_response(user_message: str) -> str:
         • 📞 Contact<br><br>
         Or just tap the buttons below!
         """
+
     #    return "❓ I didn’t catch that. Try typing qualifications, enrolment, assessment, or contact—or just use the buttons below."
 
 # --------------------------
