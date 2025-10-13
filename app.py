@@ -46,7 +46,7 @@ cookery_response = """<h4 style='color:#003366; font-weight:bold;'>🍳Cookery N
        • Held at the TESDA-BIT Assessment Center<br>
        • Covers practical cooking tasks, food safety, and presentation<br>
        • <b>Assessment fee: ₱978</b> — <b>Free for TESDA scholars</b> (present scholarship ID or enrolment proof)<br>
-       • <a href='https://yourdomain.com/forms/self-assessment-guide-cookery.pdf' target='_blank'>📥 Download Self-Assessment Guide (PDF)</a> or request a printed copy<br><br>
+       • <a href='https://drive.google.com/file/d/1Z5vTvtxIRkiLTrGQPfy7g064scP7X_DG/view?usp=sharing' target='_blank'>📥 Download Self-Assessment Guide (PDF)</a> or request a printed copy<br><br>
        <b>Eligibility:</b><br>
        • Trainees who have successfully completed Cookery NC II training<br>
        • Industry workers with relevant experience and a valid Certificate of Employment<br><br>
