@@ -30,7 +30,7 @@ st.markdown("""
 # -------------------------------------
 cookery_response = """<h4 style='color:#003366; font-weight:bold;'>🍳Cookery NC II</h4>
         ⏱️ <b>Nominal Duration:</b> 316 hours (40 days)<br><br>
-        📚 <b>Qualification Description:</b><br>
+        <h5 style='color:#003366;'>📚 Qualification Description:</h5>
         This qualification consists of competencies that a person must achieve to clean kitchen areas, prepare hot, cold meals 
         and desserts for guests in various food and beverage service facilities.<br><br>
         🧰 <b>Cluster of Core Units of Competencies:</b><br>
