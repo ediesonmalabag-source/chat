@@ -190,11 +190,10 @@ def chatbot_response(user_message: str) -> str:
     elif "assessment" in user_message:
         return "📊 Assessment schedules and requirements vary by qualification. Please contact TESDA BIT for details."
 
-    
 
     else:
     # If no match was found, return fallback message
-        return """❓ <b>I couldn’t match your message to a specific qualification, enrolment detail, or assessment info.</b><br><br>
+        return """❓ <b>I couldn’t match your message to a specific qualification, enrolment steps, or assessment details.</b><br><br>
         Here are some examples of what you can ask about:<br>
         • 🍳 Cookery NC II<br>
         • 💻 Computer Systems Servicing NC II<br>
