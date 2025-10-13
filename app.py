@@ -24,11 +24,17 @@ st.markdown("""
         <h3 style='color: #003366;'>🤖 TESDA BIT Chatbot</h3>
     </div>
 """, unsafe_allow_html=True)
-
 # ✅ Messenger browser warning — only on mobile
 screen_width = st_javascript("""window.innerWidth""")
 if screen_width and screen_width < 768:
-    st.warning("📱 If you're viewing this in Messenger's browser, some features may not work properly. Tap the <b>⋮ three-dot menu</b> in the top-right corner and choose 'Open in Chrome' or 'Open in Browser' for full access.")
+    st.markdown("""
+    <div style='background-color:#fff3cd; padding:10px; border-radius:5px; border:1px solid #ffeeba;'>
+    📱 <b>Messenger Tip:</b><br>
+    Some features may not work properly inside Messenger's browser.<br>
+    Tap the <b>⋮ three-dot menu</b> in the top-right corner and choose <b>'Open in Chrome'</b> or <b>'Open in Browser'</b> for full access.
+    </div>
+    """, unsafe_allow_html=True)
+
 
 # ------------------------------------
 # DEFINING QUALIFICATION RESPONSES
