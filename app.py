@@ -173,7 +173,7 @@ def chatbot_response(user_message: str) -> str:
          <h5 style='color:#003366;'>🧑‍🏫 Trainer Qualification:</h5>
         •🏘️Community-Based Trainers Methodology Course<br>
         •📋Trainer's Methodology Level I (for aspiring trainers and assessors)<br><br>
-        <h5 style='color:#003366;'>⏱️<b>Training Duration:</h5>
+        <h5 style='color:#003366;'>⏱️ Training Duration:</h5>
         • Varies per qualification<br>
         • Includes classroom instruction, hands-on activities, and competency assessment<br><br>
         <h5 style='color:#003366;'>📜 Certification:</h5>
