@@ -156,13 +156,14 @@ If you're viewing this inside Messenger or another in-app browser, some features
 ✅ If you're already in Chrome, Edge, Firefox, or another mobile browser, you can dismiss this message.
         </div>
         """, unsafe_allow_html=True)
-
-        # Instructional screenshot (update image_url to your hosted image)
-image_url = "https://raw.githubusercontent.com/yourrepo/yourpath/zavB4BkgwYDNpJ2HyCKzE.png"
-st.image(image_url, caption="1: Tap the top-right menu • 2: Choose Open in Browser", use_container_width=False, width=360)
-        
 if st.button("Dismiss this message"):
     st.session_state.show_mobile_warning = False
+    
+        # Instructional screenshot (update image_url to your hosted image)
+image_url = "https://raw.githubusercontent.com/ediesonmalabag-source/chat/main/openinchrome.png"
+st.image(image_url, caption="1: Tap the top-right menu • 2: Choose Open in Browser", use_container_width=False, width=360)
+        
+
 
 # ------------------------------------
 # DEFINING QUALIFICATION RESPONSES
