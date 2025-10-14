@@ -53,6 +53,12 @@ st.markdown("""
             background-color: #2C5FA0 !important;
             transform: scale(0.98);
         }
+        /* ✅ Disabled button style */
+        button:disabled {
+            background-color: #a0c4e2 !important;
+            color: #eee !important;
+            cursor: not-allowed !important;
+        }
         /* ✅ Expander header text fix */
         [data-testid="stExpander"] > details > summary {
             color: #222 !important;
@@ -70,6 +76,11 @@ st.markdown("""
             padding: 10px !important;
             font-size: 16px !important;
             font-family: 'Segoe UI', sans-serif !important;
+        }
+        /* ✅ Input box focus effect */
+        textarea:focus {
+            outline: none !important;
+            box-shadow: 0 0 5px #4A90E2 !important;
         }
     </style>
 """, unsafe_allow_html=True)
