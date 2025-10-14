@@ -27,16 +27,18 @@ st.markdown("""
         /* Button styling */
         button, [data-testid="baseButton-secondary"], [data-testid="baseButton-primary"] {
             background-color: #003366 !important;  /* TESDA blue */
-            color: white !important;
+            color: white !important;               /* ✅ Ensures label text is white */
             border: none !important;
             border-radius: 6px !important;
             padding: 0.5em 1em !important;
+            font-weight: 600 !important;
+            font-size: 16px !important;
         }
 
         /* Button hover effect */
         button:hover {
             background-color: #0055aa !important;
-            color: #fff !important;
+            color: white !important;
         }
     </style>
 """, unsafe_allow_html=True)
