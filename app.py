@@ -13,20 +13,20 @@ st.set_page_config(page_title="Simple Chatbot", page_icon="🤖", layout="wide")
 # --------------------------
 st.markdown("""
     <style>
-        /* Force white background */
+        /* White background */
         body, .main, [data-testid="stAppViewContainer"], [data-testid="stHeader"], [data-testid="stSidebar"] {
             background-color: white !important;
             color: #222 !important;
         }
 
-        /* General text styling */
+        /* General text */
         html, body, p, div, span {
             color: #222 !important;
         }
 
         /* Button styling */
         button, [data-testid="baseButton-secondary"], [data-testid="baseButton-primary"] {
-            background-color: #003366 !important;  /* TESDA blue */
+            background-color: #4A90E2 !important;  /* Soft Sky Blue */
             color: white !important;
             border: none !important;
             border-radius: 6px !important;
@@ -35,14 +35,14 @@ st.markdown("""
             font-size: 16px !important;
         }
 
-        /* ✅ Target inner button label text */
+        /* Ensure label text is white */
         button * {
             color: white !important;
         }
 
         /* Hover effect */
         button:hover {
-            background-color: #0055aa !important;
+            background-color: #357ABD !important;
             color: white !important;
         }
     </style>
