@@ -13,18 +13,30 @@ st.set_page_config(page_title="Simple Chatbot", page_icon="🤖", layout="wide")
 # --------------------------
 st.markdown("""
     <style>
-        body, .main {
+        /* Force white background */
+        body, .main, [data-testid="stAppViewContainer"], [data-testid="stHeader"], [data-testid="stSidebar"] {
             background-color: white !important;
-            color: black !important;
+            color: #222 !important;
         }
-        [data-testid="stAppViewContainer"] {
-            background-color: white !important;
+
+        /* Text styling */
+        html, body, p, div, span {
+            color: #222 !important;
         }
-        [data-testid="stHeader"] {
-            background-color: white !important;
+
+        /* Button styling */
+        button, [data-testid="baseButton-secondary"], [data-testid="baseButton-primary"] {
+            background-color: #003366 !important;  /* TESDA blue */
+            color: white !important;
+            border: none !important;
+            border-radius: 6px !important;
+            padding: 0.5em 1em !important;
         }
-        [data-testid="stSidebar"] {
-            background-color: white !important;
+
+        /* Button hover effect */
+        button:hover {
+            background-color: #0055aa !important;
+            color: #fff !important;
         }
     </style>
 """, unsafe_allow_html=True)
