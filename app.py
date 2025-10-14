@@ -124,7 +124,7 @@ st.image("https://raw.githubusercontent.com/ediesonmalabag-source/chat/main/bit_
 if not st.session_state.welcome_sent:
     st.session_state.messages.append((
         "Bot",
-        "👋 Hi there! I'm the TESDA BIT Chatbot. Whether you're on mobile or desktop, I can help you with qualifications, enrolment, assessment, or reaching TESDA BIT. Tap a button or send a message to get started."
+        "👋 Hi there! I'm the <b>TESDA BIT Chatbot</b>. Whether you're on mobile or desktop, I can help you with qualifications, enrolment, assessment, or reaching TESDA BIT. Tap a button or send a message to get started."
     ))
     st.session_state.welcome_sent = True
     
