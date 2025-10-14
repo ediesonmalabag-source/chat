@@ -114,11 +114,11 @@ st.markdown("""
 # Banner and Title
 # --------------------------
 st.image("https://raw.githubusercontent.com/ediesonmalabag-source/chat/main/bit_banner.png", use_container_width=True)
-st.markdown("""
-  <div style='text-align:center; margin:0; padding:0;'>
-    <h3 style='color:#003366; margin:0; padding:0;'>🤖 TESDA BIT Chatbot</h3>
-  </div>
-""", unsafe_allow_html=True)
+# st.markdown("""
+#  <div style='text-align:center; margin:0; padding:0;'>
+#    <h3 style='color:#003366; margin:0; padding:0;'>🤖 TESDA BIT Chatbot</h3>
+#  </div>
+# """, unsafe_allow_html=True)
 
 # Add welcome message only once (immediately after banner + title)
 if not st.session_state.welcome_sent:
