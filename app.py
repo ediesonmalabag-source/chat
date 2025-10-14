@@ -9,6 +9,17 @@ from streamlit_javascript import st_javascript
 st.set_page_config(page_title="Simple Chatbot", page_icon="🤖", layout="wide")
 
 # --------------------------
+# Compact layout CSS (place here)
+# --------------------------
+st.markdown("""
+<style>
+/* remove bottom margin below Streamlit image and header spacing */
+img[alt="image"] { display:block; margin-bottom: 0 !important; }
+h3 { margin-top: 0 !important; margin-bottom: 0 !important; }
+</style>
+""", unsafe_allow_html=True)
+
+# --------------------------
 # Force white background (even on mobile dark mode)
 # --------------------------
 st.markdown("""
@@ -103,9 +114,9 @@ if not st.session_state.welcome_sent:
 # --------------------------
 st.image("https://raw.githubusercontent.com/ediesonmalabag-source/chat/main/bit_banner.png", use_container_width=True)
 st.markdown("""
-    <div style='text-align: center; margin-bottom: 0;'>
-        <h3 style='color: #003366; margin-bottom: 0;'>🤖 TESDA BIT Chatbot</h3>
-    </div>
+  <div style='text-align:center; margin:0; padding:0;'>
+    <h3 style='color:#003366; margin:0; padding:0;'>🤖 TESDA BIT Chatbot</h3>
+  </div>
 """, unsafe_allow_html=True)
 
 
