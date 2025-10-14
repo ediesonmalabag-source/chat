@@ -92,6 +92,15 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
+# --------------------------
+# Bot welcome bubble
+# --------------------------
+st.markdown("""
+<div style='background-color:#e6f2ff; padding:10px 15px; border-radius:10px; margin-bottom:10px; color:#003366;'>
+🤖 <b>Bot:</b> 👋 Hi! I'm the TESDA BIT Chatbot. Ask about qualifications, enrolment, assessment, or contact us—just tap a button or type below.
+</div>
+""", unsafe_allow_html=True)
+
 # ✅ Messenger browser warning — only on mobile
 # Initialize session state
 if "show_mobile_warning" not in st.session_state:
