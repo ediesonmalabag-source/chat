@@ -2,10 +2,32 @@ import streamlit as st
 import time
 import re
 from streamlit_javascript import st_javascript
+
 # --------------------------
 # Page config (must be first)
 # --------------------------
 st.set_page_config(page_title="Simple Chatbot", page_icon="🤖", layout="wide")
+
+# --------------------------
+# Force white background (even on mobile dark mode)
+# --------------------------
+st.markdown("""
+    <style>
+        body, .main {
+            background-color: white !important;
+            color: black !important;
+        }
+        [data-testid="stAppViewContainer"] {
+            background-color: white !important;
+        }
+        [data-testid="stHeader"] {
+            background-color: white !important;
+        }
+        [data-testid="stSidebar"] {
+            background-color: white !important;
+        }
+    </style>
+""", unsafe_allow_html=True)
 
 # --------------------------
 # Session state setup
