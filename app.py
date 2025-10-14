@@ -113,18 +113,23 @@ st.markdown("""
 # --------------------------
 # Banner and Title
 # --------------------------
-st.image("https://raw.githubusercontent.com/ediesonmalabag-source/chat/main/bit_banner.png", use_container_width=True)
+# st.image("https://raw.githubusercontent.com/ediesonmalabag-source/chat/main/bit_banner.png", use_container_width=True)
 # st.markdown("""
 #  <div style='text-align:center; margin:0; padding:0;'>
 #    <h3 style='color:#003366; margin:0; padding:0;'>🤖 TESDA BIT Chatbot</h3>
 #  </div>
 # """, unsafe_allow_html=True)
 
-# Add welcome message only once (immediately after banner + title)
+st.image("https://raw.githubusercontent.com/ediesonmalabag-source/chat/main/bit_banner.png", use_container_width=True)
+
+# Add welcome message only once (immediately after banner)
+if "welcome_sent" not in st.session_state:
+    st.session_state.welcome_sent = False
+
 if not st.session_state.welcome_sent:
     st.session_state.messages.append((
         "Bot",
-        "👋 Hi there! I'm the <b>TESDA BIT Chatbot</b>. Whether you're on mobile or desktop, I can help you with qualifications, enrolment, assessment, or reaching TESDA BIT. Tap a button or send a message to get started."
+        "👋 Hi there! I'm the TESDA BIT Chatbot. Whether you're on mobile or desktop, I can help you with qualifications, enrolment, assessment, or reaching TESDA BIT. Tap a button or send a message to get started."
     ))
     st.session_state.welcome_sent = True
     
