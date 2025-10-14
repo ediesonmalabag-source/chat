@@ -208,9 +208,9 @@ with st.sidebar:
     """)
     # Reset button
     if st.button("🔄 Reset Chat"):
-    st.session_state.messages = []
-    st.session_state.welcome_sent = False
-    st.rerun()
+        st.session_state.messages = []
+        st.session_state.welcome_sent = False
+        st.rerun()
 
 # --------------------------
 # Chatbot response function
