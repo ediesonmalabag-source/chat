@@ -249,13 +249,12 @@ def chatbot_response(user_message: str) -> str:
         if keyword in user_message:
             return response
             
-    # 👋 Greetings
-    if user_message in ["hi", "hello", "hey", "haha"]:
-        if not st.session_state.welcome_sent:
-            st.session_state.welcome_sent = True
-            return "👋 Hi! I'm the TESDA BIT Chatbot. Ask about qualifications, enrolment, assessment, or contact us—just tap a button or type below."
-        else:
-            return "👋 Hello again! How can I assist you today?"
+# 👋 Greetings
+if user_message in ["hi", "hello", "hey", "haha"]:
+    if not st.session_state.get("welcome_sent", False):
+        return "👋 Hi! I'm the TESDA BIT Chatbot. Ask about qualifications, enrolment, assessment, or contact us—just tap a button or type below."
+    else:
+        return "👋 Hello again! How can I assist you today?"
             
     # ------------
     # ENROLMENT
