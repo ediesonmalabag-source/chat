@@ -77,8 +77,6 @@ st.markdown("""
 # --------------------------
 # Session state setup
 # --------------------------
-if "messages" not in st.session_state:
-    st.session_state.messages = [("Bot", "👋 Hi! I'm the TESDA BIT Chatbot. Ask about qualifications, enrolment, assessment, or contact us—just tap a button or type below.")]
 if "last_action" not in st.session_state:
     st.session_state.last_action = None
 
