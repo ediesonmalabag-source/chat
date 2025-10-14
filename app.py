@@ -77,6 +77,8 @@ st.markdown("""
 # --------------------------
 # Session state setup
 # --------------------------
+if "messages" not in st.session_state:
+    st.session_state.messages = [("Bot", "👋 Hi! I'm the TESDA BIT Chatbot. I can help you explore qualifications, enrolment, assessment, or contact options. Just tap a button or type your question below.")]
 if "last_action" not in st.session_state:
     st.session_state.last_action = None
 
@@ -88,15 +90,6 @@ st.markdown("""
     <div style='text-align: center;'>
         <h3 style='color: #003366;'>🤖 TESDA BIT Chatbot</h3>
     </div>
-""", unsafe_allow_html=True)
-
-# --------------------------
-# Bot welcome bubble
-# --------------------------
-st.markdown("""
-<div style='background-color:#e6f2ff; padding:10px 15px; border-radius:10px; margin-bottom:10px; color:#003366;'>
-🤖 <b>Bot:</b> 👋 Hi! I'm the TESDA BIT Chatbot. Ask about qualifications, enrolment, assessment, or contact us—just tap a button or type below.
-</div>
 """, unsafe_allow_html=True)
 
 # ✅ Messenger browser warning — only on mobile
