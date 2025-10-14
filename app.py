@@ -147,24 +147,24 @@ if screen_width is None:
 
 # Show warning only on mobile and if not dismissed
 if screen_width < 768 and st.session_state.show_mobile_warning:
-    with st.expander("📱 Tap to dismiss", expanded=True):
-        st.markdown("""
-        <div style='background-color:#fff3cd; padding:10px; border-radius:5px; border:1px solid #ffeeba;'>
-       <b>Mobile Tip:</b><br>
-If you're viewing this inside Messenger or another in-app browser, some features may not work properly.<br><br>
-<b>Quick steps</b>: Tap the top-right menu (not the chat controls at the bottom) and choose <b>'Open in Browser'</b> or <b>'Open in Chrome'</b> for full access.<br><br>
-✅ If you're already in Chrome, Edge, Firefox, or another mobile browser, you can dismiss this message.
-        </div>
-        """, unsafe_allow_html=True)
-if st.button("Dismiss this message"):
-    st.session_state.show_mobile_warning = False
-    
+    with st.expander("📱 Mobile Tip — Tap for help", expanded=True):
+        st.markdown(
+            """
+            <div style='background-color:#fff3cd; padding:10px; border-radius:6px; border:1px solid #ffeeba;'>
+              <b>If this opened inside a messaging app:</b><br>
+              Tap the top-right menu (not the chat controls at the bottom) and choose <b>'Open in Browser'</b> or <b>'Open in Chrome'</b> for full functionality.
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
         # Instructional screenshot (update image_url to your hosted image)
-image_url = "https://raw.githubusercontent.com/ediesonmalabag-source/chat/main/openinchrome.png"
-st.image(image_url, caption="1: Tap the top-right menu • 2: Choose Open in Browser", use_container_width=False, width=360)
-        
+        image_url = "https://raw.githubusercontent.com/ediesonmalabag-source/chat/main/openinchrome.png"
+        st.image(image_url, caption="1: Tap the top-right menu • 2: Choose Open in Browser", use_container_width=False, width=360)
 
-
+        if st.button("Dismiss this message"):
+            st.session_state.show_mobile_warning = False
+            
 # ------------------------------------
 # DEFINING QUALIFICATION RESPONSES
 # -------------------------------------
