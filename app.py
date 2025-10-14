@@ -53,6 +53,14 @@ st.markdown("""
             background-color: #2C5FA0 !important;
             transform: scale(0.98);
         }
+        /* ✅ Expander header text fix */
+        [data-testid="stExpander"] > details > summary {
+            color: #222 !important;
+            background-color: #fff3cd !important;
+            font-weight: 600 !important;
+            padding: 8px !important;
+            border-radius: 5px !important;
+        }
     </style>
 """, unsafe_allow_html=True)
 
