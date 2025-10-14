@@ -160,8 +160,9 @@ if screen_width < 768 and st.session_state.show_mobile_warning:
 
         # Instructional screenshot (update image_url to your hosted image)
         image_url = "https://raw.githubusercontent.com/ediesonmalabag-source/chat/main/openinchrome.png"
-        st.image(image_url, caption="1: Tap the top-right menu • 2: Choose Open in Browser", use_container_width=False, width=320)
-
+        st.image(image_url, use_container_width=True)
+        st.caption("1: Tap the top-right menu • 2: Choose Open in Browser")
+        
         # Dismissal note (shown just above the button)
         st.markdown(
             "✅ If you're already in Chrome, Edge, Firefox, or another mobile browser, you can dismiss this message.",
