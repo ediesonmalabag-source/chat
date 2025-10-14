@@ -98,9 +98,10 @@ if screen_width < 768 and st.session_state.show_mobile_warning:
         st.markdown("""
         <div style='background-color:#fff3cd; padding:10px; border-radius:5px; border:1px solid #ffeeba;'>
         <b>Mobile Tip:</b><br>
-        If you're viewing this inside Messenger or another in-app browser, some features may not work properly.<br>
-        Tap the <b>⋮ three-dot menu</b> and choose <b>'Open in Chrome'</b> or <b>'Open in Browser'</b> for full access.<br><br>
-        ✅ If you're already in Chrome, Edge, Firefox, or another mobile browser, you can dismiss this message.
+       <b>Mobile Tip:</b><br>
+If you're viewing this inside Messenger or another in-app browser, some features may not work properly.<br>
+Tap the <b style="color:#d6336c;">⋮ three-dot menu <u>in the top-right corner</u></b> of your screen and choose <b>'Open in Chrome'</b> or <b>'Open in Browser'</b> for full access.<br><br>
+✅ If you're already in Chrome, Edge, Firefox, or another mobile browser, you can dismiss this message.
         </div>
         """, unsafe_allow_html=True)
         if st.button("Dismiss this message"):
