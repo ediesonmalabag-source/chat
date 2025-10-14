@@ -61,6 +61,16 @@ st.markdown("""
             padding: 8px !important;
             border-radius: 5px !important;
         }
+        /* ✅ Input box styling */
+        textarea {
+            background-color: #f0f8ff !important;  /* Alice Blue */
+            color: #222 !important;
+            border: 1px solid #4A90E2 !important;
+            border-radius: 8px !important;
+            padding: 10px !important;
+            font-size: 16px !important;
+            font-family: 'Segoe UI', sans-serif !important;
+        }
     </style>
 """, unsafe_allow_html=True)
 
