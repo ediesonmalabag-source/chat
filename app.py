@@ -157,7 +157,8 @@ if screen_width < 768 and st.session_state.show_mobile_warning:
             """,
             unsafe_allow_html=True,
         )
-# Instructional screenshot (update image_url to your hosted image)
+
+        # Instructional screenshot (update image_url to your hosted image)
         image_url = "https://raw.githubusercontent.com/ediesonmalabag-source/chat/main/openinchrome.png"
         st.image(image_url, caption="1: Tap the top-right menu • 2: Choose Open in Browser", use_container_width=False, width=360)
 
@@ -169,6 +170,7 @@ if screen_width < 768 and st.session_state.show_mobile_warning:
 
         if st.button("Dismiss this message"):
             st.session_state.show_mobile_warning = False
+            
 # ------------------------------------
 # DEFINING QUALIFICATION RESPONSES
 # -------------------------------------
