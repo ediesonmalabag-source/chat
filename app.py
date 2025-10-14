@@ -24,15 +24,17 @@ st.markdown("""
             color: #222 !important;
         }
 
-        /* Button styling */
+        /* Emphasized button styling */
         button, [data-testid="baseButton-secondary"], [data-testid="baseButton-primary"] {
             background-color: #4A90E2 !important;  /* Soft Sky Blue */
             color: white !important;
             border: none !important;
-            border-radius: 6px !important;
-            padding: 0.5em 1em !important;
-            font-weight: 600 !important;
-            font-size: 16px !important;
+            border-radius: 10px !important;
+            padding: 0.75em 1.25em !important;
+            font-weight: 700 !important;
+            font-size: 18px !important;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15) !important;
+            transition: all 0.2s ease-in-out;
         }
 
         /* Ensure label text is white */
@@ -43,7 +45,13 @@ st.markdown("""
         /* Hover effect */
         button:hover {
             background-color: #357ABD !important;
-            color: white !important;
+            transform: scale(1.03);
+        }
+
+        /* Active (pressed) effect */
+        button:active {
+            background-color: #2C5FA0 !important;
+            transform: scale(0.98);
         }
     </style>
 """, unsafe_allow_html=True)
