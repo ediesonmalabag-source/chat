@@ -19,7 +19,7 @@ st.markdown("""
             color: #222 !important;
         }
 
-        /* Text styling */
+        /* General text styling */
         html, body, p, div, span {
             color: #222 !important;
         }
@@ -27,7 +27,7 @@ st.markdown("""
         /* Button styling */
         button, [data-testid="baseButton-secondary"], [data-testid="baseButton-primary"] {
             background-color: #003366 !important;  /* TESDA blue */
-            color: white !important;               /* ✅ Ensures label text is white */
+            color: white !important;
             border: none !important;
             border-radius: 6px !important;
             padding: 0.5em 1em !important;
@@ -35,7 +35,12 @@ st.markdown("""
             font-size: 16px !important;
         }
 
-        /* Button hover effect */
+        /* ✅ Target inner button label text */
+        button * {
+            color: white !important;
+        }
+
+        /* Hover effect */
         button:hover {
             background-color: #0055aa !important;
             color: white !important;
