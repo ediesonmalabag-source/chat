@@ -380,7 +380,7 @@ for role, msg in st.session_state.messages:
             f"🧑 <b>{role}:</b> {msg}</div>",
             unsafe_allow_html=True,
         )
-  else:
+    else:
         st.markdown(
             f"<div style='background-color:#e6f2ff; padding:10px 15px; border-radius:10px; margin-top:-6px; margin-bottom:10px; color:#003366;'>"
             f"{msg}"
