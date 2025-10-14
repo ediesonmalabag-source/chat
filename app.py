@@ -110,7 +110,7 @@ for sender, msg in st.session_state.messages:
     if sender == "Bot":
         st.markdown(f"""
         <div style='background-color:#e6f2ff; padding:10px 15px; border-radius:10px; margin-top:5px; margin-bottom:10px; color:#003366;'>
-        <b>🤖 TESDA BIT Chatbot</b><br>{msg}
+        {msg}
         </div>
         """, unsafe_allow_html=True)
 
