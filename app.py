@@ -89,9 +89,14 @@ st.markdown("""
 # Session state setup
 # --------------------------
 if "messages" not in st.session_state:
-    st.session_state.messages = [("Bot", "👋 Hi there! I'm the TESDA BIT Chatbot. Whether you're on mobile or desktop, I can help you with qualifications, enrolment, assessment, or reaching TESDA BIT. Tap a button or send a message to get started.")]
-if "last_action" not in st.session_state:
+    st.session_state.messages = []
     st.session_state.last_action = None
+    st.session_state.welcome_sent = False  # ✅ Add this flag
+
+# ✅ Add welcome message only once
+if not st.session_state.welcome_sent:
+    st.session_state.messages.append(("Bot", "👋 Hi there! I'm the TESDA BIT Chatbot. Whether you're on mobile or desktop, I can help you with qualifications, enrolment, assessment, or reaching TESDA BIT. Tap a button or send a message to get started."))
+    st.session_state.welcome_sent = True
 
 # --------------------------
 # Banner and Title
@@ -210,10 +215,11 @@ with st.sidebar:
     - 📊 View assessment info and schedules  
     - 📞 Contact TESDA BIT for assistance  
     """)
-    if st.button("🔄 Reset Chat"):
-        st.session_state.messages = [("Bot", "👋 Hi! I'm the TESDA BIT Chatbot. Ask about qualifications, enrolment, assessment, or contact us—just tap a button or type below.")]
-        st.session_state.last_action = None
-        st.rerun()
+    # Reset button
+if st.button("🔄 Reset Chat"):
+    st.session_state.messages = []
+    st.session_state.welcome_sent = False
+    st.rerun()
 
 # --------------------------
 # Chatbot response function
@@ -229,8 +235,12 @@ def chatbot_response(user_message: str) -> str:
             
     # 👋 Greetings
     if user_message in ["hi", "hello", "hey", "haha"]:
-        return "👋 Hi! I'm the TESDA BIT Chatbot. Ask about qualifications, enrolment, assessment, or contact us—just tap a button or type below."
-
+        if not st.session_state.welcome_sent:
+            st.session_state.welcome_sent = True
+            return "👋 Hi! I'm the TESDA BIT Chatbot. Ask about qualifications, enrolment, assessment, or contact us—just tap a button or type below."
+        else:
+            return "👋 Hello again! How can I assist you today?"
+            
     # ------------
     # ENROLMENT
     # ------------
