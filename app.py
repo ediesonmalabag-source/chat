@@ -133,7 +133,10 @@ if not st.session_state.welcome_sent:
     ))
     st.session_state.welcome_sent = True
     
-
+# ✅ Messenger browser warning — only on mobile
+# Initialize session state
+if "show_mobile_warning" not in st.session_state:
+    st.session_state.show_mobile_warning = True
 
 
 # ------------------------------------
