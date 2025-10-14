@@ -20,6 +20,19 @@ h3 { margin-top: 0 !important; margin-bottom: 0 !important; }
 """, unsafe_allow_html=True)
 
 # --------------------------
+# Session state initialization (must run before any .append calls)
+# --------------------------
+if "messages" not in st.session_state:
+    st.session_state.messages = []
+if "welcome_sent" not in st.session_state:
+    st.session_state.welcome_sent = False
+if "last_action" not in st.session_state:
+    st.session_state.last_action = None
+if "show_mobile_warning" not in st.session_state:
+    st.session_state.show_mobile_warning = True
+    
+
+# --------------------------
 # Force white background (even on mobile dark mode)
 # --------------------------
 st.markdown("""
