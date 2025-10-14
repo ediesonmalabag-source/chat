@@ -149,29 +149,18 @@ if screen_width is None:
 if screen_width < 768 and st.session_state.show_mobile_warning:
     with st.expander("📱 Mobile Tip", expanded=True):
         st.markdown(
-            """
-            <div style='background-color:#fff3cd; padding:10px; border-radius:6px; border:1px solid #ffeeba;'>
-            If you're viewing this inside Messenger or another in-app browser, some features may not work properly.<br>
-            Tap the <b style="color:#d6336c;">⋮ three-dot menu <u>in the top-right corner</u></b> of your screen and choose <b>'Open in Chrome'</b> or <b>'Open in Browser'</b> for full access.<br><br>
-            </div>
-            """,
+            "<div style='background-color:#fff3cd; padding:10px; border-radius:6px; border:1px solid #ffeeba;'><b>Tap the ⋮ menu (top-right)</b></div>",
             unsafe_allow_html=True,
         )
 
-        # Instructional screenshot (update image_url to your hosted image)
         image_url = "https://raw.githubusercontent.com/ediesonmalabag-source/chat/main/openinchrome.png"
         st.markdown(
             f'''
             <figure style="margin:0;">
-            <img src="{image_url}" alt="open in browser guide" style="max-width:100%; width:320px; height:auto; border-radius:6px;">
-            <figcaption style="font-size:0.9rem; color:#555; margin-top:6px;">1: Tap the top-right menu • 2: Choose Open in Browser</figcaption
+              <img src="{image_url}" alt="open in browser guide" style="max-width:100%; width:320px; height:auto; border-radius:6px;">
+              <figcaption style="font-size:0.9rem; color:#555; margin-top:6px;">1: Tap the top-right menu • 2: Choose Open in Browser</figcaption>
             </figure>
             ''',
-            unsafe_allow_html=True,
-        )        
-        # Dismissal note (shown just above the button)
-        st.markdown(
-            "✅ If you're already in Chrome, Edge, Firefox, or another mobile browser, you can dismiss this message.",
             unsafe_allow_html=True,
         )
 
