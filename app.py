@@ -99,12 +99,10 @@ st.markdown("""
 # --------------------------
 # Session state setup
 # --------------------------
-if "messages" not in st.session_state:
-    st.session_state.messages = []
-    st.session_state.last_action = None
-    st.session_state.welcome_sent = False  # ✅ Add this flag
+# Add welcome message only once (immediately after title)
+if "welcome_sent" not in st.session_state:
+    st.session_state.welcome_sent = False
 
-# ✅ Add welcome message only once
 if not st.session_state.welcome_sent:
     st.session_state.messages.append(("Bot", "👋 Hi there! I'm the TESDA BIT Chatbot. Whether you're on mobile or desktop, I can help you with qualifications, enrolment, assessment, or reaching TESDA BIT. Tap a button or send a message to get started."))
     st.session_state.welcome_sent = True
