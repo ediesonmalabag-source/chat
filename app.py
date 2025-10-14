@@ -109,16 +109,6 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# --------------------------
-# Session state setup
-# --------------------------
-# Add welcome message only once (immediately after title)
-if "welcome_sent" not in st.session_state:
-    st.session_state.welcome_sent = False
-
-if not st.session_state.welcome_sent:
-    st.session_state.messages.append(("Bot", "👋 Hi there! I'm the TESDA BIT Chatbot. Whether you're on mobile or desktop, I can help you with qualifications, enrolment, assessment, or reaching TESDA BIT. Tap a button or send a message to get started."))
-    st.session_state.welcome_sent = True
 
 # --------------------------
 # Banner and Title
@@ -130,6 +120,14 @@ st.markdown("""
   </div>
 """, unsafe_allow_html=True)
 
+# Add welcome message only once (immediately after banner + title)
+if not st.session_state.welcome_sent:
+    st.session_state.messages.append((
+        "Bot",
+        "👋 Hi there! I'm the TESDA BIT Chatbot. Whether you're on mobile or desktop, I can help you with qualifications, enrolment, assessment, or reaching TESDA BIT. Tap a button or send a message to get started."
+    ))
+    st.session_state.welcome_sent = True
+    
 
 
 # ✅ Messenger browser warning — only on mobile
