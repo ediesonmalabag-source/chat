@@ -163,7 +163,6 @@ if screen_width < 768 and st.session_state.show_mobile_warning:
             f'''
             <figure style="margin:0;">
               <img src="{image_url}" alt="open in browser guide" style="max-width:100%; width:320px; height:auto; border-radius:6px;">
-              <figcaption style="font-size:0.9rem; color:#555; margin-top:6px;">Tap the top-right menu</figcaption>
             </figure>
             ''',
             unsafe_allow_html=True,
@@ -176,7 +175,6 @@ if screen_width < 768 and st.session_state.show_mobile_warning:
 
         if st.button("Dismiss this message"):
             st.session_state.show_mobile_warning = False
-            
 # ------------------------------------
 # DEFINING QUALIFICATION RESPONSES
 # -------------------------------------
