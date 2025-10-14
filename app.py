@@ -135,46 +135,7 @@ if not st.session_state.welcome_sent:
     
 
 
-# ✅ Messenger browser warning — only on mobile
-# Initialize session state
-if "show_mobile_warning" not in st.session_state:
-    st.session_state.show_mobile_warning = True
 
-# Detect screen width
-screen_width = st_javascript("""window.innerWidth""")
-if screen_width is None:
-    screen_width = 768  # fallback to desktop
-
-# Show warning only on mobile and if not dismissed
-if screen_width < 768 and st.session_state.show_mobile_warning:
-    with st.expander("📱 Mobile Tip", expanded=True):
-        st.markdown(
-            """
-            <div style='background-color:#fff3cd; padding:10px; border-radius:6px; border:1px solid #ffeeba;'>
-            If you're viewing this inside Messenger or another in-app browser, some features may not work properly.<br>
-            Tap the <b style="color:#d6336c;">⋮ three-dot menu <u>in the top-right corner</u></b> and choose <b>'Open in Chrome'</b> or <b>'Open in Browser'</b> for full access.
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
-
-        image_url = "https://raw.githubusercontent.com/ediesonmalabag-source/chat/main/openinchrome.png"
-        st.markdown(
-            f'''
-            <figure style="margin:0;">
-              <img src="{image_url}" alt="open in browser guide" style="max-width:100%; width:320px; height:auto; border-radius:6px;">
-            </figure>
-            ''',
-            unsafe_allow_html=True,
-        )
-
-        st.markdown(
-            "✅ If you're already in Chrome, Edge, Firefox, or another mobile browser, you can dismiss this message.",
-            unsafe_allow_html=True,
-        )
-
-        if st.button("Dismiss this message"):
-            st.session_state.show_mobile_warning = False
 # ------------------------------------
 # DEFINING QUALIFICATION RESPONSES
 # -------------------------------------
@@ -373,6 +334,44 @@ if chat_in:
 if st.session_state.last_action:
     user_input = st.session_state.last_action
     st.session_state.last_action = None
+
+# --------------------------
+# Mobile tip (placed after input so it appears in-view on mobile) UPDATE TODAY 3:32 pm oCTOBER 14 2025
+# --------------------------
+# Detect screen width (already imported st_javascript above)
+screen_width = st_javascript("""window.innerWidth""")
+if screen_width is None:
+    screen_width = 768  # fallback
+
+if screen_width < 768 and st.session_state.show_mobile_warning:
+    with st.expander("📱 Mobile Tip", expanded=True):
+        st.markdown(
+            """
+            <div style='background-color:#fff3cd; padding:10px; border-radius:6px; border:1px solid #ffeeba;'>
+            If you're viewing this inside Messenger or another in-app browser, some features may not work properly.<br>
+            Tap the <b style="color:#d6336c;">⋮ three-dot menu <u>in the top-right corner</u></b> of your screen and choose <b>'Open in Chrome'</b> or <b>'Open in Browser'</b> for full access.
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
+        image_url = "https://raw.githubusercontent.com/ediesonmalabag-source/chat/main/openinchrome.png"
+        st.markdown(
+            f'''
+            <figure style="margin:0;">
+              <img src="{image_url}" alt="open in browser guide" style="max-width:100%; width:auto; height:auto; border-radius:6px;">
+            </figure>
+            ''',
+            unsafe_allow_html=True,
+        )
+
+        st.markdown(
+            "✅ If you're already in Chrome, Edge, Firefox, or another mobile browser, you can dismiss this message.",
+            unsafe_allow_html=True,
+        )
+
+        if st.button("Dismiss this message", key="dismiss_mobile_tip"):
+            st.session_state.show_mobile_warning = False
 
 # --------------------------
 # Process user input
