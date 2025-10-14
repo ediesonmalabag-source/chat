@@ -207,7 +207,7 @@ with st.sidebar:
     - 📞 Contact TESDA BIT for assistance  
     """)
     # Reset button
-if st.button("🔄 Reset Chat"):
+    if st.button("🔄 Reset Chat"):
     st.session_state.messages = []
     st.session_state.welcome_sent = False
     st.rerun()
