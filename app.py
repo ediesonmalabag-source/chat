@@ -98,10 +98,21 @@ if "last_action" not in st.session_state:
 # --------------------------
 st.image("https://raw.githubusercontent.com/ediesonmalabag-source/chat/main/bit_banner.png", use_container_width=True)
 st.markdown("""
-    <div style='text-align: center;'>
-        <h3 style='color: #003366;'>🤖 TESDA BIT Chatbot</h3>
+    <div style='text-align: center; margin-bottom: 0;'>
+        <h3 style='color: #003366; margin-bottom: 0;'>🤖 TESDA BIT Chatbot</h3>
     </div>
 """, unsafe_allow_html=True)
+
+# --------------------------
+# Message rendering
+# --------------------------
+for sender, msg in st.session_state.messages:
+    if sender == "Bot":
+        st.markdown(f"""
+        <div style='background-color:#e6f2ff; padding:10px 15px; border-radius:10px; margin-top:5px; margin-bottom:10px; color:#003366;'>
+        <b>🤖 TESDA BIT Chatbot</b><br>{msg}
+        </div>
+        """, unsafe_allow_html=True)
 
 # ✅ Messenger browser warning — only on mobile
 # Initialize session state
