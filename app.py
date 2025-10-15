@@ -420,7 +420,7 @@ if user_input:
                 submitted = st.form_submit_button("Generate PDF")
                 
     if submitted:
-    if not last_name.strip() or not first_name.strip():
+        if not last_name.strip() or not first_name.strip():
         st.error("Please provide at least your first and last name.")
     else:
         data = {
