@@ -499,6 +499,8 @@ if st.session_state.get("show_enrolment_form") == "form":
         email = st.text_input("Email (optional)", value="")
         number_street = st.text_input("House No. / Street", value="")
         barangay = st.text_input("Barangay", value="")
+        municipality = st.text_input("City / Municipality", value="")
+        province = st.text_input("Province", value=""
         
         submitted = st.form_submit_button("Generate PDF")
 
@@ -515,6 +517,8 @@ if st.session_state.get("show_enrolment_form") == "form":
                 "Email": email.strip(),
                 "NumberStreet": number_street.strip(),
                 "Barangay": barangay.strip(),
+                "Municipality": municipality.strip(),  
+                "Province": province.strip(),      
             }
 
             import tempfile, os
