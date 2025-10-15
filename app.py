@@ -2,10 +2,11 @@ import streamlit as st
 import time
 import re
 from streamlit_javascript import st_javascript
-
-# 🔧 PDF filling function (top of file)
 from pdfrw import PdfReader, PdfWriter, PdfDict
 
+# ---------------------------------------
+# 🔧 PDF FILLING FUNCTION (top of file)
+# ---------------------------------------
 def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
     template_pdf = PdfReader(input_pdf_path)
     for page in template_pdf.pages:
