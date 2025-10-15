@@ -421,7 +421,7 @@ if user_input:
                 st.session_state.show_enrolment_form = False  # ✅ Reset only after submission
             if not last_name.strip() or not first_name.strip():
                 st.error("Please provide at least your first and last name.")
-                else:
+            else:
                     data = {
                         "LastName": last_name.strip(),
                         "FirstName": first_name.strip(),
