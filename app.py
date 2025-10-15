@@ -2,7 +2,7 @@ import streamlit as st
 import time
 import re
 from streamlit_javascript import st_javascript
-from pdfrw import PdfReader, PdfWriter, PdfDict
+from pdfrw import PdfReader, PdfWriter, PdfDict, PdfName
 
 # ---------------------------------------
 # 🔧 PDF FILLING FUNCTION (top of file)
