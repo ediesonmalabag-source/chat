@@ -383,6 +383,21 @@ if user_input:
    # Save reply to history and render it (HTML allowed)
     st.session_state.messages.append(("Bot", bot_reply))
     st.markdown(bot_reply, unsafe_allow_html=True)
+# show the "Fill the PDF form now" button only when enrolment is requested
+normalized = (user_input or "").lower().strip()
+bot_contains_enrol = "enrol" in (bot_reply or "").lower() or "enrollment" in (bot_reply or "").lower()
+show_button_now = normalized in ("enrolment", "enrollment", "enroll", "enrol") or bot_contains_enrol
+
+if show_button_now:
+    if st.button("📝 Fill the PDF form now"):
+        st.session_state.show_enrolment_form = True
+
+# render the form if the user typed enrolment or pressed the button
+if st.session_state.get("show_enrolment_form") or normalized in ("enrolment", "enrollment", "enroll", "enrol"):
+    st.session_state.show_enrolment_form = False
+    # ... render form as before ...
+
+
 # --- actionable button shown under the enrolment instructions ---
 if st.button("📝 Fill the PDF form now"):
     st.session_state.show_enrolment_form = True
