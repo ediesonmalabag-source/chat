@@ -550,5 +550,5 @@ if st.session_state.get("show_enrolment_form") == "form":
             try:
                 os.remove(tmp_out_path)
             except Exception:
-                pass        
+                pass
        
