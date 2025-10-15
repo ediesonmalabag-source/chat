@@ -26,18 +26,22 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
                             key = t[1:-1]
                             if key in data_dict:
                                 a.update(PdfDict(V=str(data_dict[key])))
+
+        # ✅ Write filled PDF first
         PdfWriter().write(output_pdf_path, template_pdf)
+
         # ✅ Flatten the PDF to make it non-editable
         flattened_pdf = PdfReader(output_pdf_path)
         for page in flattened_pdf.pages:
-    
-    if "/Annots" in page:
-        del page["/Annots"]
-PdfWriter().write(output_pdf_path, flattened_pdf)
+            if "/Annots" in page:
+                del page["/Annots"]
+        PdfWriter().write(output_pdf_path, flattened_pdf)
+
         return True, None
+
     except Exception as e:
         return False, f"Failed writing filled PDF: {e}"
-        
+
 # --------------------------
 # Page config (must be first)
 # --------------------------
