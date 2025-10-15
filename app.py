@@ -553,8 +553,9 @@ if st.session_state.get("show_enrolment_form") == "form":
                 os.remove(tmp_out_path)
             except Exception:
                 pass
+        
         if st.button("❌ Cancel"):
-        st.session_state.show_enrolment_form = None
-        st.rerun()
+            st.session_state.show_enrolment_form = None
+            st.rerun()
 
 
