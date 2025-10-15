@@ -2,7 +2,7 @@ import streamlit as st
 import time
 import re
 from streamlit_javascript import st_javascript
-from pdfrw import PdfReader, PdfWriter, PdfDict, PdfName, PdfObject
+from pdfrw import PdfReader, PdfWriter, PdfDict
 
 # ---------------------------------------
 # 🔧 PDF FILLING FUNCTION (top of file)
@@ -10,34 +10,27 @@ from pdfrw import PdfReader, PdfWriter, PdfDict, PdfName, PdfObject
 def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
     try:
         template_pdf = PdfReader(input_pdf_path)
-
-        # Ensure AcroForm exists and request appearance regeneration
-        if template_pdf.Root and template_pdf.Root.AcroForm:
-            template_pdf.Root.AcroForm.update(PdfDict(NeedAppearances=PdfObject("true")))
-        else:
-            template_pdf.Root.AcroForm = PdfDict(NeedAppearances=PdfObject("true"))
-
-        # Fill form fields
-        for page in template_pdf.pages:
-            annots = page.get(PdfName("Annots"))
-            if annots:
-                for a in annots:
-                    if a.get(PdfName("Subtype")) == PdfName("Widget"):
-                        t = a.get(PdfName("T"))
-                        if t:
-                            key = t.to_unicode().strip('()') if hasattr(t, "to_unicode") else t[1:-1]
-                            if key in data_dict:
-                                a.update(PdfDict(V=str(data_dict[key])))
-
-        PdfWriter().write(output_pdf_path, template_pdf)
-        return True, None
-
     except FileNotFoundError:
         return False, f"Template not found: {input_pdf_path}"
     except Exception as e:
+        return False, f"Failed reading template: {e}"
+
+    try:
+        for page in template_pdf.pages:
+            annots = page.get("/Annots")
+            if annots:
+                for a in annots:
+                    if a.get("/Subtype") == "/Widget":
+                        t = a.get("/T")
+                        if t:
+                            key = t[1:-1]
+                            if key in data_dict:
+                                a.update(PdfDict(V=str(data_dict[key])))
+        PdfWriter().write(output_pdf_path, template_pdf)
+        return True, None
+    except Exception as e:
         return False, f"Failed writing filled PDF: {e}"
-
-
+        
 # --------------------------
 # Page config (must be first)
 # --------------------------
@@ -508,7 +501,19 @@ if st.session_state.get("show_enrolment_form") == "form":
         barangay = st.text_input("Barangay", value="")
         municipality = st.text_input("City / Municipality", value="")
         province = st.text_input("Province", value="")
-      
+        region = st.selectbox("Region", [
+            "Region I", "Region II", "Region III", "Region IV-A", "Region IV-B",
+            "Region V", "Region VI", "Region VII", "Region VIII", "Region IX",
+            "Region X", "Region XI", "Region XII", "Region XIII", "NCR", "CAR", "BARMM"
+        ])
+        district = st.selectbox("District", [
+            "District 1", "District 2"
+        ])
+        nationality = st.selectbox("Nationality", [
+            "Filipino", "American", "Chinese", "Japanese", "Korean", "Indian", "Indonesian",
+            "Malaysian", "Vietnamese", "Thai", "Singaporean", "Other"
+        ])
+        sex = st.radio("Sex", ["Male", "Female"])
 
             
         submitted = st.form_submit_button("Generate PDF")
@@ -528,6 +533,11 @@ if st.session_state.get("show_enrolment_form") == "form":
                 "Barangay": barangay.strip(),
                 "Municipality": municipality.strip(),  
                 "Province": province.strip(),
+                "Region": region.strip(),
+                "District": district.strip(),
+                "Nationality": nationality.strip(),
+                "sex_male": "Yes" if sex == "Male" else "",
+                "sex_female": "Yes" if sex == "Female" else "",
             }
 
             import tempfile, os
@@ -538,36 +548,24 @@ if st.session_state.get("show_enrolment_form") == "form":
                     tmp_out.close()
 
                     template_path = "BIT_Registration_Form_Fillable_v1.pdf"
-                    # call fill function
                     ok_err = fill_pdf(template_path, tmp_out_path, data)
-                    # determine ok / err
+
                     if isinstance(ok_err, tuple):
                         ok, err = ok_err
                     else:
                         ok, err = True, None
 
-                    if not ok:
-                        st.error(f"PDF generation failed: {err}")
-                    else:
-                        # ensure viewer will show filled appearances (already handled in fill_pdf if you used NeedAppearances)
-                        # Flatten once, only after a successful fill
-                        from pdfrw import PdfName
-                        flattened_pdf = PdfReader(tmp_out_path)
-                        for page in flattened_pdf.pages:
-                            if PdfName("Annots") in page:
-                                del page[PdfName("Annots")]
-                            PdfWriter().write(tmp_out_path, flattened_pdf)
-            
-                        # Serve file for download
-                        with open(tmp_out_path, "rb") as f:
-                            st.success("✅ Your TESDA form has been filled.")
-                            st.download_button(
-                                "📥 Download Your Filled Form",
-                                f,
-                                file_name="TESDA_Registration.pdf",
-                                mime="application/pdf",
-                            )            
-            
+                if not ok:
+                    st.error(f"PDF generation failed: {err}")
+                else:
+                    with open(tmp_out_path, "rb") as f:
+                        st.success("✅ Your TESDA form has been filled.")
+                        st.download_button(
+                            "📥 Download Your Filled Form",
+                            f,
+                            file_name="TESDA_Registration.pdf",
+                            mime="application/pdf",
+                        )
             except FileNotFoundError:
                 st.error("Template PDF not found. Place BIT_Registration_Form_Fillable_v1.pdf in the app folder.")
             except Exception as e:
