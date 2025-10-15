@@ -241,6 +241,7 @@ with st.sidebar:
 def chatbot_response(user_message: str) -> str:
     user_message = user_message.lower().strip()
     user_message = re.sub(r'[^\w\s]', '', user_message)  # ✅ Removes punctuation like ? . ! etc.
+    matched = False
  
     # 🔍 Match specific qualifications first
     for keyword, response in qualification_responses.items():
@@ -351,8 +352,8 @@ def chatbot_response(user_message: str) -> str:
         st.markdown("📊 Assessment schedules and requirements vary by qualification. Please contact TESDA BIT for details.", unsafe_allow_html=True)
 
 
-    else:
-    # If no match was found, return fallback message
+    # ❓ Fallback MESSAGE, if no match found
+    if not matched:
         st.markdown("""❓ <b>I couldn’t match your message to a specific qualification, enrolment steps, or assessment details.</b><br><br>
         Here are a few examples of what you can ask about:<br>
         • 🍳 Cookery NC II<br>
@@ -366,7 +367,7 @@ def chatbot_response(user_message: str) -> str:
         • 📞 Contact<br><br>
         Or just tap the buttons below!
         """, unsafe_allow_html=True)
-
+    return "Displayed response"
 
 
 # --------------------------
