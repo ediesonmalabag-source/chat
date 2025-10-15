@@ -8,19 +8,29 @@ from pdfrw import PdfReader, PdfWriter, PdfDict
 # 🔧 PDF FILLING FUNCTION (top of file)
 # ---------------------------------------
 def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
-    template_pdf = PdfReader(input_pdf_path)
-    for page in template_pdf.pages:
-        annotations = page['/Annots']
-        if annotations:
-            for annotation in annotations:
-                if annotation['/Subtype'] == '/Widget':
-                    field = annotation.get('/T')
-                    if field:
-                        key = field[1:-1]
-                        if key in data_dict:
-                            annotation.update(PdfDict(V='{}'.format(data_dict[key])))
-    PdfWriter().write(output_pdf_path, template_pdf)
+    try:
+        template_pdf = PdfReader(input_pdf_path)
+    except FileNotFoundError:
+        return False, f"Template not found: {input_pdf_path}"
+    except Exception as e:
+        return False, f"Failed reading template: {e}"
 
+    try:
+        for page in template_pdf.pages:
+            annots = page.get("/Annots")
+            if annots:
+                for a in annots:
+                    if a.get("/Subtype") == "/Widget":
+                        t = a.get("/T")
+                        if t:
+                            key = t[1:-1]
+                            if key in data_dict:
+                                a.update(PdfDict(V=str(data_dict[key])))
+        PdfWriter().write(output_pdf_path, template_pdf)
+        return True, None
+    except Exception as e:
+        return False, f"Failed writing filled PDF: {e}"
+        
 # --------------------------
 # Page config (must be first)
 # --------------------------
@@ -155,6 +165,10 @@ if not st.session_state.welcome_sent:
 # Initialize session state
 if "show_mobile_warning" not in st.session_state:
     st.session_state.show_mobile_warning = True
+
+# ensure flag exists for showing the enrolment form
+if "show_enrolment_form" not in st.session_state:
+    st.session_state.show_enrolment_form = False
 
 
 # ------------------------------------
@@ -365,8 +379,6 @@ if st.session_state.last_action:
     user_input = st.session_state.last_action
     st.session_state.last_action = None
 
-
-
 # --------------------------
 # Process user input
 # --------------------------
@@ -380,87 +392,80 @@ if user_input:
     except Exception as e:
         bot_reply = f"⚠️ An internal error occurred while generating a reply: {e}"
 
-   # Save reply to history and render it (HTML allowed)
+    # Save reply to history and render it (HTML allowed)
     st.session_state.messages.append(("Bot", bot_reply))
     st.markdown(bot_reply, unsafe_allow_html=True)
-# show the "Fill the PDF form now" button only when enrolment is requested
-normalized = (user_input or "").lower().strip()
-bot_contains_enrol = "enrol" in (bot_reply or "").lower() or "enrollment" in (bot_reply or "").lower()
-show_button_now = normalized in ("enrolment", "enrollment", "enroll", "enrol") or bot_contains_enrol
 
-if show_button_now:
-    if st.button("📝 Fill the PDF form now"):
-        st.session_state.show_enrolment_form = True
+    # Decide whether to show the "Fill the PDF form now" button (only for enrolment)
+    normalized = (user_input or "").lower().strip()
+    bot_contains_enrol = ("enrol" in (bot_reply or "").lower()) or ("enrollment" in (bot_reply or "").lower())
+    show_button_now = normalized in ("enrolment", "enrollment", "enroll", "enrol") or bot_contains_enrol
 
-# render the form if the user typed enrolment or pressed the button
-if st.session_state.get("show_enrolment_form") or normalized in ("enrolment", "enrollment", "enroll", "enrol"):
-    st.session_state.show_enrolment_form = False
-    # ... render form as before ...
+    if show_button_now:
+        if st.button("📝 Fill the PDF form now"):
+            st.session_state.show_enrolment_form = True
 
+    # Render the enrolment form when requested (typed enrolment or button)
+    if st.session_state.get("show_enrolment_form") or normalized in ("enrolment", "enrollment", "enroll", "enrol"):
+        # clear the flag so it doesn't auto-open on next rerun
+        st.session_state.show_enrolment_form = False
 
-# --- actionable button shown under the enrolment instructions ---
-if st.button("📝 Fill the PDF form now"):
-    st.session_state.show_enrolment_form = True
+        st.subheader("🧠 Fill the TESDA registration form")
+        with st.form("tesda_form"):
+            last_name = st.text_input("Last Name", value="")
+            first_name = st.text_input("First Name", value="")
+            middle_name = st.text_input("Middle Name", value="")
+            contact_no = st.text_input("Contact Number (optional)", value="")
+            email = st.text_input("Email (optional)", value="")
+            submitted = st.form_submit_button("Generate PDF")
 
-# Show the enrolment form when the button was pressed or when user typed "enrolment"
-normalized = (user_input or "").lower().strip()
-if st.session_state.get("show_enrolment_form") or normalized in ("enrolment", "enrollment", "enroll", "enrol"):
-    st.session_state.show_enrolment_form = False  # clear flag so it doesn't auto-open on next rerun
-
-    st.subheader("🧠 Fill the TESDA registration form")
-    with st.form("tesda_form"):
-        last_name = st.text_input("Last Name")
-        first_name = st.text_input("First Name")
-        middle_name = st.text_input("Middle Name")
-        contact_no = st.text_input("Contact Number (optional)")
-        email = st.text_input("Email (optional)")
-        submitted = st.form_submit_button("Generate PDF")
-
-    if submitted:
-        if not last_name.strip() or not first_name.strip():
-            st.error("Please provide at least your first and last name.")
-        else:
-            data = {
-                "LastName": last_name.strip(),
-                "FirstName": first_name.strip(),
-                "MiddleName": middle_name.strip(),
-                "ContactNo": contact_no.strip(),
-                "Email": email.strip(),
-            }
-            import tempfile, os
-            try:
-                with st.spinner("Filling PDF..."):
-                    tmp_out = tempfile.NamedTemporaryFile(suffix=".pdf", delete=False)
-                    tmp_out_path = tmp_out.name
-                    tmp_out.close()
-
-                    template_path = "BIT_Registration_Form_Fillable_v1.pdf"
-                    ok_err = fill_pdf(template_path, tmp_out_path, data)
-                    if isinstance(ok_err, tuple):
-                        ok, err = ok_err
-                    else:
-                        ok, err = True, None
-
-                if not ok:
-                    st.error(f"PDF generation failed: {err}")
-                else:
-                    with open(tmp_out_path, "rb") as f:
-                        st.success("✅ Your TESDA form has been filled.")
-                        st.download_button(
-                            "📥 Download Your Filled Form",
-                            f,
-                            file_name="TESDA_Registration.pdf",
-                            mime="application/pdf",
-                        )
-            except FileNotFoundError:
-                st.error("Template PDF not found. Place BIT_Registration_Form_Fillable_v1.pdf in the app folder.")
-            except Exception as e:
-                st.error(f"Failed to generate PDF: {e}")
-            finally:
+        if submitted:
+            if not last_name.strip() or not first_name.strip():
+                st.error("Please provide at least your first and last name.")
+            else:
+                data = {
+                    "LastName": last_name.strip(),
+                    "FirstName": first_name.strip(),
+                    "MiddleName": middle_name.strip(),
+                    "ContactNo": contact_no.strip(),
+                    "Email": email.strip(),
+                }
+                import tempfile, os
                 try:
-                    os.remove(tmp_out_path)
-                except Exception:
-                    pass
+                    with st.spinner("Filling PDF..."):
+                        tmp_out = tempfile.NamedTemporaryFile(suffix=".pdf", delete=False)
+                        tmp_out_path = tmp_out.name
+                        tmp_out.close()
+
+                        template_path = "BIT_Registration_Form_Fillable_v1.pdf"
+                        ok_err = fill_pdf(template_path, tmp_out_path, data)
+                        if isinstance(ok_err, tuple):
+                            ok, err = ok_err
+                        else:
+                            ok, err = True, None
+
+                    if not ok:
+                        st.error(f"PDF generation failed: {err}")
+                    else:
+                        with open(tmp_out_path, "rb") as f:
+                            st.success("✅ Your TESDA form has been filled.")
+                            st.download_button(
+                                "📥 Download Your Filled Form",
+                                f,
+                                file_name="TESDA_Registration.pdf",
+                                mime="application/pdf",
+                            )
+                except FileNotFoundError:
+                    st.error("Template PDF not found. Place BIT_Registration_Form_Fillable_v1.pdf in the app folder.")
+                except Exception as e:
+                    st.error(f"Failed to generate PDF: {e}")
+                finally:
+                    try:
+                        os.remove(tmp_out_path)
+                    except Exception:
+                        pass
+
+
 # --------------------------
 # Display chat history
 # --------------------------
