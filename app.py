@@ -413,7 +413,7 @@ if st.session_state.get("show_enrolment_form") == "form":
         middle_name = st.text_input("Middle Name", value="")
         contact_no = st.text_input("Contact Number (optional)", value="")
         email = st.text_input("Email (optional)", value="")
-        submitted = st.form_submit_button("Generate PDF"
+        submitted = st.form_submit_button("Generate PDF")
         if submitted:
             st.session_state.show_enrolment_form = False  # ✅ Reset only after submission
 
