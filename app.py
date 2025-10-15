@@ -257,22 +257,7 @@ def chatbot_response(user_message: str) -> str:
     # ------------
     # ENROLMENT
     # ------------
-    elif any(kw in user_message.lower() for kw in ["enrollment", "enrolment", "enroll", "enrol", "enroling", "enrolling"]):
-        matched = True
-        response_html = """<h4 style='color:#003366; font-weight:bold;'>📋 Enrolment Procedures</h4>        
-        📥 <b>Download the Fillable PDF Registration Form</b> – <a href='https://github.com/ediesonmalabag-source/chat/raw/main/BIT_Registration_Form_Fillable_v1.pdf' target='_blank' style='color:#003366; font-weight:bold;'>Click here to download</a><br>
-        🖥️ Open the form using any PDF reader (e.g., Adobe Acrobat, browser, Foxit)<br>
-        ✍️ Fill in your personal details digitally using the fillable fields<br>
-        🖨️ Print the completed form<br>
-        ✒️ Write your <b>full name and signature</b> in the spaces provided<br>
-        🖼️ Attach <b>two (2) recent 1x1 ID photos</b> taken within the last 6 months in the designated boxes on the form<br><br>
-        <b>📋 Additional Enrolment Requirements:</b><br>
-        • <b>Photocopy of PSA Birth Certificate</b><br>
-        • <b>Photocopy of Marriage Certificate</b>, if married<br><br>
-        📌 <b>Submit all documents</b> personally at the TESDA BIT Admin Office, or email them to <a href='mailto:bit@tesda.gov.ph'>bit@tesda.gov.ph</a><br><br>
-        📅 <i>Note: Enrolment is open year-round, but slots are limited. Submit early to secure your schedule.</i><br><br>
-        ✅ <b>Need help?</b> Tap the <b>📞 Contact</b> button below for assistance.
-        """
+    
   
     # ------------
     # CONTACT
@@ -375,17 +360,15 @@ if user_input:
         time.sleep(0.9)
 
     try:
-        bot_reply = chatbot_response(user_input)  # chatbot_response must return a string
+        bot_reply = chatbot_response(user_input)  # returns HTML/string only
     except Exception as e:
         bot_reply = f"⚠️ An internal error occurred while generating a reply: {e}"
 
-    # Save and render bot reply
+    # Save reply to history and render it (HTML allowed)
     st.session_state.messages.append(("Bot", bot_reply))
-
-    # Render the bot reply visually right away (so forms and HTML appear in context)
     st.markdown(bot_reply, unsafe_allow_html=True)
 
-    # If user asked about enrolment (either by button or text), show the interactive form
+    # If user asked about enrolment, show the interactive form here
     normalized = user_input.lower().strip()
     if normalized in ("enrolment", "enrollment", "enroll", "enrol") or any(
         kw in normalized for kw in ["enrolment", "enrollment", "enroll", "enrol"]
@@ -395,30 +378,43 @@ if user_input:
             last_name = st.text_input("Last Name")
             first_name = st.text_input("First Name")
             middle_name = st.text_input("Middle Name")
+            contact_no = st.text_input("Contact Number (optional)")
+            email = st.text_input("Email (optional)")
             submitted = st.form_submit_button("Generate PDF")
 
         if submitted:
+            # Map keys to your PDF field names precisely
             data = {
                 "LastName": last_name,
                 "FirstName": first_name,
-                "MiddleName": middle_name
+                "MiddleName": middle_name,
+                "ContactNo": contact_no,
+                "Email": email,
             }
-            fill_pdf("BIT_Registration_Form_Fillable_v1.pdf", "filled_tesda_form.pdf", data)
-            with open("filled_tesda_form.pdf", "rb") as f:
-                st.success("✅ Your TESDA form has been filled!")
-                st.download_button("📥 Download Your Filled Form", f, file_name="TESDA_Registration.pdf")
 
-    # Optionally: handle other actions triggered by buttons
-    if normalized in ("qualifications",):
-        # render qualifications list or any extra UI
-        pass
-    if normalized in ("assessment",):
-        # render assessment-specific UI if needed
-        pass
-    if normalized in ("contact",):
-        # render contact-specific UI if needed
-        pass
+            import tempfile
+            try:
+                with st.spinner("Filling PDF..."):
+                    tmp_out = tempfile.NamedTemporaryFile(suffix=".pdf", delete=False)
+                    tmp_out_path = tmp_out.name
+                    tmp_out.close()
 
+                    template_path = "BIT_Registration_Form_Fillable_v1.pdf"
+                    fill_pdf(template_path, tmp_out_path, data)
+
+                with open(tmp_out_path, "rb") as f:
+                    st.success("✅ Your TESDA form has been filled!")
+                    st.download_button(
+                        "📥 Download Your Filled Form",
+                        f,
+                        file_name="TESDA_Registration.pdf",
+                        mime="application/pdf",
+                    )
+            except FileNotFoundError:
+                st.error("Template PDF not found. Place BIT_Registration_Form_Fillable_v1.pdf in the app folder.")
+            except Exception as e:
+                st.error(f"Failed to generate PDF: {e}")
+                
 # --------------------------
 # Display chat history
 # --------------------------
