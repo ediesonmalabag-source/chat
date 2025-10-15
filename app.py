@@ -482,9 +482,7 @@ for role, msg in st.session_state.messages:
 # --------------------------
 # Mobile tip (moved after chat history so it appears in-view on mobile)
 # --------------------------
-screen_width = st_javascript("""window.innerWidth""")
-if screen_width is None:
-    screen_width = 768  # fallback
+
 
 if screen_width < 768 and st.session_state.show_mobile_warning:
     with st.expander("📱 Mobile Tip", expanded=True):
