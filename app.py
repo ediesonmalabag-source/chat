@@ -16,6 +16,7 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
         return False, f"Failed reading template: {e}"
 
     try:
+        # Fill form fields
         for page in template_pdf.pages:
             annots = page.get("/Annots")
             if annots:
@@ -25,23 +26,25 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
                         if t:
                             key = t[1:-1]
                             if key in data_dict:
-                                a.update(PdfDict(V=str(data_dict[key])))
+                                a.update(PdfDict(V=str(data_dict[key]), Ff=1))  # Ff=1 makes it read-only
 
-        # ✅ Write filled PDF first
+        # Save filled version first
         PdfWriter().write(output_pdf_path, template_pdf)
 
-        # ✅ Flatten the PDF to make it non-editable
+        # Reload and flatten
         flattened_pdf = PdfReader(output_pdf_path)
         for page in flattened_pdf.pages:
             if "/Annots" in page:
                 del page["/Annots"]
+
+        # Save flattened version
         PdfWriter().write(output_pdf_path, flattened_pdf)
 
         return True, None
 
     except Exception as e:
         return False, f"Failed writing filled PDF: {e}"
-
+        
 # --------------------------
 # Page config (must be first)
 # --------------------------
