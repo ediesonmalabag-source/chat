@@ -421,7 +421,7 @@ if user_input:
                 
     if submitted:
         if not last_name.strip() or not first_name.strip():
-        st.error("Please provide at least your first and last name.")
+            st.error("Please provide at least your first and last name.")
     else:
         data = {
             "LastName": last_name.strip(),
