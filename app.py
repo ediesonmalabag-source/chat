@@ -396,27 +396,27 @@ if user_input:
     st.session_state.messages.append(("Bot", bot_reply))
     st.markdown(bot_reply, unsafe_allow_html=True)
 
-    # Decide whether to show the "Fill the PDF form now" button (only for enrolment)
-    normalized = (user_input or "").lower().strip()
-    bot_contains_enrol = ("enrol" in (bot_reply or "").lower()) or ("enrollment" in (bot_reply or "").lower())
-    show_button_now = bot_contains_enrol
+   # Decide whether to show the "Fill the PDF form now" button
+normalized = (user_input or "").lower().strip()
+bot_contains_enrol = ("enrol" in (bot_reply or "").lower()) or ("enrollment" in (bot_reply or "").lower())
+show_button_now = bot_contains_enrol or st.session_state.get("show_enrolment_form", False)
 
-    # Show the "Fill the PDF form now" button only when bot reply includes enrolment info
-    if show_button_now:
-        if st.button("📝 Fill the PDF form now"):
-            st.session_state.show_enrolment_form = True
+# Show the button
+if show_button_now:
+    if st.button("📝 Fill the PDF form now"):
+        st.session_state.show_enrolment_form = True
 
-    # ✅ Render the form independently when the flag is set
-    if st.session_state.get("show_enrolment_form"):
-        st.session_state.show_enrolment_form = False
-        st.subheader("🧠 Fill the TESDA registration form")
-        with st.form("tesda_form"):
-            last_name = st.text_input("Last Name", value="")
-            first_name = st.text_input("First Name", value="")
-            middle_name = st.text_input("Middle Name", value="")
-            contact_no = st.text_input("Contact Number (optional)", value="")
-            email = st.text_input("Email (optional)", value="")
-            submitted = st.form_submit_button("Generate PDF")
+# Show the form
+if st.session_state.get("show_enrolment_form"):
+    st.session_state.show_enrolment_form = False
+    st.subheader("🧠 Fill the TESDA registration form")
+    with st.form("tesda_form"):
+        last_name = st.text_input("Last Name", value="")
+        first_name = st.text_input("First Name", value="")
+        middle_name = st.text_input("Middle Name", value="")
+        contact_no = st.text_input("Contact Number (optional)", value="")
+        email = st.text_input("Email (optional)", value="")
+        submitted = st.form_submit_button("Generate PDF")
 
             if submitted:
                 if not last_name.strip() or not first_name.strip():
