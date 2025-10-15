@@ -417,9 +417,9 @@ if st.session_state.get("show_enrolment_form") == "form":
         email = st.text_input("Email (optional)", value="")
         submitted = st.form_submit_button("Generate PDF")
 
-# ✅ Handle submission outside the form block
-if submitted:
-    st.session_state.show_enrolment_form = None
+    # ✅ Handle submission outside the form block
+    if submitted:
+        st.session_state.show_enrolment_form = None
 
     if not last_name.strip() or not first_name.strip():
         st.error("Please provide at least your first and last name.")
