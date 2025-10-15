@@ -395,16 +395,16 @@ if user_input:
     st.session_state.messages.append(("Bot", bot_reply))
     st.markdown(bot_reply, unsafe_allow_html=True)
 
-    # Save enrolment flag if bot reply contains enrolment info
+    # ✅ Set flag to "ready" if bot reply contains enrolment info
     if "enrol" in bot_reply.lower() or "enrollment" in bot_reply.lower():
-        st.session_state.show_enrolment_form = True
+        st.session_state.show_enrolment_form = "ready"
 
-# ✅ Always show the button if enrolment flag is set
-if st.session_state.get("show_enrolment_form", False):
+# ✅ Show the button if flag is "ready"
+if st.session_state.get("show_enrolment_form") == "ready":
     if st.button("📝 Fill the PDF form now"):
-        st.session_state.show_enrolment_form = "form"  # switch to form mode
+        st.session_state.show_enrolment_form = "form"
 
-# ✅ Show the form only when explicitly triggered
+# ✅ Show the form if flag is "form"
 if st.session_state.get("show_enrolment_form") == "form":
     st.subheader("🧠 Fill the TESDA registration form")
     with st.form("tesda_form"):
@@ -414,8 +414,9 @@ if st.session_state.get("show_enrolment_form") == "form":
         contact_no = st.text_input("Contact Number (optional)", value="")
         email = st.text_input("Email (optional)", value="")
         submitted = st.form_submit_button("Generate PDF")
+
         if submitted:
-            st.session_state.show_enrolment_form = False  # ✅ Reset only after submission
+            st.session_state.show_enrolment_form = None  # ✅ Reset after submission
 
             if not last_name.strip() or not first_name.strip():
                 st.error("Please provide at least your first and last name.")
@@ -524,7 +525,7 @@ with col1:
 with col2:
     if st.button("📝 Enrolment"):
         st.session_state.last_action = "enrolment"
-        st.session_state.show_enrolment_form = True  # ✅ this triggers the form
+        st.session_state.show_enrolment_form = "ready"
 with col3:
     if st.button("📊 Assessment"):
         st.session_state.last_action = "assessment"
