@@ -2,6 +2,9 @@ import streamlit as st
 import time
 import re
 from streamlit_javascript import st_javascript
+# -----------------------------
+# START OF PDF FILL
+# -----------------------------
 
 # --------------------------
 # Page config (must be first)
