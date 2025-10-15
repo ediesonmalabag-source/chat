@@ -399,24 +399,26 @@ if user_input:
     # Decide whether to show the "Fill the PDF form now" button (only for enrolment)
     normalized = (user_input or "").lower().strip()
     bot_contains_enrol = ("enrol" in (bot_reply or "").lower()) or ("enrollment" in (bot_reply or "").lower())
-    show_button_now = bot_contains_enrol  # ✅ only show button when bot reply includes enrolment info
+    show_button_now = bot_contains_enrol  
+    # ✅ only show button when bot reply includes enrolment info
 
+    # Show the "Fill the PDF form now" button only when bot reply includes enrolment info
     if show_button_now:
-        if st.button("📝 Fill the PDF form now"):
-            st.session_state.show_enrolment_form = True
+    if st.button("📝 Fill the PDF form now"):
+        st.session_state.show_enrolment_form = True
 
-    # Render the enrolment form when requested (typed enrolment or button)
-        if st.session_state.get("show_enrolment_form"):
-            st.session_state.show_enrolment_form = False
+    # ✅ Render the form independently when the flag is set
+    if st.session_state.get("show_enrolment_form"):
+        st.session_state.show_enrolment_form = False
 
-        st.subheader("🧠 Fill the TESDA registration form")
-        with st.form("tesda_form"):
-            last_name = st.text_input("Last Name", value="")
-            first_name = st.text_input("First Name", value="")
-            middle_name = st.text_input("Middle Name", value="")
-            contact_no = st.text_input("Contact Number (optional)", value="")
-            email = st.text_input("Email (optional)", value="")
-            submitted = st.form_submit_button("Generate PDF")
+    st.subheader("🧠 Fill the TESDA registration form")
+    with st.form("tesda_form"):
+        last_name = st.text_input("Last Name", value="")
+        first_name = st.text_input("First Name", value="")
+        middle_name = st.text_input("Middle Name", value="")
+        contact_no = st.text_input("Contact Number (optional)", value="")
+        email = st.text_input("Email (optional)", value="")
+        submitted = st.form_submit_button("Generate PDF")
 
         if submitted:
             if not last_name.strip() or not first_name.strip():
