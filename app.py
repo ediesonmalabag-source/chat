@@ -533,7 +533,7 @@ with col1:
 with col2:
     if st.button("📝 Enrolment"):
         st.session_state.last_action = "enrolment"
-        st.session_state.show_enrolment_form = "ready"
+        
 with col3:
     if st.button("📊 Assessment"):
         st.session_state.last_action = "assessment"
