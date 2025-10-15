@@ -56,8 +56,7 @@ if "welcome_sent" not in st.session_state:
     st.session_state.welcome_sent = False
 if "last_action" not in st.session_state:
     st.session_state.last_action = None
-if "show_mobile_warning" not in st.session_state:
-    st.session_state.show_mobile_warning = is_mobile and is_messenger
+
     
 
 # --------------------------
@@ -257,7 +256,7 @@ with st.sidebar:
         st.session_state.welcome_sent = False
         st.session_state.last_action = None
         st.session_state.show_enrolment_form = "idle"
-        st.session_state.show_mobile_warning = True  # Optional: reset mobile tip
+        st.session_state.show_mobile_warning = is_mobile and is_messenger  # reset mobile tip
         st.rerun()
         
 # --------------------------
