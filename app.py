@@ -467,7 +467,6 @@ if user_input:
             except Exception:
                 pass
 
-
 # --------------------------
 # Display chat history
 # --------------------------
