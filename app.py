@@ -244,7 +244,7 @@ def chatbot_response(user_message: str) -> str:
     matched = False
     response_html = ""
 
-    # Match specific qualifications first (these already return full HTML)
+    # Match specific qualifications first (these already contain HTML)
     for keyword, response in qualification_responses.items():
         if keyword in user_message:
             return response
@@ -252,14 +252,14 @@ def chatbot_response(user_message: str) -> str:
 # 👋 Greetings
     if user_message in ["hi", "hello", "hey", "haha"]:
         matched = True
-        st.markdown("👋 Hi! I'm the TESDA BIT Chatbot. Ask about qualifications, enrolment, assessment, or contact us—just tap a button or type below.")
+        response_html = "👋 Hi! I'm the TESDA BIT Chatbot. Ask about qualifications, enrolment, assessment, or contact us—just tap a button or type below."
    
     # ------------
     # ENROLMENT
     # ------------
     elif any(kw in user_message.lower() for kw in ["enrollment", "enrolment", "enroll", "enrol", "enroling", "enrolling"]):
         matched = True
-        st.markdown("""<h4 style='color:#003366; font-weight:bold;'>📋 Enrolment Procedures</h4>        
+        response_html = """<h4 style='color:#003366; font-weight:bold;'>📋 Enrolment Procedures</h4>        
         📥 <b>Download the Fillable PDF Registration Form</b> – <a href='https://github.com/ediesonmalabag-source/chat/raw/main/BIT_Registration_Form_Fillable_v1.pdf' target='_blank' style='color:#003366; font-weight:bold;'>Click here to download</a><br>
         🖥️ Open the form using any PDF reader (e.g., Adobe Acrobat, browser, Foxit)<br>
         ✍️ Fill in your personal details digitally using the fillable fields<br>
@@ -280,7 +280,7 @@ def chatbot_response(user_message: str) -> str:
 
     elif any(kw in user_message.lower() for kw in ["contact", "help", "assist", "support", "reach out", "call", "email"]):
         match =True
-        st.markdown("""<h4 style='color:#003366; font-weight:bold;'>📞 TESDA-BIT Contact Information</h4>
+        response_html = """<h4 style='color:#003366; font-weight:bold;'>📞 TESDA-BIT Contact Information</h4>
         🌐 <b>Facebook Page:</b> <a href='https://www.facebook.com/profile.php?id=61561653118631' target='_blank' style='color:#003366; font-weight:italic;'>Bangui Institute of Technology TESDA</a><br>
         💬 <b>Messenger Chat:</b> <a href='https://m.me/bit.tesda' target='_blank'>Send a message via Messenger</a><br>
         📱 <b>Cellphone No.:</b> <a href="tel:09088600955" style="color:#003366; font-weight:italic;">0908-860-0955</a><br>
@@ -289,13 +289,13 @@ def chatbot_response(user_message: str) -> str:
         🕒 <b>Office Hours:</b> Monday to Friday, 8:00 AM – 5:00 PM<br>
         📅 <b>Walk-in Inquiries:</b> No appointment needed during office hours<br><br>
         ✅ <i>For enrolment assistance, document submission, or qualification inquiries, feel free to reach out anytime.</i>
-        """, unsafe_allow_html=True)
+        """
  # ------------
  # QUALIFICATION
  # -------------
     elif any(kw in user_message.lower() for kw in ["qualification", "course", "program", "training", "offered", "available courses"]):
         match = True
-        st.markdown("""<h4 style='color:#003366; font-weight:bold;'>🎓 TESDA-BIT Qualifications Offered</h4>
+        response_html = """<h4 style='color:#003366; font-weight:bold;'>🎓 TESDA-BIT Qualifications Offered</h4>
         <h5 style='color:#003366;'>🧰 National Certificate Programs:</h5>
         •🧁<b>Bread and Pastry Production NC II</b><br>
         •💻<b>Computer Systems Servicing NC II</b><br>
@@ -325,16 +325,16 @@ def chatbot_response(user_message: str) -> str:
         Just type the name of a qualification (e.g., <i>cookery</i>, <i>css</i>, or <i>bread and pastry</i>) to view full details — including duration, core competencies, and career opportunities.<br><br>
         📞 <b>Need help deciding?</b> Tap the <b>Contact</b> button below to reach us directly.<br>
         📝 <b>Ready to enrol?</b> Tap the <b>Enrolment</b> button to begin your registration.
-        """, unsafe_allow_html=True)
+        """
 
     elif "assessment" in user_message:
         match = True
-        st.markdown("📊 Assessment schedules and requirements vary by qualification. Please contact TESDA BIT for details.", unsafe_allow_html=True)
+        response_html = "📊 Assessment schedules and requirements vary by qualification. Please contact TESDA BIT for details."
 
 
     # ❓ Fallback MESSAGE, if no match found
-    if not matched:
-        st.markdown("""❓ <b>I couldn’t match your message to a specific qualification, enrolment steps, or assessment details.</b><br><br>
+    if not matched and response_html == "":
+        response_html = """❓ <b>I couldn’t match your message to a specific qualification, enrolment steps, or assessment details.</b><br><br>
         Here are a few examples of what you can ask about:<br>
         • 🍳 Cookery NC II<br>
         • 💻 Computer Systems Servicing NC II<br>
@@ -346,7 +346,7 @@ def chatbot_response(user_message: str) -> str:
         • 📊 Assessment<br>
         • 📞 Contact<br><br>
         Or just tap the buttons below!
-        """, unsafe_allow_html=True)
+        """
     return response_html
     
 
