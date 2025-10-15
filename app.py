@@ -575,15 +575,15 @@ if st.session_state.get("show_enrolment_form") == "form":
                                 del page[PdfName("Annots")]
                             PdfWriter().write(tmp_out_path, flattened_pdf)
             
-    # Serve file for download
-        with open(tmp_out_path, "rb") as f:
-            st.success("✅ Your TESDA form has been filled.")
-            st.download_button(
-            "📥 Download Your Filled Form",
-            f,
-            file_name="TESDA_Registration.pdf",
-            mime="application/pdf",
-        )            
+                        # Serve file for download
+                        with open(tmp_out_path, "rb") as f:
+                            st.success("✅ Your TESDA form has been filled.")
+                            st.download_button(
+                                "📥 Download Your Filled Form",
+                                f,
+                                file_name="TESDA_Registration.pdf",
+                                mime="application/pdf",
+                            )            
             
             except FileNotFoundError:
                 st.error("Template PDF not found. Place BIT_Registration_Form_Fillable_v1.pdf in the app folder.")
