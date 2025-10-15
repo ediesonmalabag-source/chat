@@ -2,7 +2,7 @@ import streamlit as st
 import time
 import re
 from streamlit_javascript import st_javascript
-from pdfrw import PdfReader, PdfWriter, PdfDict, PdfName
+from pdfrw import PdfReader, PdfWriter, PdfDict, PdfName, PdfObject
 
 # ---------------------------------------
 # 🔧 PDF FILLING FUNCTION (top of file)
@@ -10,20 +10,33 @@ from pdfrw import PdfReader, PdfWriter, PdfDict, PdfName
 def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
     try:
         template_pdf = PdfReader(input_pdf_path)
+
+        # Ensure AcroForm exists and request appearance regeneration
+        if template_pdf.Root and template_pdf.Root.AcroForm:
+            template_pdf.Root.AcroForm.update(PdfDict(NeedAppearances=PdfObject("true")))
+        else:
+            template_pdf.Root.AcroForm = PdfDict(NeedAppearances=PdfObject("true"))
+
+        # Fill form fields
         for page in template_pdf.pages:
-            annots = page.get("/Annots")
+            annots = page.get(PdfName("Annots"))
             if annots:
                 for a in annots:
-                    if a.get("/Subtype") == "/Widget":
-                        t = a.get("/T")
+                    if a.get(PdfName("Subtype")) == PdfName("Widget"):
+                        t = a.get(PdfName("T"))
                         if t:
-                            key = t[1:-1]
+                            key = t.to_unicode().strip('()') if hasattr(t, "to_unicode") else t[1:-1]
                             if key in data_dict:
                                 a.update(PdfDict(V=str(data_dict[key])))
+
         PdfWriter().write(output_pdf_path, template_pdf)
         return True, None
+
+    except FileNotFoundError:
+        return False, f"Template not found: {input_pdf_path}"
     except Exception as e:
         return False, f"Failed writing filled PDF: {e}"
+
 
 # --------------------------
 # Page config (must be first)
@@ -554,28 +567,25 @@ if st.session_state.get("show_enrolment_form") == "form":
                         ok, err = ok_err
                     else:
                         ok, err = True, None
+                        if not ok:
+                            st.error(f"PDF generation failed: {err}")
+                        else:
+                            # Flatten the PDF to make it non-editable (only once, after successful fill)
+                            from pdfrw import PdfName
+                            flattened_pdf = PdfReader(tmp_out_path)
+                            for page in flattened_pdf.pages:
+                                if PdfName("Annots") in page:
+                                    del page[PdfName("Annots")]
+                                    PdfWriter().write(tmp_out_path, flattened_pdf)
 
-                if not ok:
-                    st.error(f"PDF generation failed: {err}")
-                else:
-                    # ✅ Flatten the PDF to make it non-editable
-                    from pdfrw import PdfName
-                    flattened_pdf = PdfReader(tmp_out_path)
-                    for page in flattened_pdf.pages:
-                        if PdfName("Annots") in page:
-                            del page[PdfName("Annots")]
-                            PdfWriter().write(tmp_out_path, flattened_pdf)
-
-                    
-                    
-                    with open(tmp_out_path, "rb") as f:
-                        st.success("✅ Your TESDA form has been filled.")
-                        st.download_button(
-                            "📥 Download Your Filled Form",
-                            f,
-                            file_name="TESDA_Registration.pdf",
-                            mime="application/pdf",
-                        )
+    with open(tmp_out_path, "rb") as f:
+        st.success("✅ Your TESDA form has been filled.")
+        st.download_button(
+            "📥 Download Your Filled Form",
+            f,
+            file_name="TESDA_Registration.pdf",
+            mime="application/pdf",
+        )
             
             
             except FileNotFoundError:
