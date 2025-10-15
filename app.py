@@ -404,8 +404,8 @@ if user_input:
 
     # Show the "Fill the PDF form now" button only when bot reply includes enrolment info
     if show_button_now:
-    if st.button("📝 Fill the PDF form now"):
-        st.session_state.show_enrolment_form = True
+        if st.button("📝 Fill the PDF form now"):
+            st.session_state.show_enrolment_form = True
 
     # ✅ Render the form independently when the flag is set
     if st.session_state.get("show_enrolment_form"):
