@@ -562,7 +562,6 @@ if st.session_state.get("show_enrolment_form") == "form":
                     template_path = "BIT_Registration_Form_Fillable_v1.pdf"
                     ok_err = fill_pdf(template_path, tmp_out_path, data)
                     # ✅ Flatten the PDF to make it non-editable
-                    from pdfrw import PdfName  # Make sure this import is at the top of your file
                     flattened_pdf = PdfReader(tmp_out_path)
                     for page in flattened_pdf.pages:
                     if PdfName("Annots") in page:
