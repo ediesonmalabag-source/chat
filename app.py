@@ -269,7 +269,28 @@ def chatbot_response(user_message: str) -> str:
         📅 <i>Note: Enrolment is open year-round, but slots are limited. Submit early to secure your schedule.</i><br><br>
         ✅ <b>Need help?</b> Tap the <b>📞 Contact</b> button below for assistance.
         """
-    
+    # -------------------------------------------
+    # START OF FILLABLE PDF
+    # -------------------------------------------
+    # Add interactive form below the instructions
+    st.subheader("🧠 Or fill out your TESDA form here:")
+    with st.form("tesda_form"):
+        last_name = st.text_input("Last Name")
+        first_name = st.text_input("First Name")
+        middle_name = st.text_input("Middle Name")
+        submitted = st.form_submit_button("Generate PDF")
+
+    if submitted:
+        data = {
+            "LastName": last_name,
+            "FirstName": first_name,
+            "MiddleName": middle_name
+        }
+        fill_pdf("tesda_form.pdf", "filled_tesda_form.pdf", data)
+        with open("filled_tesda_form.pdf", "rb") as f:
+            st.success("✅ Your TESDA form has been filled!")
+            st.download_button("📥 Download Your Filled Form", f, file_name="TESDA_Registration.pdf")
+
     # ------------
     # CONTACT
     # -------------
