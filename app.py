@@ -270,7 +270,7 @@ def chatbot_response(user_message: str) -> str:
         ✅ <b>Need help?</b> Tap the <b>📞 Contact</b> button below for assistance.
         """
     # -------------------------------------------
-    # START OF FILLABLE PDF
+    # PDF FILLING FUNCTION - START
     # -------------------------------------------
     # Add interactive form below the instructions
     st.subheader("🧠 Or fill out your TESDA form here:")
@@ -286,7 +286,7 @@ def chatbot_response(user_message: str) -> str:
             "FirstName": first_name,
             "MiddleName": middle_name
         }
-        fill_pdf("tesda_form.pdf", "filled_tesda_form.pdf", data)
+        fill_pdf("BIT_Registration_Form_Fillable_v1.pdf", "filled_tesda_form.pdf", data)
         with open("filled_tesda_form.pdf", "rb") as f:
             st.success("✅ Your TESDA form has been filled!")
             st.download_button("📥 Download Your Filled Form", f, file_name="TESDA_Registration.pdf")
