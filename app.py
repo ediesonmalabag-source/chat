@@ -555,38 +555,36 @@ if st.session_state.get("show_enrolment_form") == "form":
                     tmp_out.close()
 
                     template_path = "BIT_Registration_Form_Fillable_v1.pdf"
-                    ok_err = fill_pdf(template_path, tmp_out_path, data)
-                    # ✅ Flatten the PDF to make it non-editable
-                    flattened_pdf = PdfReader(tmp_out_path)
-                    for page in flattened_pdf.pages:
-                        if PdfName("Annots") in page:
-                            del page[PdfName("Annots")]
-                        PdfWriter().write(tmp_out_path, flattened_pdf)
+                    # call fill function
+ok_err = fill_pdf(template_path, tmp_out_path, data)
 
-                    if isinstance(ok_err, tuple):
-                        ok, err = ok_err
-                    else:
-                        ok, err = True, None
-                        if not ok:
-                            st.error(f"PDF generation failed: {err}")
-                        else:
-                            # Flatten the PDF to make it non-editable (only once, after successful fill)
-                            from pdfrw import PdfName
-                            flattened_pdf = PdfReader(tmp_out_path)
-                            for page in flattened_pdf.pages:
-                                if PdfName("Annots") in page:
-                                    del page[PdfName("Annots")]
-                                    PdfWriter().write(tmp_out_path, flattened_pdf)
-                                    
-                                    with open(tmp_out_path, "rb") as f:
-                                        st.success("✅ Your TESDA form has been filled.")
-                                        st.download_button(
-                                            "📥 Download Your Filled Form",
-                                            f,
-                                            file_name="TESDA_Registration.pdf",
-                                            mime="application/pdf",
-                                        )
-            
+# determine ok / err
+if isinstance(ok_err, tuple):
+    ok, err = ok_err
+else:
+    ok, err = True, None
+
+if not ok:
+    st.error(f"PDF generation failed: {err}")
+else:
+    # ensure viewer will show filled appearances (already handled in fill_pdf if you used NeedAppearances)
+    # Flatten once, only after a successful fill
+    from pdfrw import PdfName
+    flattened_pdf = PdfReader(tmp_out_path)
+    for page in flattened_pdf.pages:
+        if PdfName("Annots") in page:
+            del page[PdfName("Annots")]
+    PdfWriter().write(tmp_out_path, flattened_pdf)
+               
+    # Serve file for download
+    with open(tmp_out_path, "rb") as f:
+        st.success("✅ Your TESDA form has been filled.")
+        st.download_button(
+            "📥 Download Your Filled Form",
+            f,
+            file_name="TESDA_Registration.pdf",
+            mime="application/pdf",
+        )            
             
             except FileNotFoundError:
                 st.error("Template PDF not found. Place BIT_Registration_Form_Fillable_v1.pdf in the app folder.")
