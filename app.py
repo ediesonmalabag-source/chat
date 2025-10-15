@@ -272,7 +272,7 @@ def chatbot_response(user_message: str) -> str:
         📌 <b>Submit all documents</b> personally at the TESDA BIT Admin Office, or email them to <a href='mailto:bit@tesda.gov.ph'>bit@tesda.gov.ph</a><br><br>
         📅 <i>Note: Enrolment is open year-round, but slots are limited. Submit early to secure your schedule.</i><br><br>
         ✅ <b>Need help?</b> Tap the <b>📞 Contact</b> button below for assistance.
-        """, unsafe_allow_html=True)
+        """
   
     # ------------
     # CONTACT
