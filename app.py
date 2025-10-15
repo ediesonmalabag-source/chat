@@ -56,7 +56,17 @@ if "welcome_sent" not in st.session_state:
     st.session_state.welcome_sent = False
 if "last_action" not in st.session_state:
     st.session_state.last_action = None
+    
+# DETECT MOBILE MESSENGER BROWSER 
+screen_width = st_javascript("window.innerWidth") or 768
+user_agent = st_javascript("navigator.userAgent") or ""
 
+is_mobile = screen_width < 768
+is_messenger = "FBAN" in user_agent or "Messenger" in user_agent
+
+if "show_mobile_warning" not in st.session_state:
+    st.session_state.show_mobile_warning = is_mobile and is_messenger
+    
     
 
 # --------------------------
@@ -256,8 +266,9 @@ with st.sidebar:
         st.session_state.welcome_sent = False
         st.session_state.last_action = None
         st.session_state.show_enrolment_form = "idle"
-        st.session_state.show_mobile_warning = is_mobile and is_messenger  # reset mobile tip
+        st.session_state.show_mobile_warning = is_mobile and is_messenger  # ✅ Recalculate properly
         st.rerun()
+        
         
 # --------------------------
 # Chatbot response function
