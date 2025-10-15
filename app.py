@@ -395,11 +395,7 @@ if user_input:
     st.session_state.messages.append(("Bot", bot_reply))
     st.markdown(bot_reply, unsafe_allow_html=True)
 
-# ✅ Check if bot reply contains enrolment info and set flag
-if "bot_reply" in locals():
-    if "enrol" in bot_reply.lower() or "enrollment" in bot_reply.lower():
-        if st.session_state.get("show_enrolment_form") not in ["form", "ready"]:
-            st.session_state.show_enrolment_form = "ready"
+
         
 # ✅ Show the button if flag is "ready"
 if st.session_state.get("show_enrolment_form") == "ready":
