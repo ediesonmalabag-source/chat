@@ -57,7 +57,7 @@ if "welcome_sent" not in st.session_state:
 if "last_action" not in st.session_state:
     st.session_state.last_action = None
 if "show_mobile_warning" not in st.session_state:
-    st.session_state.show_mobile_warning = True
+    st.session_state.show_mobile_warning = is_mobile and is_messenger
     
 
 # --------------------------
