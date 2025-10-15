@@ -509,6 +509,11 @@ if st.session_state.get("show_enrolment_form") == "form":
 
     if not last_name.strip() or not first_name.strip():
         st.error("Please provide at least your first and last name.")
+    
+    # ✅ Always show Cancel button while form is visible
+    if st.button("❌ Cancel"):
+        st.session_state.show_enrolment_form = None
+        st.rerun()
     else:
         data = {
             "LastName": last_name.strip(),
@@ -554,8 +559,4 @@ if st.session_state.get("show_enrolment_form") == "form":
             except Exception:
                 pass
         
-        if st.button("❌ Cancel"):
-            st.session_state.show_enrolment_form = None
-            st.rerun()
-
-
+       
