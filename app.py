@@ -39,10 +39,9 @@ st.set_page_config(page_title="Simple Chatbot", page_icon="🤖", layout="wide")
 # ---------------------------------
 # QUERY PARAM TRIGGER FOR PDF FORM on Page Config
 # ---------------------------------
-query_params = st.experimental_get_query_params()
-if query_params.get("form") == ["1"]:
+if st.query_params.get("form") == "1":
     st.session_state.show_enrolment_form = "form"
-    st.experimental_set_query_params()  # Clear the param after use
+    st.query_params.clear()  # ✅ Clears all query params
 
 # --------------------------
 # Compact layout CSS (place here)
