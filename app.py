@@ -59,19 +59,14 @@ if "last_action" not in st.session_state:
     
 # DETECT MOBILE MESSENGER BROWSER 
 screen_width = st_javascript("window.innerWidth") or 768
-user_agent = st_javascript("navigator.userAgent") or ""
-
-is_mobile = screen_width < 768
-is_messenger = "FBAN" in user_agent or "Messenger" in user_agent
 
 if "show_mobile_warning" not in st.session_state:
     st.session_state.show_mobile_warning = False
 
-# ✅ Wait until user_agent is populated
-if user_agent and user_agent != "" and "show_mobile_warning_evaluated" not in st.session_state:
+if screen_width < 768 and "show_mobile_warning_evaluated" not in st.session_state:
+    st.session_state.show_mobile_warning = True
     st.session_state.show_mobile_warning_evaluated = True
-    if ("FBAN" in user_agent or "Messenger" in user_agent) and screen_width < 768:
-        st.session_state.show_mobile_warning = True        
+    
 # --------------------------
 # Force white background (even on mobile dark mode)
 # --------------------------
