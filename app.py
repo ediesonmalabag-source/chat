@@ -506,6 +506,10 @@ if st.session_state.get("show_enrolment_form") == "form":
             "Region V", "Region VI", "Region VII", "Region VIII", "Region IX",
             "Region X", "Region XI", "Region XII", "Region XIII", "NCR", "CAR", "BARMM"
         ])
+        district = st.selectbox("District", [
+            "District 1", "District 2"
+        ])
+
             
         submitted = st.form_submit_button("Generate PDF")
 
@@ -525,6 +529,7 @@ if st.session_state.get("show_enrolment_form") == "form":
                 "Municipality": municipality.strip(),  
                 "Province": province.strip(),
                 "Region": region.strip(),
+                "Disctrict": district.strip(),
             }
 
             import tempfile, os
