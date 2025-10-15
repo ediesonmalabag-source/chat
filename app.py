@@ -418,7 +418,7 @@ if user_input:
                 contact_no = st.text_input("Contact Number (optional)", value="")
                 email = st.text_input("Email (optional)", value="")
                 submitted = st.form_submit_button("Generate PDF")
-
+        
         if submitted:
             if not last_name.strip() or not first_name.strip():
                 st.error("Please provide at least your first and last name.")
