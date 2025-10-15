@@ -513,6 +513,7 @@ if st.session_state.get("show_enrolment_form") == "form":
             "Filipino", "American", "Chinese", "Japanese", "Korean", "Indian", "Indonesian",
             "Malaysian", "Vietnamese", "Thai", "Singaporean", "Other"
         ])
+        sex = st.radio("Sex", ["Male", "Female"])
 
             
         submitted = st.form_submit_button("Generate PDF")
@@ -535,6 +536,7 @@ if st.session_state.get("show_enrolment_form") == "form":
                 "Region": region.strip(),
                 "District": district.strip(),
                 "Nationality": nationality.strip(),
+                "Sex": sex,
             }
 
             import tempfile, os
