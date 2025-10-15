@@ -36,6 +36,15 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
 # --------------------------
 st.set_page_config(page_title="Simple Chatbot", page_icon="🤖", layout="wide")
 
+st.markdown("""
+<style>
+html {
+  scroll-behavior: smooth;
+}
+</style>
+""", unsafe_allow_html=True)
+
+
 # ---------------------------------
 # QUERY PARAM TRIGGER FOR PDF FORM on Page Config
 # ---------------------------------
