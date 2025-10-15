@@ -486,7 +486,7 @@ for role, msg in st.session_state.messages:
 # --------------------------
 
 
-if screen_width < 768 and st.session_state.show_mobile_warning:
+if st.session_state.show_mobile_warning:
     with st.expander("📱 Mobile Tip", expanded=True):
         st.markdown(
             """
