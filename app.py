@@ -408,8 +408,8 @@ if user_input:
 
     # ✅ Show the form
     if st.session_state.get("show_enrolment_form"):
-    st.subheader("🧠 Fill the TESDA registration form")
-    with st.form("tesda_form"):
+        st.subheader("🧠 Fill the TESDA registration form")
+        with st.form("tesda_form"):
         last_name = st.text_input("Last Name", value="")
         first_name = st.text_input("First Name", value="")
         middle_name = st.text_input("Middle Name", value="")
