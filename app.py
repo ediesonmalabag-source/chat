@@ -292,7 +292,7 @@ def chatbot_response(user_message: str) -> str:
         matched = True
         response_html = """<h4 style='color:#003366; font-weight:bold;'>📋 TESDA Enrolment Form</h4>
         You can now fill out your TESDA registration form directly inside this app.<br><br>
-        👉 <a href='?form=1'>Click here to fill up the form</a>
+        👉 <a href='?form=1' target='_self' style='font-weight:bold; color:#2C5FA0;'>Click here to fill up the form</a>
         Once submitted, you'll be able to download your completed PDF instantly.<br><br>
         ✅ <i>No need to print or scan — it's all digital.</i>
         """
