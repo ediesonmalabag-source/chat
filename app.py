@@ -367,7 +367,7 @@ def chatbot_response(user_message: str) -> str:
         • 📞 Contact<br><br>
         Or just tap the buttons below!
         """, unsafe_allow_html=True)
-    return "Displayed response"
+    
 
 
 # --------------------------
