@@ -247,8 +247,11 @@ with st.sidebar:
     if st.button("🔄 Reset Chat"):
         st.session_state.messages = []
         st.session_state.welcome_sent = False
+        st.session_state.last_action = None
+        st.session_state.show_enrolment_form = "idle"
+        st.session_state.show_mobile_warning = True  # Optional: reset mobile tip
         st.rerun()
-
+        
 # --------------------------
 # Chatbot response function
 # --------------------------
