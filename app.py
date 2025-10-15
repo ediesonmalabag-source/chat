@@ -266,7 +266,7 @@ def chatbot_response(user_message: str) -> str:
         🖨️ Print the completed form<br>
         ✒️ Write your <b>full name and signature</b> in the spaces provided<br>
         🖼️ Attach <b>two (2) recent 1x1 ID photos</b> taken within the last 6 months in the designated boxes on the form<br><br>
-        <b>Or</b> click the button below to fill the form inside the app.
+        <b>Or</b> click the button below to fill the form inside the app.<br><br>
         <b>📋 Additional Enrolment Requirements:</b><br>
         • <b>Photocopy of PSA Birth Certificate</b><br>
         • <b>Photocopy of Marriage Certificate</b>, if married<br><br>
@@ -383,46 +383,52 @@ if user_input:
    # Save reply to history and render it (HTML allowed)
     st.session_state.messages.append(("Bot", bot_reply))
     st.markdown(bot_reply, unsafe_allow_html=True)
+# --- actionable button shown under the enrolment instructions ---
+if st.button("📝 Fill the PDF form now"):
+    st.session_state.show_enrolment_form = True
 
-    # Show enrolment form when user asked about enrolment (typed or button)
-    normalized = user_input.lower().strip()
-    if normalized in ("enrolment", "enrollment", "enroll", "enrol") or any(
-        kw in normalized for kw in ["enrolment", "enrollment", "enroll", "enrol"]
-    ):
-        st.subheader("🧠 Fill the TESDA registration form")
-        with st.form("tesda_form"):
-            last_name = st.text_input("Last Name", value="")
-            first_name = st.text_input("First Name", value="")
-            middle_name = st.text_input("Middle Name", value="")
-            contact_no = st.text_input("Contact Number (optional)", value="")
-            email = st.text_input("Email (optional)", value="")
-            submitted = st.form_submit_button("Generate PDF")
+# Show the enrolment form when the button was pressed or when user typed "enrolment"
+normalized = (user_input or "").lower().strip()
+if st.session_state.get("show_enrolment_form") or normalized in ("enrolment", "enrollment", "enroll", "enrol"):
+    st.session_state.show_enrolment_form = False  # clear flag so it doesn't auto-open on next rerun
 
-        if submitted:
-            # Basic validation
-            if not last_name.strip() or not first_name.strip():
-                st.error("Please provide at least your first and last name.")
-            else:
-                # Map these keys to the exact PDF field names (case-sensitive)
-                data = {
-                    "LastName": last_name.strip(),
-                    "FirstName": first_name.strip(),
-                    "MiddleName": middle_name.strip(),
-                    "ContactNo": contact_no.strip(),
-                    "Email": email.strip(),
-                }
+    st.subheader("🧠 Fill the TESDA registration form")
+    with st.form("tesda_form"):
+        last_name = st.text_input("Last Name")
+        first_name = st.text_input("First Name")
+        middle_name = st.text_input("Middle Name")
+        contact_no = st.text_input("Contact Number (optional)")
+        email = st.text_input("Email (optional)")
+        submitted = st.form_submit_button("Generate PDF")
 
-                import tempfile
-                try:
-                    with st.spinner("Filling PDF..."):
-                        tmp_out = tempfile.NamedTemporaryFile(suffix=".pdf", delete=False)
-                        tmp_out_path = tmp_out.name
-                        tmp_out.close()
+    if submitted:
+        if not last_name.strip() or not first_name.strip():
+            st.error("Please provide at least your first and last name.")
+        else:
+            data = {
+                "LastName": last_name.strip(),
+                "FirstName": first_name.strip(),
+                "MiddleName": middle_name.strip(),
+                "ContactNo": contact_no.strip(),
+                "Email": email.strip(),
+            }
+            import tempfile, os
+            try:
+                with st.spinner("Filling PDF..."):
+                    tmp_out = tempfile.NamedTemporaryFile(suffix=".pdf", delete=False)
+                    tmp_out_path = tmp_out.name
+                    tmp_out.close()
 
-                        template_path = "BIT_Registration_Form_Fillable_v1.pdf"  # ensure this file exists in app dir
-                        fill_pdf(template_path, tmp_out_path, data)
+                    template_path = "BIT_Registration_Form_Fillable_v1.pdf"
+                    ok_err = fill_pdf(template_path, tmp_out_path, data)
+                    if isinstance(ok_err, tuple):
+                        ok, err = ok_err
+                    else:
+                        ok, err = True, None
 
-                    # Offer download
+                if not ok:
+                    st.error(f"PDF generation failed: {err}")
+                else:
                     with open(tmp_out_path, "rb") as f:
                         st.success("✅ Your TESDA form has been filled.")
                         st.download_button(
@@ -431,11 +437,15 @@ if user_input:
                             file_name="TESDA_Registration.pdf",
                             mime="application/pdf",
                         )
-
-                except FileNotFoundError:
-                    st.error("Template PDF not found. Place BIT_Registration_Form_Fillable_v1.pdf in the app folder.")
-                except Exception as e:
-                    st.error(f"Failed to generate PDF: {e}")                
+            except FileNotFoundError:
+                st.error("Template PDF not found. Place BIT_Registration_Form_Fillable_v1.pdf in the app folder.")
+            except Exception as e:
+                st.error(f"Failed to generate PDF: {e}")
+            finally:
+                try:
+                    os.remove(tmp_out_path)
+                except Exception:
+                    pass
 # --------------------------
 # Display chat history
 # --------------------------
