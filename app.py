@@ -41,7 +41,7 @@ st.set_page_config(page_title="Simple Chatbot", page_icon="🤖", layout="wide")
 # ---------------------------------
 if st.query_params.get("form") == "1":
     st.session_state.show_enrolment_form = "form"
-    st.query_params.clear()  # ✅ Clears all query params
+    st.query_params.clear()  # ✅ Clear param after use
 
 # --------------------------
 # Compact layout CSS (place here)
@@ -292,7 +292,7 @@ def chatbot_response(user_message: str) -> str:
         matched = True
         response_html = """<h4 style='color:#003366; font-weight:bold;'>📋 TESDA Enrolment Form</h4>
         You can now fill out your TESDA registration form directly inside this app.<br><br>
-        👉 <a href='?form=1' style='font-weight:bold; color:#2C5FA0;'>Click here to fill up the form</a>
+        👉 <a href='?form=1'>Click here to fill up the form</a>
         Once submitted, you'll be able to download your completed PDF instantly.<br><br>
         ✅ <i>No need to print or scan — it's all digital.</i>
         """
