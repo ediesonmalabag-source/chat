@@ -2,9 +2,23 @@ import streamlit as st
 import time
 import re
 from streamlit_javascript import st_javascript
-# -----------------------------
-# START OF PDF FILL
-# -----------------------------
+
+# 🔧 PDF filling function (top of file)
+from pdfrw import PdfReader, PdfWriter, PdfDict
+
+def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
+    template_pdf = PdfReader(input_pdf_path)
+    for page in template_pdf.pages:
+        annotations = page['/Annots']
+        if annotations:
+            for annotation in annotations:
+                if annotation['/Subtype'] == '/Widget':
+                    field = annotation.get('/T')
+                    if field:
+                        key = field[1:-1]
+                        if key in data_dict:
+                            annotation.update(PdfDict(V='{}'.format(data_dict[key])))
+    PdfWriter().write(output_pdf_path, template_pdf)
 
 # --------------------------
 # Page config (must be first)
