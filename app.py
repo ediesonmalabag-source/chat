@@ -266,6 +266,7 @@ def chatbot_response(user_message: str) -> str:
         🖨️ Print the completed form<br>
         ✒️ Write your <b>full name and signature</b> in the spaces provided<br>
         🖼️ Attach <b>two (2) recent 1x1 ID photos</b> taken within the last 6 months in the designated boxes on the form<br><br>
+        <b>Or</b> click the button below to fill the form inside the app.
         <b>📋 Additional Enrolment Requirements:</b><br>
         • <b>Photocopy of PSA Birth Certificate</b><br>
         • <b>Photocopy of Marriage Certificate</b>, if married<br><br>
