@@ -296,7 +296,7 @@ def chatbot_response(user_message: str) -> str:
         Once submitted, you'll be able to download your completed PDF instantly.<br><br>
         ✅ <i>No need to print or scan — it's all digital.</i>
         """
-        st.session_state.show_enrolment_form = "form"
+       
 
     # ------------
     # CONTACT
