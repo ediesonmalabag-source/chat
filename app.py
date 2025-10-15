@@ -348,7 +348,7 @@ def chatbot_response(user_message: str) -> str:
 
     elif "assessment" in user_message:
         match = True
-        st.markdown("📊 Assessment schedules and requirements vary by qualification. Please contact TESDA BIT for details."), unsafe_allow_html=True)
+        st.markdown("📊 Assessment schedules and requirements vary by qualification. Please contact TESDA BIT for details.", unsafe_allow_html=True)
 
 
     else:
