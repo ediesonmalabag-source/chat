@@ -28,8 +28,8 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
                                 a.update(PdfDict(V=str(data_dict[key])))
         PdfWriter().write(output_pdf_path, template_pdf)
         # ✅ Flatten the PDF to make it non-editable
-flattened_pdf = PdfReader(output_pdf_path)
-for page in flattened_pdf.pages:
+        flattened_pdf = PdfReader(output_pdf_path)
+        for page in flattened_pdf.pages:
     
     if "/Annots" in page:
         del page["/Annots"]
