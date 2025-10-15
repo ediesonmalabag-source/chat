@@ -565,8 +565,8 @@ if st.session_state.get("show_enrolment_form") == "form":
                     from pdfrw import PdfName  # Make sure this import is at the top of your file
                     flattened_pdf = PdfReader(tmp_out_path)
                     for page in flattened_pdf.pages:
-                        if PdfName("/Annots") in page:
-                            del page[PdfName("/Annots")]
+                    if PdfName("Annots") in page:
+                        del page[PdfName("Annots")]
                     PdfWriter().write(tmp_out_path, flattened_pdf)
 
                     if isinstance(ok_err, tuple):
