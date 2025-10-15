@@ -508,19 +508,7 @@ if st.session_state.get("show_enrolment_form") == "form":
         barangay = st.text_input("Barangay", value="")
         municipality = st.text_input("City / Municipality", value="")
         province = st.text_input("Province", value="")
-        region = st.selectbox("Region", [
-            "Region I", "Region II", "Region III", "Region IV-A", "Region IV-B",
-            "Region V", "Region VI", "Region VII", "Region VIII", "Region IX",
-            "Region X", "Region XI", "Region XII", "Region XIII", "NCR", "CAR", "BARMM"
-        ])
-        district = st.selectbox("District", [
-            "District 1", "District 2"
-        ])
-        nationality = st.selectbox("Nationality", [
-            "Filipino", "American", "Chinese", "Japanese", "Korean", "Indian", "Indonesian",
-            "Malaysian", "Vietnamese", "Thai", "Singaporean", "Other"
-        ])
-        sex = st.radio("Sex", ["Male", "Female"])
+      
 
             
         submitted = st.form_submit_button("Generate PDF")
@@ -540,11 +528,6 @@ if st.session_state.get("show_enrolment_form") == "form":
                 "Barangay": barangay.strip(),
                 "Municipality": municipality.strip(),  
                 "Province": province.strip(),
-                "Region": region.strip(),
-                "District": district.strip(),
-                "Nationality": nationality.strip(),
-                "sex_male": "Yes" if sex == "Male" else "",
-                "sex_female": "Yes" if sex == "Female" else "",
             }
 
             import tempfile, os
