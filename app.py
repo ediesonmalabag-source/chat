@@ -507,7 +507,7 @@ if st.session_state.get("show_enrolment_form") == "form":
             data = {
                 "LastName": last_name.strip(),
                 "FirstName": first_name.strip(),
-                "MiddleName": middle_name.strip(),
+                "MidName": middle_name.strip(),
                 "ContactNo": contact_no.strip(),
                 "Email": email.strip(),
             }
