@@ -556,25 +556,24 @@ if st.session_state.get("show_enrolment_form") == "form":
 
                     template_path = "BIT_Registration_Form_Fillable_v1.pdf"
                     # call fill function
-ok_err = fill_pdf(template_path, tmp_out_path, data)
+                    ok_err = fill_pdf(template_path, tmp_out_path, data)
+                    # determine ok / err
+                    if isinstance(ok_err, tuple):
+                        ok, err = ok_err
+                    else:
+                        ok, err = True, None
 
-# determine ok / err
-if isinstance(ok_err, tuple):
-    ok, err = ok_err
-else:
-    ok, err = True, None
-
-if not ok:
-    st.error(f"PDF generation failed: {err}")
-else:
-    # ensure viewer will show filled appearances (already handled in fill_pdf if you used NeedAppearances)
-    # Flatten once, only after a successful fill
-    from pdfrw import PdfName
-    flattened_pdf = PdfReader(tmp_out_path)
-    for page in flattened_pdf.pages:
-        if PdfName("Annots") in page:
-            del page[PdfName("Annots")]
-    PdfWriter().write(tmp_out_path, flattened_pdf)
+                    if not ok:
+                        st.error(f"PDF generation failed: {err}")
+                    else:
+                        # ensure viewer will show filled appearances (already handled in fill_pdf if you used NeedAppearances)
+                        # Flatten once, only after a successful fill
+                        from pdfrw import PdfName
+                        flattened_pdf = PdfReader(tmp_out_path)
+                        for page in flattened_pdf.pages:
+                            if PdfName("Annots") in page:
+                                del page[PdfName("Annots")]
+                            PdfWriter().write(tmp_out_path, flattened_pdf)
                
     # Serve file for download
     with open(tmp_out_path, "rb") as f:
