@@ -406,7 +406,7 @@ if user_input:
             st.session_state.show_enrolment_form = True
 
     # Render the enrolment form when requested (typed enrolment or button)
-   if st.session_state.get("show_enrolment_form"):
+        if st.session_state.get("show_enrolment_form"):
         # clear the flag so it doesn't auto-open on next rerun
         st.session_state.show_enrolment_form = False
 
