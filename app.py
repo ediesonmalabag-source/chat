@@ -497,6 +497,7 @@ if st.session_state.get("show_enrolment_form") == "form":
         middle_name = st.text_input("Middle Name", value="")
         contact_no = st.text_input("Contact Number (optional)", value="")
         email = st.text_input("Email (optional)", value="")
+        number_street = st.text_input("House No. / Street", value="")
         submitted = st.form_submit_button("Generate PDF")
 
     # ✅ Only run this block if form is submitted
@@ -510,6 +511,7 @@ if st.session_state.get("show_enrolment_form") == "form":
                 "MidName": middle_name.strip(),
                 "ContactNo": contact_no.strip(),
                 "Email": email.strip(),
+                "NumberStreet": number_street.strip(),
             }
 
             import tempfile, os
