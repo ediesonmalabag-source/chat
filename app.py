@@ -504,9 +504,9 @@ if st.session_state.get("show_enrolment_form") == "form":
         submitted = st.form_submit_button("Generate PDF")
 
     # ✅ Handle submission outside the form block
-    if submitted:
-        if not last_name.strip() or not first_name.strip():
-            st.error("Please provide at least your first and last name.")
+   if submitted:
+    if not last_name.strip() or not first_name.strip():
+        st.error("Please provide at least your first and last name.")
     else:
         data = {
             "LastName": last_name.strip(),
@@ -551,4 +551,3 @@ if st.session_state.get("show_enrolment_form") == "form":
                 os.remove(tmp_out_path)
             except Exception:
                 pass
-       
