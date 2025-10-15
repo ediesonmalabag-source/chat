@@ -33,7 +33,7 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
             if annots:
                 for a in annots:
                     a.update(PdfDict(Ff=1))  # Lock fields before flattening
-                page["/Annots"] = annots  # Reassign updated annotations
+                page[PdfName("Annots")] = annots  # Reassign updated annotations
 
         PdfWriter().write(output_pdf_path, flattened_pdf)
 
