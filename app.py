@@ -168,7 +168,7 @@ if "show_mobile_warning" not in st.session_state:
 
 # ensure flag exists for showing the enrolment form
 if "show_enrolment_form" not in st.session_state:
-    st.session_state.show_enrolment_form = None
+    st.session_state.show_enrolment_form = "idle"
 
 
 # ------------------------------------
@@ -398,8 +398,7 @@ if user_input:
 # ✅ Show BOT REPLY
 if "bot_reply" in locals():
     if "enrol" in bot_reply.lower() or "enrollment" in bot_reply.lower():
-        if st.session_state.get("show_enrolment_form") not in ["form", "ready"]:
-            st.session_state.show_enrolment_form = "ready"
+        st.session_state.show_enrolment_form = "ready"
         
 # ✅ Show the button if flag is "ready"
 if st.session_state.get("show_enrolment_form") == "ready":
