@@ -10,8 +10,6 @@ from pdfrw import PdfReader, PdfWriter, PdfDict, PdfName
 def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
     try:
         template_pdf = PdfReader(input_pdf_path)
-
-        # Fill form fields
         for page in template_pdf.pages:
             annots = page.get("/Annots")
             if annots:
@@ -21,28 +19,12 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
                         if t:
                             key = t[1:-1]
                             if key in data_dict:
-                                a.update(PdfDict(V=str(data_dict[key]), Ff=1))  # Ff=1 makes field read-only
-
-        # Save filled version
+                                a.update(PdfDict(V=str(data_dict[key])))
         PdfWriter().write(output_pdf_path, template_pdf)
-
-        # Reload and flatten
-        flattened_pdf = PdfReader(output_pdf_path)
-        for page in flattened_pdf.pages:
-            annots = page.get("/Annots")
-            if annots:
-                for a in annots:
-                    a.update(PdfDict(Ff=1))  # Lock fields before flattening
-                page[PdfName("Annots")] = annots  # Reassign updated annotations
-
-        PdfWriter().write(output_pdf_path, flattened_pdf)
-
         return True, None
-
-    except FileNotFoundError:
-        return False, f"Template not found: {input_pdf_path}"
     except Exception as e:
-        return False, f"Failed writing filled PDF: {e}"        
+        return False, f"Failed writing filled PDF: {e}"
+
 # --------------------------
 # Page config (must be first)
 # --------------------------
@@ -576,6 +558,16 @@ if st.session_state.get("show_enrolment_form") == "form":
                 if not ok:
                     st.error(f"PDF generation failed: {err}")
                 else:
+                    # ✅ Flatten the PDF to make it non-editable
+                    from pdfrw import PdfName
+                    flattened_pdf = PdfReader(tmp_out_path)
+                    for page in flattened_pdf.pages:
+                        if PdfName("Annots") in page:
+                            del page[PdfName("Annots")]
+                            PdfWriter().write(tmp_out_path, flattened_pdf)
+
+                    
+                    
                     with open(tmp_out_path, "rb") as f:
                         st.success("✅ Your TESDA form has been filled.")
                         st.download_button(
@@ -584,6 +576,8 @@ if st.session_state.get("show_enrolment_form") == "form":
                             file_name="TESDA_Registration.pdf",
                             mime="application/pdf",
                         )
+            
+            
             except FileNotFoundError:
                 st.error("Template PDF not found. Place BIT_Registration_Form_Fillable_v1.pdf in the app folder.")
             except Exception as e:
