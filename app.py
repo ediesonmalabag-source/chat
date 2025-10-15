@@ -67,10 +67,10 @@ is_messenger = "FBAN" in user_agent or "Messenger" in user_agent
 if "show_mobile_warning" not in st.session_state:
     st.session_state.show_mobile_warning = False  # default
 
-if not st.session_state.show_mobile_warning:
-    if user_agent and ("FBAN" in user_agent or "Messenger" in user_agent):
-        if screen_width < 768:
-            st.session_state.show_mobile_warning = True
+# ✅ Only evaluate if user_agent is ready
+if user_agent and user_agent != "":
+    if ("FBAN" in user_agent or "Messenger" in user_agent) and screen_width < 768:
+        st.session_state.show_mobile_warning = True
         
 # --------------------------
 # Force white background (even on mobile dark mode)
