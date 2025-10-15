@@ -48,9 +48,9 @@ html {
 # ---------------------------------
 # QUERY PARAM TRIGGER FOR PDF FORM on Page Config
 # ---------------------------------
-if st.query_params.get("form") == "1":
+if st.query_params.get("form") == "1" and st.session_state.get("show_enrolment_form") != "form":
     st.session_state.show_enrolment_form = "form"
-    st.query_params.clear()  # ✅ Clear param after use
+    st.query_params.clear()
 
 # --------------------------
 # Compact layout CSS (place here)
