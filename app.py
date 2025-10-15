@@ -566,7 +566,7 @@ if st.session_state.get("show_enrolment_form") == "form":
                     flattened_pdf = PdfReader(tmp_out_path)
                     for page in flattened_pdf.pages:
                         if PdfName("/Annots") in page:
-                        del page[PdfName("/Annots")]
+                            del page[PdfName("/Annots")]
                     PdfWriter().write(tmp_out_path, flattened_pdf)
 
                     if isinstance(ok_err, tuple):
