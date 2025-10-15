@@ -500,7 +500,7 @@ if st.session_state.get("show_enrolment_form") == "form":
         number_street = st.text_input("House No. / Street", value="")
         barangay = st.text_input("Barangay", value="")
         municipality = st.text_input("City / Municipality", value="")
-        province = st.text_input("Province", value=""
+        province = st.text_input("Province", value="")
         
         submitted = st.form_submit_button("Generate PDF")
 
