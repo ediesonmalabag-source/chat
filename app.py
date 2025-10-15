@@ -322,13 +322,13 @@ def chatbot_response(user_message: str) -> str:
         •🏭<b>Food Processing NC II</b><br>
         •🧹<b>Housekeeping NC II</b><br>
         •🧱<b>Masonry NC II</b><br>
-        •🔧<b>Motorcycle/Small Engine Servicing NC II</b><br>
+        •🔧<b>Motorcycle Small Engine Servicing NC II</b><br>
         •🌱<b>Organic Agriculture Production NC II</b><br>
         •🔩<b>Shielded Metal Arc Welding (SMAW) NC I</b><br>
         •🔩<b>Shielded Metal Arc Welding (SMAW) NC II</b><br><br>
          <h5 style='color:#003366;'>🧑‍🏫 Trainer Qualification:</h5>
         •🏘️<b>Community-Based Trainers Methodology Course</b><br>
-        •📋<b>Trainer's Methodology Level I</b> (for aspiring trainers and assessors)<br><br>
+        •📋<b>Trainers Methodology Level I</b> (for aspiring trainers and assessors)<br><br>
         <h5 style='color:#003366;'>⏱️ Training Duration:</h5>
         • Varies per qualification<br>
         • Includes classroom instruction, hands-on activities, and competency assessment<br><br>
