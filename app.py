@@ -577,15 +577,15 @@ if st.session_state.get("show_enrolment_form") == "form":
                                 if PdfName("Annots") in page:
                                     del page[PdfName("Annots")]
                                     PdfWriter().write(tmp_out_path, flattened_pdf)
-
-    with open(tmp_out_path, "rb") as f:
-        st.success("✅ Your TESDA form has been filled.")
-        st.download_button(
-            "📥 Download Your Filled Form",
-            f,
-            file_name="TESDA_Registration.pdf",
-            mime="application/pdf",
-        )
+                                    
+                                    with open(tmp_out_path, "rb") as f:
+                                        st.success("✅ Your TESDA form has been filled.")
+                                        st.download_button(
+                                            "📥 Download Your Filled Form",
+                                            f,
+                                            file_name="TESDA_Registration.pdf",
+                                            mime="application/pdf",
+                                        )
             
             
             except FileNotFoundError:
