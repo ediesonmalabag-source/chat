@@ -491,9 +491,7 @@ with col4:
 if st.session_state.get("show_enrolment_form") == "form":
     st.markdown("<div id='fillform'></div>", unsafe_allow_html=True)
     
-    if st.button("❌ Cancel"):
-        st.session_state.show_enrolment_form = None
-        st.rerun()
+    
     
     st.subheader("🧠 Fill the TESDA registration form")
     
@@ -556,6 +554,8 @@ if st.session_state.get("show_enrolment_form") == "form":
             except Exception:
                 pass
 
-
+if st.button("❌ Cancel"):
+        st.session_state.show_enrolment_form = None
+        st.rerun()
 
 
