@@ -273,21 +273,13 @@ def chatbot_response(user_message: str) -> str:
     # ------------
     elif any(kw in user_message for kw in ["enrollment", "enrolment", "enroll", "enrol", "enroling", "enrolling"]):
         matched = True
-        response_html = """<h4 style='color:#003366; font-weight:bold;'>📋 Enrolment Procedures</h4>
-        📥 <b>Download the Fillable PDF Registration Form</b> – <a href='https://github.com/ediesonmalabag-source/chat/raw/main/BIT_Registration_Form_Fillable_v1.pdf' target='_blank' style='color:#003366; font-weight:bold;'>Click here to download</a><br>
-        🖥️ Open the form using any PDF reader (e.g., Adobe Acrobat, browser, Foxit)<br>
-        ✍️ Fill in your personal details digitally using the fillable fields<br>
-        🖨️ Print the completed form<br>
-        ✒️ Write your <b>full name and signature</b> in the spaces provided<br>
-        🖼️ Attach <b>two (2) recent 1x1 ID photos</b> taken within the last 6 months in the designated boxes on the form<br><br>
-        <b>Or</b> click the button below to fill the form inside the app.<br><br>
-        <b>📋 Additional Enrolment Requirements:</b><br>
-        • <b>Photocopy of PSA Birth Certificate</b><br>
-        • <b>Photocopy of Marriage Certificate</b>, if married<br><br>
-        📌 <b>Submit all documents</b> personally at the TESDA BIT Admin Office, or email them to <a href='mailto:bit@tesda.gov.ph'>bit@tesda.gov.ph</a><br><br>
-        📅 <i>Note: Enrolment is open year-round, but slots are limited. Submit early to secure your schedule.</i><br><br>
-        ✅ <b>Need help?</b> Tap the <b>📞 Contact</b> button below for assistance.
+        response_html = """<h4 style='color:#003366; font-weight:bold;'>📋 TESDA Enrolment Form</h4>
+        You can now fill out your TESDA registration form directly inside this app.<br><br>
+        👉 <a href='#fillform' style='font-weight:bold; color:#2C5FA0;'>Click here to fill up the form</a><br><br>
+        Once submitted, you'll be able to download your completed PDF instantly.<br><br>
+        ✅ <i>No need to print or scan — it's all digital.</i>
         """
+        st.session_state.show_enrolment_form = "form"
 
     # ------------
     # CONTACT
@@ -395,18 +387,16 @@ if user_input:
     st.session_state.messages.append(("Bot", bot_reply))
     st.markdown(bot_reply, unsafe_allow_html=True)
 
-# ✅ Show BOT REPLY
-if "bot_reply" in locals():
-    if "enrol" in bot_reply.lower() or "enrollment" in bot_reply.lower():
-        st.session_state.show_enrolment_form = "ready"
-        
-# ✅ Show the button if flag is "ready"
-if st.session_state.get("show_enrolment_form") == "ready":
-    if st.button("📝 Fill the PDF form now"):
-        st.session_state.show_enrolment_form = "form"
+
 
 # ✅ Show the form if flag is "form"
 if st.session_state.get("show_enrolment_form") == "form":
+    st.markdown("<div id='fillform'></div>", unsafe_allow_html=True)
+    
+    if st.button("❌ Cancel"):
+        st.session_state.show_enrolment_form = None
+        st.rerun()
+    
     st.subheader("🧠 Fill the TESDA registration form")
     with st.form("tesda_form"):
         last_name = st.text_input("Last Name", value="")
