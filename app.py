@@ -408,63 +408,65 @@ if st.session_state.get("show_enrolment_form") == "form":
         st.rerun()
     
     st.subheader("🧠 Fill the TESDA registration form")
+    
     with st.form("tesda_form"):
-        last_name = st.text_input("Last Name", value="")
-        first_name = st.text_input("First Name", value="")
-        middle_name = st.text_input("Middle Name", value="")
-        contact_no = st.text_input("Contact Number (optional)", value="")
-        email = st.text_input("Email (optional)", value="")
-        submitted = st.form_submit_button("Generate PDF")
+    last_name = st.text_input("Last Name", value="")
+    first_name = st.text_input("First Name", value="")
+    middle_name = st.text_input("Middle Name", value="")
+    contact_no = st.text_input("Contact Number (optional)", value="")
+    email = st.text_input("Email (optional)", value="")
+    submitted = st.form_submit_button("Generate PDF")
 
-        if submitted:
-            st.session_state.show_enrolment_form = None  # ✅ Reset after submission
+# ✅ Handle submission outside the form block
+if submitted:
+    st.session_state.show_enrolment_form = None
 
-            if not last_name.strip() or not first_name.strip():
-                st.error("Please provide at least your first and last name.")
+    if not last_name.strip() or not first_name.strip():
+        st.error("Please provide at least your first and last name.")
+    else:
+        data = {
+            "LastName": last_name.strip(),
+            "FirstName": first_name.strip(),
+            "MiddleName": middle_name.strip(),
+            "ContactNo": contact_no.strip(),
+            "Email": email.strip(),
+        }
+
+        import tempfile, os
+        try:
+            with st.spinner("Filling PDF..."):
+                tmp_out = tempfile.NamedTemporaryFile(suffix=".pdf", delete=False)
+                tmp_out_path = tmp_out.name
+                tmp_out.close()
+
+                template_path = "BIT_Registration_Form_Fillable_v1.pdf"
+                ok_err = fill_pdf(template_path, tmp_out_path, data)
+
+                if isinstance(ok_err, tuple):
+                    ok, err = ok_err
+                else:
+                    ok, err = True, None
+
+            if not ok:
+                st.error(f"PDF generation failed: {err}")
             else:
-                data = {
-                    "LastName": last_name.strip(),
-                    "FirstName": first_name.strip(),
-                    "MiddleName": middle_name.strip(),
-                    "ContactNo": contact_no.strip(),
-                    "Email": email.strip(),
-                }
-
-                import tempfile, os
-                try:
-                    with st.spinner("Filling PDF..."):
-                        tmp_out = tempfile.NamedTemporaryFile(suffix=".pdf", delete=False)
-                        tmp_out_path = tmp_out.name
-                        tmp_out.close()
-
-                        template_path = "BIT_Registration_Form_Fillable_v1.pdf"
-                        ok_err = fill_pdf(template_path, tmp_out_path, data)
-
-                        if isinstance(ok_err, tuple):
-                            ok, err = ok_err
-                        else:
-                            ok, err = True, None
-
-                    if not ok:
-                        st.error(f"PDF generation failed: {err}")
-                    else:
-                        with open(tmp_out_path, "rb") as f:
-                            st.success("✅ Your TESDA form has been filled.")
-                            st.download_button(
-                                "📥 Download Your Filled Form",
-                                f,
-                                file_name="TESDA_Registration.pdf",
-                                mime="application/pdf",
-                            )
-                except FileNotFoundError:
-                    st.error("Template PDF not found. Place BIT_Registration_Form_Fillable_v1.pdf in the app folder.")
-                except Exception as e:
-                    st.error(f"Failed to generate PDF: {e}")
-                finally:
-                    try:
-                        os.remove(tmp_out_path)
-                    except Exception:
-                        pass
+                with open(tmp_out_path, "rb") as f:
+                    st.success("✅ Your TESDA form has been filled.")
+                    st.download_button(
+                        "📥 Download Your Filled Form",
+                        f,
+                        file_name="TESDA_Registration.pdf",
+                        mime="application/pdf",
+                    )
+        except FileNotFoundError:
+            st.error("Template PDF not found. Place BIT_Registration_Form_Fillable_v1.pdf in the app folder.")
+        except Exception as e:
+            st.error(f"Failed to generate PDF: {e}")
+        finally:
+            try:
+                os.remove(tmp_out_path)
+            except Exception:
+                pass
  
 # --------------------------
 # Display chat history
