@@ -529,7 +529,7 @@ if st.session_state.get("show_enrolment_form") == "form":
                 "Municipality": municipality.strip(),  
                 "Province": province.strip(),
                 "Region": region.strip(),
-                "Disctrict": district.strip(),
+                "District": district.strip(),
             }
 
             import tempfile, os
