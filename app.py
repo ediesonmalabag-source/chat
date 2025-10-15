@@ -407,18 +407,17 @@ if user_input:
         if st.button("📝 Fill the PDF form now"):
             st.session_state.show_enrolment_form = True
 
-    # ✅ Render the form independently when the flag is set
-    if st.session_state.get("show_enrolment_form"):
-        st.session_state.show_enrolment_form = False
-
-    st.subheader("🧠 Fill the TESDA registration form")
-    with st.form("tesda_form"):
-        last_name = st.text_input("Last Name", value="")
-        first_name = st.text_input("First Name", value="")
-        middle_name = st.text_input("Middle Name", value="")
-        contact_no = st.text_input("Contact Number (optional)", value="")
-        email = st.text_input("Email (optional)", value="")
-        submitted = st.form_submit_button("Generate PDF")
+        # ✅ Render the form independently when the flag is set
+        if st.session_state.get("show_enrolment_form"):
+            st.session_state.show_enrolment_form = False
+            st.subheader("🧠 Fill the TESDA registration form")
+            with st.form("tesda_form"):
+                last_name = st.text_input("Last Name", value="")
+                first_name = st.text_input("First Name", value="")
+                middle_name = st.text_input("Middle Name", value="")
+                contact_no = st.text_input("Contact Number (optional)", value="")
+                email = st.text_input("Email (optional)", value="")
+                submitted = st.form_submit_button("Generate PDF")
 
         if submitted:
             if not last_name.strip() or not first_name.strip():
