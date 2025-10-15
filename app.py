@@ -419,9 +419,9 @@ if user_input:
                 email = st.text_input("Email (optional)", value="")
                 submitted = st.form_submit_button("Generate PDF")
                 
-    if submitted:
-        if not last_name.strip() or not first_name.strip():
-            st.error("Please provide at least your first and last name.")
+if submitted:
+    if not last_name.strip() or not first_name.strip():
+        st.error("Please provide at least your first and last name.")
     else:
         data = {
             "LastName": last_name.strip(),
@@ -465,8 +465,9 @@ if user_input:
             try:
                 os.remove(tmp_out_path)
             except Exception:
-                pass
-
+                pass              
+                
+ 
 # --------------------------
 # Display chat history
 # --------------------------
