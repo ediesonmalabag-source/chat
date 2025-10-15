@@ -388,26 +388,24 @@ if user_input:
         time.sleep(0.9)
 
     try:
-        bot_reply = chatbot_response(user_input)  # returns HTML/string only
+        bot_reply = chatbot_response(user_input)
     except Exception as e:
         bot_reply = f"⚠️ An internal error occurred while generating a reply: {e}"
 
-    # Save reply to history and render it (HTML allowed)
     st.session_state.messages.append(("Bot", bot_reply))
     st.markdown(bot_reply, unsafe_allow_html=True)
 
-    # ✅ Decide whether to show the "Fill the PDF form now" button
-    normalized = user_input.lower().strip()
-    bot_contains_enrol = ("enrol" in bot_reply.lower()) or ("enrollment" in bot_reply.lower())
-    show_button_now = bot_contains_enrol or st.session_state.get("show_enrolment_form", False)
+    # Save enrolment flag if bot reply contains enrolment info
+    if "enrol" in bot_reply.lower() or "enrollment" in bot_reply.lower():
+        st.session_state.show_enrolment_form = True
 
-    # ✅ Show the button
-    if show_button_now:
-        if st.button("📝 Fill the PDF form now"):
-            st.session_state.show_enrolment_form = True
+# ✅ Always show the button if enrolment flag is set
+if st.session_state.get("show_enrolment_form", False):
+    if st.button("📝 Fill the PDF form now"):
+        st.session_state.show_enrolment_form = "form"  # switch to form mode
 
-# ✅ Show the form (outside user_input block so it persists across reruns)
-if st.session_state.get("show_enrolment_form"):
+# ✅ Show the form only when explicitly triggered
+if st.session_state.get("show_enrolment_form") == "form":
     st.subheader("🧠 Fill the TESDA registration form")
     with st.form("tesda_form"):
         last_name = st.text_input("Last Name", value="")
@@ -415,8 +413,7 @@ if st.session_state.get("show_enrolment_form"):
         middle_name = st.text_input("Middle Name", value="")
         contact_no = st.text_input("Contact Number (optional)", value="")
         email = st.text_input("Email (optional)", value="")
-        submitted = st.form_submit_button("Generate PDF")
-
+        submitted = st.form_submit_button("Generate PDF"
         if submitted:
             st.session_state.show_enrolment_form = False  # ✅ Reset only after submission
 
