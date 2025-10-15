@@ -65,7 +65,7 @@ is_mobile = screen_width < 768
 is_messenger = "FBAN" in user_agent or "Messenger" in user_agent
 
 if "show_mobile_warning" not in st.session_state:
-    if user_agent and "FBAN" in user_agent or "Messenger" in user_agent:
+    if user_agent and ("FBAN" in user_agent or "Messenger" in user_agent):
         st.session_state.show_mobile_warning = screen_width < 768
     else:
         st.session_state.show_mobile_warning = False
