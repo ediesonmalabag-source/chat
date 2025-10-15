@@ -173,15 +173,7 @@ if not st.session_state.welcome_sent:
 # ----------------------------
 # INITIALIZE SESSION STATE
 # ----------------------------
-# ✅ Messenger browser warning — only on mobile
-screen_width = st_javascript("window.innerWidth") or 768
-user_agent = st_javascript("navigator.userAgent") or ""
 
-is_mobile = screen_width < 768
-is_messenger = "FBAN" in user_agent or "Messenger" in user_agent
-
-if "show_mobile_warning" not in st.session_state:
-    st.session_state.show_mobile_warning = is_mobile and is_messenger
 
 # ensure flag exists for showing the enrolment form
 if "show_enrolment_form" not in st.session_state:
