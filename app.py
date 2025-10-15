@@ -240,10 +240,11 @@ with st.sidebar:
 # --------------------------
 def chatbot_response(user_message: str) -> str:
     user_message = user_message.lower().strip()
-    user_message = re.sub(r'[^\w\s]', '', user_message)  # ✅ Removes punctuation like ? . ! etc.
+    user_message = re.sub(r'[^\w\s]', '', user_message)
     matched = False
- 
-    # 🔍 Match specific qualifications first
+    response_html = ""
+
+    # Match specific qualifications first (these already return full HTML)
     for keyword, response in qualification_responses.items():
         if keyword in user_message:
             return response
@@ -272,28 +273,7 @@ def chatbot_response(user_message: str) -> str:
         📅 <i>Note: Enrolment is open year-round, but slots are limited. Submit early to secure your schedule.</i><br><br>
         ✅ <b>Need help?</b> Tap the <b>📞 Contact</b> button below for assistance.
         """, unsafe_allow_html=True)
-    # -------------------------------------------
-    # PDF FILLING FUNCTION - START
-    # -------------------------------------------
-    # Add interactive form below the instructions
-    st.subheader("🧠 Or fill out your TESDA form here:")
-    with st.form("tesda_form"):
-        last_name = st.text_input("Last Name")
-        first_name = st.text_input("First Name")
-        middle_name = st.text_input("Middle Name")
-        submitted = st.form_submit_button("Generate PDF")
-
-    if submitted:
-        data = {
-            "LastName": last_name,
-            "FirstName": first_name,
-            "MiddleName": middle_name
-        }
-        fill_pdf("BIT_Registration_Form_Fillable_v1.pdf", "filled_tesda_form.pdf", data)
-        with open("filled_tesda_form.pdf", "rb") as f:
-            st.success("✅ Your TESDA form has been filled!")
-            st.download_button("📥 Download Your Filled Form", f, file_name="TESDA_Registration.pdf")
-
+  
     # ------------
     # CONTACT
     # -------------
@@ -367,6 +347,7 @@ def chatbot_response(user_message: str) -> str:
         • 📞 Contact<br><br>
         Or just tap the buttons below!
         """, unsafe_allow_html=True)
+    return response_html
     
 
 
@@ -392,11 +373,51 @@ if user_input:
     st.session_state.messages.append(("You", user_input))
     with st.spinner("Bot is typing..."):
         time.sleep(0.9)
+
     try:
-        bot_reply = chatbot_response(user_input)
+        bot_reply = chatbot_response(user_input)  # chatbot_response must return a string
     except Exception as e:
         bot_reply = f"⚠️ An internal error occurred while generating a reply: {e}"
+
+    # Save and render bot reply
     st.session_state.messages.append(("Bot", bot_reply))
+
+    # Render the bot reply visually right away (so forms and HTML appear in context)
+    st.markdown(bot_reply, unsafe_allow_html=True)
+
+    # If user asked about enrolment (either by button or text), show the interactive form
+    normalized = user_input.lower().strip()
+    if normalized in ("enrolment", "enrollment", "enroll", "enrol") or any(
+        kw in normalized for kw in ["enrolment", "enrollment", "enroll", "enrol"]
+    ):
+        st.subheader("🧠 Or fill out your TESDA form here:")
+        with st.form("tesda_form"):
+            last_name = st.text_input("Last Name")
+            first_name = st.text_input("First Name")
+            middle_name = st.text_input("Middle Name")
+            submitted = st.form_submit_button("Generate PDF")
+
+        if submitted:
+            data = {
+                "LastName": last_name,
+                "FirstName": first_name,
+                "MiddleName": middle_name
+            }
+            fill_pdf("BIT_Registration_Form_Fillable_v1.pdf", "filled_tesda_form.pdf", data)
+            with open("filled_tesda_form.pdf", "rb") as f:
+                st.success("✅ Your TESDA form has been filled!")
+                st.download_button("📥 Download Your Filled Form", f, file_name="TESDA_Registration.pdf")
+
+    # Optionally: handle other actions triggered by buttons
+    if normalized in ("qualifications",):
+        # render qualifications list or any extra UI
+        pass
+    if normalized in ("assessment",):
+        # render assessment-specific UI if needed
+        pass
+    if normalized in ("contact",):
+        # render contact-specific UI if needed
+        pass
 
 # --------------------------
 # Display chat history
