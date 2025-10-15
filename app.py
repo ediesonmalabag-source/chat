@@ -536,7 +536,8 @@ if st.session_state.get("show_enrolment_form") == "form":
                 "Region": region.strip(),
                 "District": district.strip(),
                 "Nationality": nationality.strip(),
-                "Sex": sex,
+                "sex_male": "Yes" if sex == "Male" else "",
+                "sex_female": "Yes" if sex == "Female" else "",
             }
 
             import tempfile, os
