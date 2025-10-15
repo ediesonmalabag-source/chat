@@ -399,14 +399,14 @@ if user_input:
     # Decide whether to show the "Fill the PDF form now" button (only for enrolment)
     normalized = (user_input or "").lower().strip()
     bot_contains_enrol = ("enrol" in (bot_reply or "").lower()) or ("enrollment" in (bot_reply or "").lower())
-    show_button_now = normalized in ("enrolment", "enrollment", "enroll", "enrol") or bot_contains_enrol
+    show_button_now = bot_contains_enrol  # ✅ only show button when bot reply includes enrolment info
 
     if show_button_now:
         if st.button("📝 Fill the PDF form now"):
             st.session_state.show_enrolment_form = True
 
     # Render the enrolment form when requested (typed enrolment or button)
-    if st.session_state.get("show_enrolment_form") or normalized in ("enrolment", "enrollment", "enroll", "enrol"):
+   if st.session_state.get("show_enrolment_form"):
         # clear the flag so it doesn't auto-open on next rerun
         st.session_state.show_enrolment_form = False
 
@@ -526,6 +526,7 @@ with col1:
 with col2:
     if st.button("📝 Enrolment"):
         st.session_state.last_action = "enrolment"
+        st.session_state.show_enrolment_form = True  # ✅ this triggers the form
 with col3:
     if st.button("📊 Assessment"):
         st.session_state.last_action = "assessment"
