@@ -53,12 +53,19 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
                                 can.setFont("DejaVuSans", 10)
                                 can.drawString(x + 2, y + 2, str(data_dict[key]))
             
-            # ✅ Draw filled dot for SEX SELECTION MALE OR FEMALE ---------------
-            can.setFont("DejaVuSans", 12)
+            # ✅ Draw circle-based Sex selection (no labels)
+            can.setStrokeColorRGB(0, 0, 0)  # Black outline
+            can.setFillColorRGB(0, 0, 0)    # Black fill for selected
+
+            # Draw empty circles
+            can.circle(33, 435, 4, stroke=1, fill=0)  # Male
+            can.circle(33, 454, 4, stroke=1, fill=0)  # Female
+
+            # Fill selected circle
             if data_dict.get("Sex") == "Male":
-                can.drawString(33, 435, "●")
+                can.circle(33, 435, 3, stroke=0, fill=1)
             elif data_dict.get("Sex") == "Female":
-                can.drawString(33, 454, "●")
+                can.circle(33, 454, 3, stroke=0, fill=1)
 
             can.save()
             packet.seek(0)
