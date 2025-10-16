@@ -632,6 +632,38 @@ if st.session_state.get("show_enrolment_form") == "form":
         province = st.text_input("Province", value="")
         email = st.text_input("Email", value="")
         contact_no = st.text_input("Contact No.", value="")
+        cong_district = st.selectbox("Congressional District", ["District 1", "District 2"])
+        region = st.selectbox("Region", [
+            "Region I - Ilocos Region",
+            "Region II - Cagayan Valley",
+            "Region III - Central Luzon",
+            "Region IV-A - CALABARZON",
+            "Region IV-B - MIMAROPA",
+            "Region V - Bicol Region",
+            "Region VI - Western Visayas",
+            "Region VII - Central Visayas",
+            "Region VIII - Eastern Visayas",
+            "Region IX - Zamboanga Peninsula",
+            "Region X - Northern Mindanao",
+            "Region XI - Davao Region",
+            "Region XII - SOCCSKSARGEN",
+            "Region XIII - Caraga",
+            "NCR - National Capital Region",
+            "CAR - Cordillera Administrative Region",
+            "BARMM - Bangsamoro Autonomous Region"
+        ])
+        nationality = st.selectbox("Nationality", [
+            "Filipino",
+            "American",
+            "British",
+            "Canadian",
+            "Chinese",
+            "Japanese",
+            "Korean",
+            "Indian",
+            "Australian",
+            "Other"
+        ])
         sex = st.selectbox("Sex", ["Male", "Female"])
         
 
@@ -654,6 +686,10 @@ if st.session_state.get("show_enrolment_form") == "form":
                 "Province": province.strip(),
                 "Email": email.strip(),
                 "ContactNo": contact_no.strip(),
+                "CongDistrict": cong_district,
+                "Region": region,
+                "Nationality": nationality,
+                
                 "Sex": sex,
                 
             }
