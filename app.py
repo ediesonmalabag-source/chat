@@ -237,23 +237,31 @@ st.markdown("""
      # --------------------------------------------   
      # FIX DARK THEME MODE FOR SELECTION BOX: start
      # --------------------------------------------
-    /* ✅ Fix selectbox value visibility in dark mode mobile */
-    [data-testid="stSelectbox"] div[data-baseweb="select"] > div {
-        background-color: #ffffff !important;
-        color: #222 !important;
-        border: 1px solid #4A90E2 !important;
-        border-radius: 6px !important;
-        padding: 6px 10px !important;
-        font-size: 16px !important;
-        font-family: 'Segoe UI', sans-serif !important;
+     /* ✅ Fix selectbox background and text in dark mode */
+    [data-testid="stSelectbox"] {
+          background-color: transparent !important;
     }
 
-    /* ✅ Fix selected value text */
-    [data-testid="stSelectbox"] div[data-baseweb="select"] span,
-    [data-testid="stSelectbox"] div[data-baseweb="select"] div[aria-selected="true"] {
-        color: #222 !important;
-        font-size: 16px !important;
-        font-weight: 500 !important;
+    /* ✅ Selected value container */
+    [data-testid="stSelectbox"] div[data-baseweb="select"] > div {
+      background-color: #ffffff !important;
+      color: #222 !important;
+      border: 1px solid #4A90E2 !important;
+      border-radius: 6px !important;
+      padding: 6px 10px !important;
+    }
+
+    /* ✅ Selected value text */
+    [data-testid="stSelectbox"] div[data-baseweb="select"] span {
+      color: #222 !important;
+      font-size: 16px !important;
+      font-weight: 500 !important;
+    }
+
+    /* ✅ Dropdown menu */
+    [data-baseweb="popover"] {
+      background-color: #ffffff !important;
+      color: #222 !important;
     }
  
       # --------------------------------------------   
