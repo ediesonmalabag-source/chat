@@ -275,6 +275,16 @@ st.markdown("""
             background-color: #ffffff !important;
             color: #222 !important;
         }
+        /* ✅ Target the selected value inside the selectbox */
+        [data-testid="stSelectbox"] div[data-baseweb="select"] > div {
+            background-color: #ffffff !important;
+            color: #222 !important;
+            border: 1px solid #4A90E2 !important;
+            border-radius: 6px !important;
+            padding: 6px !important;
+            font-size: 16px !important;
+            font-family: 'Segoe UI', sans-serif !important;
+        }
     
     </style>
 """, unsafe_allow_html=True)
