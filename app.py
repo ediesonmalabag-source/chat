@@ -234,40 +234,45 @@ st.markdown("""
         box-shadow: 0 0 5px #4A90E2 !important;
         }
 
-     # --------------------------------------------   
-     # FIX DARK THEME MODE FOR SELECTION BOX: start
-     # --------------------------------------------
-     /* ✅ Fix selectbox background and text in dark mode */
-    [data-testid="stSelectbox"] {
-          background-color: transparent !important;
-    }
+        /* --------------------------------------------   
+       ✅ FIX DARK THEME MODE FOR SELECTION BOX: start
+       -------------------------------------------- */
 
-    /* ✅ Selected value container */
-    [data-testid="stSelectbox"] div[data-baseweb="select"] > div {
-      background-color: #ffffff !important;
-      color: #222 !important;
-      border: 1px solid #4A90E2 !important;
-      border-radius: 6px !important;
-      padding: 6px 10px !important;
-    }
+        /* ✅ Selectbox container */
+        [data-testid="stSelectbox"] {
+            background-color: transparent !important;
+        }
 
-    /* ✅ Selected value text */
-    [data-testid="stSelectbox"] div[data-baseweb="select"] span {
-      color: #222 !important;
-      font-size: 16px !important;
-      font-weight: 500 !important;
-    }
+        /* ✅ Selectbox value box */
+        [data-testid="stSelectbox"] div[data-baseweb="select"] > div {
+            background-color: #ffffff !important;
+            color: #222 !important;
+            border: 1px solid #4A90E2 !important;
+            border-radius: 6px !important;
+            padding: 6px 10px !important;
+            font-size: 16px !important;
+            font-family: 'Segoe UI', sans-serif !important;
+        }
 
-    /* ✅ Dropdown menu */
-    [data-baseweb="popover"] {
-      background-color: #ffffff !important;
-      color: #222 !important;
-    }
- 
-      # --------------------------------------------   
-     # FIX DARK THEME MODE FOR SELECTION BOX: end
-     # --------------------------------------------
-    
+        /* ✅ Selected value text */
+        [data-testid="stSelectbox"] div[data-baseweb="select"] div[aria-selected="true"],
+        [data-testid="stSelectbox"] div[data-baseweb="select"] span {
+            background-color: transparent !important;
+            color: #222 !important;
+            font-size: 16px !important;
+            font-weight: 500 !important;
+        }
+
+        /* ✅ Dropdown menu */
+        [data-baseweb="popover"] {
+            background-color: #ffffff !important;
+            color: #222 !important;
+        }
+
+/* --------------------------------------------   
+   ✅ FIX DARK THEME MODE FOR SELECTION BOX: end
+   -------------------------------------------- */
+         
     </style>
 """, unsafe_allow_html=True)
 
