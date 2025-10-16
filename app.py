@@ -2,7 +2,7 @@ import streamlit as st
 import time
 import re
 from streamlit_javascript import st_javascript
-from pdfrw import PdfReader, PdfWriter, PdfDict, PdfObject
+from pdfrw import PdfReader, PdfWriter, PdfDict, PdfObject, PdfName
 
 # ---------------------------------------
 # 🔧 PDF FILLING FUNCTION (top of file)
@@ -11,20 +11,20 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
     try:
         template_pdf = PdfReader(input_pdf_path)
 
-        # ✅ Force PDF viewers to render field appearances
+        # ✅ Force appearance rendering
         if template_pdf.Root.AcroForm:
             template_pdf.Root.AcroForm.update(PdfDict(NeedAppearances=PdfObject("true")))
         else:
             template_pdf.Root.AcroForm = PdfDict(NeedAppearances=PdfObject("true"))
 
         for page in template_pdf.pages:
-            annots = page.get("/Annots")
+            annots = page.get(PdfName("Annots"))
             if annots:
                 for a in annots:
-                    if a.get("/Subtype") == "/Widget":
-                        t = a.get("/T")
+                    if a.get(PdfName("Subtype")) == PdfName("Widget"):
+                        t = a.get(PdfName("T"))
                         if t:
-                            key = t[1:-1]
+                            key = t.to_unicode().strip("()") if hasattr(t, "to_unicode") else t[1:-1]
                             if key in data_dict:
                                 a.update(PdfDict(V=str(data_dict[key])))
 
@@ -35,7 +35,6 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
         return False, f"Template not found: {input_pdf_path}"
     except Exception as e:
         return False, f"Failed writing filled PDF: {e}"
-
 
 # --------------------------
 # Page config (must be first)
