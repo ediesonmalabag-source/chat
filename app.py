@@ -28,14 +28,23 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
                             if key in data_dict:
                                 a.update(PdfDict(V=str(data_dict[key])))
 
+        # ✅ First write the filled PDF
         PdfWriter().write(output_pdf_path, template_pdf)
+
+        # ✅ Reload and flatten to remove form fields
+        flattened_pdf = PdfReader(output_pdf_path)
+        for page in flattened_pdf.pages:
+            if PdfName("Annots") in page:
+                del page[PdfName("Annots")]
+        PdfWriter().write(output_pdf_path, flattened_pdf)
+
         return True, None
 
     except FileNotFoundError:
         return False, f"Template not found: {input_pdf_path}"
     except Exception as e:
         return False, f"Failed writing filled PDF: {e}"
-
+        
 # --------------------------
 # Page config (must be first)
 # --------------------------
@@ -558,12 +567,12 @@ if st.session_state.get("show_enrolment_form") == "form":
                     # ✅ Serve the file for download
                     with open(tmp_out_path, "rb") as f:
                         st.success("✅ Your TESDA form has been filled and flattened.")
-                        st.download_button(
+                            st.download_button(
                             "📥 Download Your Filled Form",
                             f,
                             file_name="TESDA_Registration.pdf",
                             mime="application/pdf",
-                        )
+                            )
 
                     
             except FileNotFoundError:
