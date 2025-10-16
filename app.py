@@ -1,11 +1,12 @@
 import streamlit as st
 import time
 import re
-from streamlit_javascript import st_javascript
 from pdfrw import PdfReader, PdfWriter, PdfDict, PdfName
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import letter
 from io import BytesIO
+from pdfrw.buildxobj import pagexobj
+from pdfrw.toreportlab import makerl
 
 # ---------------------------------------
 # 🔧 PDF FILLING FUNCTION (top of file)
@@ -14,12 +15,13 @@ from io import BytesIO
 def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
     try:
         template_pdf = PdfReader(input_pdf_path)
-
-        # Create a canvas to overlay text
-        packet = BytesIO()
-        can = canvas.Canvas(packet, pagesize=letter)
+        filled_pages = []
 
         for page in template_pdf.pages:
+            # Create overlay canvas for this page
+            packet = BytesIO()
+            can = canvas.Canvas(packet, pagesize=letter)
+
             annots = page.get(PdfName("Annots"))
             if annots:
                 for a in annots:
@@ -33,26 +35,23 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
                                 can.setFont("Helvetica", 10)
                                 can.drawString(x + 2, y + 2, str(data_dict[key]))
 
-        can.save()
-        packet.seek(0)
+            can.save()
+            packet.seek(0)
 
-        # Merge overlay with original
-        from pdfrw.buildxobj import pagexobj
-        from pdfrw.toreportlab import makerl
-        from pdfrw import PdfReader as RLReader
-
-        overlay = RLReader(packet)
-        for i, page in enumerate(template_pdf.pages):
-            overlay_page = overlay.pages[i]
+            # Merge overlay with template page
+            overlay_pdf = PdfReader(packet)
+            overlay_page = overlay_pdf.pages[0]
             xobj = pagexobj(overlay_page)
-            rl_obj = makerl(can, xobj)
-            page.Contents = rl_obj
+            page.Contents = makerl(canvas.Canvas(BytesIO(), pagesize=letter), xobj)
 
-        # Remove form fields
-        for page in template_pdf.pages:
+            # Remove form fields
             if PdfName("Annots") in page:
                 del page[PdfName("Annots")]
 
+            filled_pages.append(page)
+
+        # Write final PDF
+        template_pdf.pages = filled_pages
         PdfWriter().write(output_pdf_path, template_pdf)
         return True, None
 
