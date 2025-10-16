@@ -32,7 +32,7 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
                             key = t.to_unicode().strip("()") if hasattr(t, "to_unicode") else t[1:-1]
                             if key in data_dict:
                                 x, y = float(rect[0]), float(rect[1])
-                                can.setFont("Times-Roman", 10)
+                                can.setFont("Times-Roman", 10)  # More reliable than Helvetica
                                 can.drawString(x + 2, y + 2, str(data_dict[key]))
 
             can.save()
@@ -40,7 +40,7 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
 
             # Read overlay and merge with current page
             overlay_pdf = PdfReader(packet)
-            if len(overlay_pdf.pages) > 0:
+            if overlay_pdf.pages:
                 overlay_page = overlay_pdf.pages[0]
                 if overlay_page.Contents:
                     from pdfrw import PdfArray
