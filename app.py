@@ -2,7 +2,7 @@ import streamlit as st
 import time
 import re
 from streamlit_javascript import st_javascript
-from pdfrw import PdfReader, PdfWriter, PdfDict
+from pdfrw import PdfReader, PdfWriter, PdfDict, PdfObject
 
 # ---------------------------------------
 # 🔧 PDF FILLING FUNCTION (top of file)
@@ -10,12 +10,13 @@ from pdfrw import PdfReader, PdfWriter, PdfDict
 def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
     try:
         template_pdf = PdfReader(input_pdf_path)
-    except FileNotFoundError:
-        return False, f"Template not found: {input_pdf_path}"
-    except Exception as e:
-        return False, f"Failed reading template: {e}"
 
-    try:
+        # ✅ Force PDF viewers to render field appearances
+        if template_pdf.Root.AcroForm:
+            template_pdf.Root.AcroForm.update(PdfDict(NeedAppearances=PdfObject("true")))
+        else:
+            template_pdf.Root.AcroForm = PdfDict(NeedAppearances=PdfObject("true"))
+
         for page in template_pdf.pages:
             annots = page.get("/Annots")
             if annots:
@@ -26,11 +27,16 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
                             key = t[1:-1]
                             if key in data_dict:
                                 a.update(PdfDict(V=str(data_dict[key])))
+
         PdfWriter().write(output_pdf_path, template_pdf)
         return True, None
+
+    except FileNotFoundError:
+        return False, f"Template not found: {input_pdf_path}"
     except Exception as e:
         return False, f"Failed writing filled PDF: {e}"
-        
+
+
 # --------------------------
 # Page config (must be first)
 # --------------------------
