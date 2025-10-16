@@ -238,45 +238,7 @@ st.markdown("""
      # FIX DARK THEME MODE FOR SELECTION BOX: start
      # --------------------------------------------
 
-    /* === Selectbox Wrapper === */
-    [data-testid="stSelectbox"] {
-        background-color: #ffffff !important;
-        color: #222 !important;
-        border-radius: 6px !important;
-        padding: 4px !important;
-    }
-
-    /* === Label === */
-    [data-testid="stSelectbox"] label {
-        color: #222 !important;
-        font-weight: 500 !important;
-    }
-
-    /* === Selectbox Value Box === */
-    [data-testid="stSelectbox"] div[role="combobox"],
-    [data-testid="stSelectbox"] div[data-baseweb="select"] > div {
-        background-color: #ffffff !important;
-        color: #222 !important;
-        border: 1px solid #4A90E2 !important;
-        border-radius: 6px !important;
-        padding: 6px !important;
-        font-size: 16px !important;
-        font-family: 'Segoe UI', sans-serif !important;
-    }
-
-    /* === Selected Value Text === */
-    [data-testid="stSelectbox"] div[data-baseweb="select"] span,
-    [data-testid="stSelectbox"] div[data-baseweb="select"] div[aria-selected="true"] {
-        color: #222 !important;
-        font-size: 16px !important;
-        font-family: 'Segoe UI', sans-serif !important;
-    }
-
-    /* === Dropdown Menu === */
-    .stSelectbox [data-baseweb="popover"] {
-        background-color: #ffffff !important;
-        color: #222 !important;
-    }
+ 
       # --------------------------------------------   
      # FIX DARK THEME MODE FOR SELECTION BOX: end
      # --------------------------------------------
