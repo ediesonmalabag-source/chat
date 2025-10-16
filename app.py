@@ -233,64 +233,53 @@ st.markdown("""
         outline: none !important;
         box-shadow: 0 0 5px #4A90E2 !important;
         }
-        
-       /* ✅ Force light styling on selectbox wrapper */
-        [data-testid="stSelectbox"] {
-            background-color: #ffffff !important;
-            color: #222 !important;
-            border-radius: 6px !important;
-            padding: 4px !important;
-        }
 
-        /* ✅ Force light styling on label */
-        [data-testid="stSelectbox"] label {
-            color: #222 !important;
-            font-weight: 500 !important;
-        }
+     # --------------------------------------------   
+     # FIX DARK THEME MODE FOR SELECTION BOX: start
+     # --------------------------------------------
 
-        /* ✅ Force light styling on selectbox value box */
-        [data-testid="stSelectbox"] div[role="combobox"] {
-            background-color: #ffffff !important;
-            color: #222 !important;
-            border: 1px solid #4A90E2 !important;
-            border-radius: 6px !important;
-            padding: 6px !important;
-            font-size: 16px !important;
-            font-family: 'Segoe UI', sans-serif !important;
-        }
-        
-        /* ✅ Force light styling on selected value */
-        [data-testid="stSelectbox"] div[role="combobox"] {
-            background-color: #ffffff !important;
-            color: #222 !important;
-            border: 1px solid #4A90E2 !important;
-            border-radius: 6px !important;
-            padding: 6px !important;
-            font-size: 16px !important;
-            font-family: 'Segoe UI', sans-serif !important;
-        }
+    /* === Selectbox Wrapper === */
+    [data-testid="stSelectbox"] {
+        background-color: #ffffff !important;
+        color: #222 !important;
+        border-radius: 6px !important;
+        padding: 4px !important;
+    }
 
-        /* ✅ Dropdown menu (may require trial-and-error) */
-        .stSelectbox [data-baseweb="popover"] {
-            background-color: #ffffff !important;
-            color: #222 !important;
-        }
-        /* ✅ Target the selected value inside the selectbox */
-        [data-testid="stSelectbox"] div[data-baseweb="select"] > div {
-            background-color: #ffffff !important;
-            color: #222 !important;
-            border: 1px solid #4A90E2 !important;
-            border-radius: 6px !important;
-            padding: 6px !important;
-            font-size: 16px !important;
-            font-family: 'Segoe UI', sans-serif !important;
-        }
-        /* ✅ Selected value text inside selectbox */
-        [data-testid="stSelectbox"] div[data-baseweb="select"] span {
-            color: #222 !important;              /* Dark readable text */
-            font-size: 16px !important;
-            font-family: 'Segoe UI', sans-serif !important
-        }
+    /* === Label === */
+    [data-testid="stSelectbox"] label {
+        color: #222 !important;
+        font-weight: 500 !important;
+    }
+
+    /* === Selectbox Value Box === */
+    [data-testid="stSelectbox"] div[role="combobox"],
+    [data-testid="stSelectbox"] div[data-baseweb="select"] > div {
+        background-color: #ffffff !important;
+        color: #222 !important;
+        border: 1px solid #4A90E2 !important;
+        border-radius: 6px !important;
+        padding: 6px !important;
+        font-size: 16px !important;
+        font-family: 'Segoe UI', sans-serif !important;
+    }
+
+    /* === Selected Value Text === */
+    [data-testid="stSelectbox"] div[data-baseweb="select"] span,
+    [data-testid="stSelectbox"] div[data-baseweb="select"] div[aria-selected="true"] {
+        color: #222 !important;
+        font-size: 16px !important;
+        font-family: 'Segoe UI', sans-serif !important;
+    }
+
+    /* === Dropdown Menu === */
+    .stSelectbox [data-baseweb="popover"] {
+        background-color: #ffffff !important;
+        color: #222 !important;
+    }
+      # --------------------------------------------   
+     # FIX DARK THEME MODE FOR SELECTION BOX: end
+     # --------------------------------------------
     
     </style>
 """, unsafe_allow_html=True)
