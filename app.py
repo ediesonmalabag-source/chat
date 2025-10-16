@@ -626,6 +626,12 @@ if st.session_state.get("show_enrolment_form") == "form":
         last_name = st.text_input("Last Name", value="")
         first_name = st.text_input("First Name", value="")
         middle_name = st.text_input("Middle Name", value="")
+        number_street = st.text_input("Number & Street", value="")
+        barangay = st.text_input("Barangay", value="")
+        municipality = st.text_input("Municipality", value="")
+        province = st.text_input("Province", value="")
+        email = st.text_input("Email", value="")
+        contact_no = st.text_input("Contact No.", value="")
         sex = st.selectbox("Sex", ["Male", "Female"])
         
 
@@ -642,6 +648,12 @@ if st.session_state.get("show_enrolment_form") == "form":
                 "LastName": last_name.strip(),
                 "FirstName": first_name.strip(),
                 "MidName": middle_name.strip(),
+                "NumberStreet": number_street.strip(),
+                "Barangay": barangay.strip(),
+                "Municipality": municipality.strip(),
+                "Province": province.strip(),
+                "Email": email.strip(),
+                "ContactNo": contact_no.strip(),
                 "Sex": sex,
                 
             }
