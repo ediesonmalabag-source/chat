@@ -570,7 +570,7 @@ if st.session_state.get("show_enrolment_form") == "form":
             st.error("Please provide at least your first and last name.")
         else:
             data = {
-                "Entry Date": entry_date.strftime("%m/%d/%y"),
+                "EntryDate": entry_date.strftime("%m/%d/%y"),
                 "LastName": last_name.strip(),
                 "FirstName": first_name.strip(),
                 "MidName": middle_name.strip(),
