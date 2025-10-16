@@ -547,15 +547,23 @@ if st.session_state.get("show_enrolment_form") == "form":
                 if not ok:
                     st.error(f"PDF generation failed: {err}")
                 else:
-                    # TEMP: do not flatten here — confirm filled values appear in viewers that respect NeedAppearances
+                    # ✅ Flatten the PDF to make it non-editable
+                    from pdfrw import PdfName
+                    flattened_pdf = PdfReader(tmp_out_path)
+                    for page in flattened_pdf.pages:
+                        if PdfName("Annots") in page:
+                            del page[PdfName("Annots")]
+                    PdfWriter().write(tmp_out_path, flattened_pdf)
+
+                    # ✅ Serve the file for download
                     with open(tmp_out_path, "rb") as f:
-                        st.success("✅ Your TESDA form has been filled (not flattened).")
+                        st.success("✅ Your TESDA form has been filled and flattened.")
                         st.download_button(
-                            "📥 Download Your Filled Form (unflattened)",
+                            "📥 Download Your Filled Form",
                             f,
-                            file_name="TESDA_Registration_unflattened.pdf",
+                            file_name="TESDA_Registration.pdf",
                             mime="application/pdf",
-                        )    
+                        )
 
                     
             except FileNotFoundError:
