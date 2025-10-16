@@ -285,6 +285,12 @@ st.markdown("""
             font-size: 16px !important;
             font-family: 'Segoe UI', sans-serif !important;
         }
+        /* ✅ Selected value text inside selectbox */
+        [data-testid="stSelectbox"] div[data-baseweb="select"] span {
+            color: #222 !important;              /* Dark readable text */
+            font-size: 16px !important;
+            font-family: 'Segoe UI', sans-serif !important
+        }
     
     </style>
 """, unsafe_allow_html=True)
