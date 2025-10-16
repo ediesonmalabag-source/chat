@@ -17,7 +17,7 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
     try:
         template_pdf = PdfReader(input_pdf_path)
 
-        for page_index, page in enumerate(template_pdf.pages):
+        for page in template_pdf.pages:
             # Create overlay canvas for this page
             packet = BytesIO()
             can = canvas.Canvas(packet, pagesize=letter)
@@ -43,7 +43,7 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
             if overlay_pdf.pages:
                 overlay_page = overlay_pdf.pages[0]
                 xobj = pagexobj(overlay_page)
-                page.Contents = makerl(canvas.Canvas(BytesIO(), pagesize=letter), xobj)
+                page.Contents = makerl(None, xobj)  # ✅ FIX: use None instead of a new canvas
 
             # Remove form fields
             if PdfName("Annots") in page:
@@ -55,7 +55,7 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
 
     except Exception as e:
         return False, f"Failed to generate visible PDF: {e}"
-        
+
 # --------------------------
 # Page config (must be first)
 # --------------------------
