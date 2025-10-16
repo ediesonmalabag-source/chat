@@ -201,6 +201,23 @@ st.markdown("""
             outline: none !important;
             box-shadow: 0 0 5px #4A90E2 !important;
         }
+        /* ✅ Force light styling on all input boxes */
+        input[type="text"], input[type="email"], input[type="tel"] {
+        background-color: #f0f8ff !important;
+        color: #222 !important;
+        border: 1px solid #4A90E2 !important
+        border-radius: 8px !important;
+        padding: 10px !important;
+        font-size: 16px !important;
+        font-family: 'Segoe UI', sans-serif !important;
+        }
+
+        /* ✅ Focus effect */
+        input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus {
+        outline: none !important;
+        box-shadow: 0 0 5px #4A90E2 !important;
+        }
+    
     </style>
 """, unsafe_allow_html=True)
 
