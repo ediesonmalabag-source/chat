@@ -52,6 +52,13 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
                                 x, y = float(rect[0]), float(rect[1])
                                 can.setFont("DejaVuSans", 10)
                                 can.drawString(x + 2, y + 2, str(data_dict[key]))
+            
+            # ✅ Draw filled dot for SEX SELECTION MALE OR FEMALE ---------------
+            can.setFont("DejaVuSans", 12)
+            if data_dict.get("Sex") == "Male":
+                can.drawString(33, 435, "●")
+            elif data_dict.get("Sex") == "Female":
+                can.drawString(33, 454, "●")
 
             can.save()
             packet.seek(0)
@@ -559,6 +566,7 @@ if st.session_state.get("show_enrolment_form") == "form":
         last_name = st.text_input("Last Name", value="")
         first_name = st.text_input("First Name", value="")
         middle_name = st.text_input("Middle Name", value="")
+        sex = st.selectbox("Sex", ["Male", "Female"])
         
 
             
@@ -574,6 +582,7 @@ if st.session_state.get("show_enrolment_form") == "form":
                 "LastName": last_name.strip(),
                 "FirstName": first_name.strip(),
                 "MidName": middle_name.strip(),
+                "Sex": sex,
                 
             }
 
