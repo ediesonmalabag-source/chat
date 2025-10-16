@@ -9,6 +9,8 @@ from io import BytesIO
 from pdfrw.buildxobj import pagexobj
 from pdfrw.toreportlab import makerl
 
+from datetime import date
+
 import urllib.request
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
@@ -553,6 +555,7 @@ if st.session_state.get("show_enrolment_form") == "form":
     st.subheader("🧠 Fill the TESDA registration form")
 
     with st.form("tesda_form"):
+        entry_date = st.date_input("Entry Date (MM/DD/YY)", value=date.today())
         last_name = st.text_input("Last Name", value="")
         first_name = st.text_input("First Name", value="")
         middle_name = st.text_input("Middle Name", value="")
@@ -567,6 +570,7 @@ if st.session_state.get("show_enrolment_form") == "form":
             st.error("Please provide at least your first and last name.")
         else:
             data = {
+                "Entry Date": entry_date.strftime("%m/%d/%y"),
                 "LastName": last_name.strip(),
                 "FirstName": first_name.strip(),
                 "MidName": middle_name.strip(),
