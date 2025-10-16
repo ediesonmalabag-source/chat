@@ -9,6 +9,22 @@ from io import BytesIO
 from pdfrw.buildxobj import pagexobj
 from pdfrw.toreportlab import makerl
 
+import urllib.request
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
+import os  # ✅ Needed for checking file existence
+
+# ✅ Download font from GitHub if not already present
+font_url = "https://raw.githubusercontent.com/ediesonmalabag-source/chat/main/DejaVuSans.ttf"
+font_path = "DejaVuSans.ttf"
+
+try:
+    if not os.path.exists(font_path):
+        urllib.request.urlretrieve(font_url, font_path)
+    pdfmetrics.registerFont(TTFont("DejaVuSans", font_path))
+except Exception as e:
+    st.error(f"Font loading failed: {e}")
+
 # ---------------------------------------
 # 🔧 PDF FILLING FUNCTION (top of file)
 # ---------------------------------------
@@ -32,7 +48,7 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
                             key = t.to_unicode().strip("()") if hasattr(t, "to_unicode") else t[1:-1]
                             if key in data_dict:
                                 x, y = float(rect[0]), float(rect[1])
-                                can.setFont("Helvetica", 10)
+                                can.setFont("DejaVuSans", 10)
                                 can.drawString(x + 2, y + 2, str(data_dict[key]))
 
             can.save()
