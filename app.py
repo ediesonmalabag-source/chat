@@ -239,12 +239,12 @@ st.markdown("""
        -------------------------------------------- */
         /* ✅ Force selectbox to render light in dark mode mobile */
         [data-testid="stSelectbox"] div[data-baseweb="select"] > div {
-            background-color: #ffffff !important;
+        background-color: #ffffff !important;
             color: #222 !important;
             border: 1px solid #000000 !important;  /* Black border */
             border-radius: 6px !important;
-            padding: 6px 10px !important;
-            font-size: 16px !important;
+            padding: 8px 12px !important;          /* Increased padding */
+            font-size: 14px !important;            /* Slightly smaller text */
             font-family: 'Segoe UI', sans-serif !important;
         }
 
