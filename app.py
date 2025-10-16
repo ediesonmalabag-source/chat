@@ -233,6 +233,23 @@ st.markdown("""
         outline: none !important;
         box-shadow: 0 0 5px #4A90E2 !important;
         }
+        
+        /* ✅ Force light styling on selectbox */
+        [data-testid="stSelectbox"] label,
+        [data-testid="stSelectbox"] div[role="combobox"] {
+            color: #222 !important;           /* Dark text */
+            background-color: #f0f8ff !important;  /* Light background */
+            border: 1px solid #4A90E2 !important;
+            border-radius: 8px !important;
+            padding: 6px !important;
+            font-size: 16px !important;
+            font-family: 'Segoe UI', sans-serif !important;
+        }
+
+        /* ✅ Dropdown options */
+        [data-testid="stSelectbox"] ul {
+            background-color: #ffffff !important;
+            color: #222 !important;
     
     </style>
 """, unsafe_allow_html=True)
