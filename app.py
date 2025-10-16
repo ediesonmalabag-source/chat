@@ -45,10 +45,8 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
                 xobj = pagexobj(overlay_page)
 
                 # ✅ Create a real canvas for merging
-                merge_canvas_stream = BytesIO()
-                merge_canvas = canvas.Canvas(merge_canvas_stream, pagesize=letter)
                 from pdfrw import PdfArray
-                overlay_stream = makerl(merge_canvas, xobj)
+                overlay_stream = makerl(can, xobj)  # Use the canvas that drew the text
                 original_content = page.Contents
                 page.Contents = PdfArray([original_content, overlay_stream])
 
