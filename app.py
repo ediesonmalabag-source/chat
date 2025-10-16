@@ -58,14 +58,14 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
             can.setFillColorRGB(0, 0, 0)    # Black fill for selected
 
             # Draw empty circles
-            can.circle(33, 350, 4, stroke=1, fill=0)  # Male
-            can.circle(33, 345, 4, stroke=1, fill=0)  # Female
+            can.circle(33, 345, 4, stroke=1, fill=0)  # Male
+            can.circle(33, 300, 4, stroke=1, fill=0)  # Female
 
             # Fill selected circle
             if data_dict.get("Sex") == "Male":
-                can.circle(33, 350, 3, stroke=0, fill=1)
-            elif data_dict.get("Sex") == "Female":
                 can.circle(33, 345, 3, stroke=0, fill=1)
+            elif data_dict.get("Sex") == "Female":
+                can.circle(33, 300, 3, stroke=0, fill=1)
 
             can.save()
             packet.seek(0)
