@@ -16,9 +16,8 @@ from pdfrw.toreportlab import makerl
 def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
     try:
         template_pdf = PdfReader(input_pdf_path)
-        filled_pages = []
 
-        for page in template_pdf.pages:
+        for page_index, page in enumerate(template_pdf.pages):
             # Create overlay canvas for this page
             packet = BytesIO()
             can = canvas.Canvas(packet, pagesize=letter)
@@ -49,10 +48,7 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
             if PdfName("Annots") in page:
                 del page[PdfName("Annots")]
 
-            filled_pages.append(page)
-
         # Write final PDF
-        template_pdf.pages = filled_pages
         PdfWriter().write(output_pdf_path, template_pdf)
         return True, None
 
