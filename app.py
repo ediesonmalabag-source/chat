@@ -501,19 +501,7 @@ if st.session_state.get("show_enrolment_form") == "form":
         barangay = st.text_input("Barangay", value="")
         municipality = st.text_input("City / Municipality", value="")
         province = st.text_input("Province", value="")
-        region = st.selectbox("Region", [
-            "Region I", "Region II", "Region III", "Region IV-A", "Region IV-B",
-            "Region V", "Region VI", "Region VII", "Region VIII", "Region IX",
-            "Region X", "Region XI", "Region XII", "Region XIII", "NCR", "CAR", "BARMM"
-        ])
-        district = st.selectbox("District", [
-            "District 1", "District 2"
-        ])
-        nationality = st.selectbox("Nationality", [
-            "Filipino", "American", "Chinese", "Japanese", "Korean", "Indian", "Indonesian",
-            "Malaysian", "Vietnamese", "Thai", "Singaporean", "Other"
-        ])
-        sex = st.radio("Sex", ["Male", "Female"])
+        
 
             
         submitted = st.form_submit_button("Generate PDF")
@@ -533,11 +521,7 @@ if st.session_state.get("show_enrolment_form") == "form":
                 "Barangay": barangay.strip(),
                 "Municipality": municipality.strip(),  
                 "Province": province.strip(),
-                "Region": region.strip(),
-                "District": district.strip(),
-                "Nationality": nationality.strip(),
-                "sex_male": "Yes" if sex == "Male" else "",
-                "sex_female": "Yes" if sex == "Female" else "",
+                
             }
 
             import tempfile, os
@@ -547,7 +531,7 @@ if st.session_state.get("show_enrolment_form") == "form":
                     tmp_out_path = tmp_out.name
                     tmp_out.close()
 
-                    template_path = "BIT_Registration_Form_Fillable_v1.pdf"
+                    template_path = "tesdabit_regform.pdf"
                     ok_err = fill_pdf(template_path, tmp_out_path, data)
 
                     if isinstance(ok_err, tuple):
@@ -563,11 +547,11 @@ if st.session_state.get("show_enrolment_form") == "form":
                         st.download_button(
                             "📥 Download Your Filled Form",
                             f,
-                            file_name="TESDA_Registration.pdf",
+                            file_name="TESDABIT_Registration.pdf",
                             mime="application/pdf",
                         )
             except FileNotFoundError:
-                st.error("Template PDF not found. Place BIT_Registration_Form_Fillable_v1.pdf in the app folder.")
+                st.error("Template PDF not found. Place tesdabit_regform.pdf in the app folder.")
             except Exception as e:
                 st.error(f"Failed to generate PDF: {e}")
             finally:
