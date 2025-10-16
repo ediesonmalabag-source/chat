@@ -47,7 +47,10 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
                 # ✅ Create a real canvas for merging
                 merge_canvas_stream = BytesIO()
                 merge_canvas = canvas.Canvas(merge_canvas_stream, pagesize=letter)
-                page.Contents = makerl(merge_canvas, xobj)
+                from pdfrw import PdfArray
+                overlay_stream = makerl(merge_canvas, xobj)
+                original_content = page.Contents
+                page.Contents = PdfArray([original_content, overlay_stream])
 
             # Remove form fields
             if PdfName("Annots") in page:
