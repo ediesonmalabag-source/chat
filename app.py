@@ -54,12 +54,13 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
                                 can.drawString(x + 2, y + 2, str(data_dict[key]))
             
             # ✅ Draw circle-based SEX SELECTION: MALE OR FEMALE
-            can.setStrokeColorRGB(0, 0, 0)  # Black outline
-            can.setFillColorRGB(0, 0, 0)    # Black fill for selected
+            if page_index == 0:
+                can.setStrokeColorRGB(0, 0, 0)  # Black outline
+                can.setFillColorRGB(0, 0, 0)    # Black fill for selected
 
             # Draw empty circles
-            can.circle(40, 350, 4, stroke=1, fill=0)  # Male
-            can.circle(40, 333, 4, stroke=1, fill=0)  # Female
+                can.circle(40, 350, 4, stroke=1, fill=0)  # Male
+                can.circle(40, 333, 4, stroke=1, fill=0)  # Female
 
             # Fill selected circle
             if data_dict.get("Sex") == "Male":
