@@ -18,7 +18,6 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
         template_pdf = PdfReader(input_pdf_path)
 
         for page in template_pdf.pages:
-            # Create overlay canvas for this page
             packet = BytesIO()
             can = canvas.Canvas(packet, pagesize=letter)
 
@@ -38,28 +37,25 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
             can.save()
             packet.seek(0)
 
-            # Merge overlay with template page
             overlay_pdf = PdfReader(packet)
             if overlay_pdf.pages:
                 overlay_page = overlay_pdf.pages[0]
                 xobj = pagexobj(overlay_page)
 
-                # ✅ Create a real canvas for merging
-                from pdfrw import PdfArray
-                overlay_stream = makerl(can, xobj)  # Use the canvas that drew the text
-                original_content = page.Contents
-                page.Contents = PdfArray([original_content, overlay_stream])
+            from pdfrw import PdfArray
+            overlay_stream = makerl(can, xobj)
+            original_content = page.Contents
+            page.Contents = PdfArray([original_content, overlay_stream])
 
-            # Remove form fields
             if PdfName("Annots") in page:
                 del page[PdfName("Annots")]
 
-        # Write final PDF
         PdfWriter().write(output_pdf_path, template_pdf)
         return True, None
 
     except Exception as e:
         return False, f"Failed to generate visible PDF: {e}"
+        
 # --------------------------
 # Page config (must be first)
 # --------------------------
