@@ -2,20 +2,22 @@ import streamlit as st
 import time
 import re
 from streamlit_javascript import st_javascript
-from pdfrw import PdfReader, PdfWriter, PdfDict, PdfObject, PdfName
+from pdfrw import PdfReader, PdfWriter, PdfDict, PdfName
+from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import letter
+from io import BytesIO
 
 # ---------------------------------------
 # 🔧 PDF FILLING FUNCTION (top of file)
 # ---------------------------------------
+
 def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
     try:
         template_pdf = PdfReader(input_pdf_path)
 
-        # ✅ Force appearance rendering
-        if template_pdf.Root.AcroForm:
-            template_pdf.Root.AcroForm.update(PdfDict(NeedAppearances=PdfObject("true")))
-        else:
-            template_pdf.Root.AcroForm = PdfDict(NeedAppearances=PdfObject("true"))
+        # Create a canvas to overlay text
+        packet = BytesIO()
+        can = canvas.Canvas(packet, pagesize=letter)
 
         for page in template_pdf.pages:
             annots = page.get(PdfName("Annots"))
@@ -23,28 +25,40 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
                 for a in annots:
                     if a.get(PdfName("Subtype")) == PdfName("Widget"):
                         t = a.get(PdfName("T"))
-                        if t:
+                        rect = a.get(PdfName("Rect"))
+                        if t and rect:
                             key = t.to_unicode().strip("()") if hasattr(t, "to_unicode") else t[1:-1]
                             if key in data_dict:
-                                a.update(PdfDict(V=str(data_dict[key])))
+                                x, y = float(rect[0]), float(rect[1])
+                                can.setFont("Helvetica", 10)
+                                can.drawString(x + 2, y + 2, str(data_dict[key]))
 
-        # ✅ First write the filled PDF
-        PdfWriter().write(output_pdf_path, template_pdf)
+        can.save()
+        packet.seek(0)
 
-        # ✅ Reload and flatten to remove form fields
-        flattened_pdf = PdfReader(output_pdf_path)
-        for page in flattened_pdf.pages:
+        # Merge overlay with original
+        from pdfrw.buildxobj import pagexobj
+        from pdfrw.toreportlab import makerl
+        from pdfrw import PdfReader as RLReader
+
+        overlay = RLReader(packet)
+        for i, page in enumerate(template_pdf.pages):
+            overlay_page = overlay.pages[i]
+            xobj = pagexobj(overlay_page)
+            rl_obj = makerl(can, xobj)
+            page.Contents = rl_obj
+
+        # Remove form fields
+        for page in template_pdf.pages:
             if PdfName("Annots") in page:
                 del page[PdfName("Annots")]
-        PdfWriter().write(output_pdf_path, flattened_pdf)
 
+        PdfWriter().write(output_pdf_path, template_pdf)
         return True, None
 
-    except FileNotFoundError:
-        return False, f"Template not found: {input_pdf_path}"
     except Exception as e:
-        return False, f"Failed writing filled PDF: {e}"
-        
+        return False, f"Failed to generate visible PDF: {e}"
+
 # --------------------------
 # Page config (must be first)
 # --------------------------
