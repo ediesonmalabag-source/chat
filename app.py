@@ -248,6 +248,17 @@ st.markdown("""
             font-weight: 500 !important;
         }
 
+        /* ✅ Force light styling on selectbox value box */
+        [data-testid="stSelectbox"] div[role="combobox"] {
+            background-color: #ffffff !important;
+            color: #222 !important;
+            border: 1px solid #4A90E2 !important;
+            border-radius: 6px !important;
+            padding: 6px !important;
+            font-size: 16px !important;
+            font-family: 'Segoe UI', sans-serif !important;
+        }
+        
         /* ✅ Force light styling on selected value */
         [data-testid="stSelectbox"] div[role="combobox"] {
             background-color: #ffffff !important;
