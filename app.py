@@ -40,9 +40,10 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
 
             # Merge overlay with template page
             overlay_pdf = PdfReader(packet)
-            overlay_page = overlay_pdf.pages[0]
-            xobj = pagexobj(overlay_page)
-            page.Contents = makerl(canvas.Canvas(BytesIO(), pagesize=letter), xobj)
+            if overlay_pdf.pages:
+                overlay_page = overlay_pdf.pages[0]
+                xobj = pagexobj(overlay_page)
+                page.Contents = makerl(canvas.Canvas(BytesIO(), pagesize=letter), xobj)
 
             # Remove form fields
             if PdfName("Annots") in page:
@@ -54,7 +55,7 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
 
     except Exception as e:
         return False, f"Failed to generate visible PDF: {e}"
-
+        
 # --------------------------
 # Page config (must be first)
 # --------------------------
