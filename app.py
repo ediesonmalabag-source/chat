@@ -536,7 +536,7 @@ if st.session_state.get("show_enrolment_form") == "form":
             data = {
                 "LastName": "Dela Cruz",
                 "FirstName": "Juan",
-                "MidName": "M",,
+                "MidName": "M",
                 
             }
 
