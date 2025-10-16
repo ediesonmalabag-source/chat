@@ -1,6 +1,7 @@
 import streamlit as st
 import time
 import re
+from streamlit_javascript import st_javascript
 from pdfrw import PdfReader, PdfWriter, PdfDict, PdfName
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import letter
