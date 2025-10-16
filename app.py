@@ -40,14 +40,14 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
 
             # Read overlay and merge with current page
             overlay_pdf = PdfReader(packet)
-            overlay_page = overlay_pdf.pages[0]
-
-            # Combine original and overlay contents
-            from pdfrw import PdfArray
-            if page.Contents and overlay_page.Contents:
-                page.Contents = PdfArray([page.Contents, overlay_page.Contents])
-            elif overlay_page.Contents:
-                page.Contents = overlay_page.Contents
+            if len(overlay_pdf.pages) > 0:
+                overlay_page = overlay_pdf.pages[0]
+                if overlay_page.Contents:
+                    from pdfrw import PdfArray
+                    if page.Contents:
+                        page.Contents = PdfArray([page.Contents, overlay_page.Contents])
+                    else:
+                        page.Contents = overlay_page.Contents
 
             # Remove form fields
             if PdfName("Annots") in page:
