@@ -256,7 +256,28 @@ st.markdown("""
             font-weight: 500 !important;
         }
 
-        /* ✅ Dropdown menu */
+       
+        /* Force white background and black border */
+        [data-testid="stSelectbox"] div[data-baseweb="select"] > div {
+            background-color: #ffffff !important;
+            border: 1px solid #000000 !important;
+            border-radius: 6px !important;
+            padding: 10px 12px !important;
+            font-size: 14px !important;
+            font-family: 'Segoe UI', sans-serif !important;
+            display: flex !important;
+            align-items: center !important;
+        }
+
+        /* Ensure selected value text is readable */
+        [data-testid="stSelectbox"] div[data-baseweb="select"] > div > div {
+            color: #222 !important;
+            font-size: 14px !important;
+            font-weight: 500 !important;
+            background-color: transparent !important;
+        }
+
+        /* Dropdown menu fix */
         [data-baseweb="popover"] * {
             background-color: #ffffff !important;
             color: #222 !important;
