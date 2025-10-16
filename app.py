@@ -238,12 +238,14 @@ st.markdown("""
        ✅ FIX DARK THEME MODE FOR SELECTION BOX: start
        -------------------------------------------- */
         /* ✅ Force selectbox to render light in dark mode mobile */
-        [data-testid="stSelectbox"] * {
+        [data-testid="stSelectbox"] div[data-baseweb="select"] > div {
             background-color: #ffffff !important;
             color: #222 !important;
-            font-size: 14px !important;
+            border: 1px solid #000000 !important;  /* Black border */
+            border-radius: 6px !important;
+            padding: 6px 10px !important;
+            font-size: 16px !important;
             font-family: 'Segoe UI', sans-serif !important;
-            border: none !important;
         }
 
         /* ✅ Specifically target selected value */
