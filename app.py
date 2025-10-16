@@ -523,12 +523,6 @@ if st.session_state.get("show_enrolment_form") == "form":
         last_name = st.text_input("Last Name", value="")
         first_name = st.text_input("First Name", value="")
         middle_name = st.text_input("Middle Name", value="")
-        contact_no = st.text_input("Contact Number (optional)", value="")
-        email = st.text_input("Email (optional)", value="")
-        number_street = st.text_input("House No. / Street", value="")
-        barangay = st.text_input("Barangay", value="")
-        municipality = st.text_input("City / Municipality", value="")
-        province = st.text_input("Province", value="")
         
 
             
@@ -540,15 +534,9 @@ if st.session_state.get("show_enrolment_form") == "form":
             st.error("Please provide at least your first and last name.")
         else:
             data = {
-                "LastName": last_name.strip(),
-                "FirstName": first_name.strip(),
-                "MidName": middle_name.strip(),
-                "ContactNo": contact_no.strip(),
-                "Email": email.strip(),
-                "NumberStreet": number_street.strip(),
-                "Barangay": barangay.strip(),
-                "Municipality": municipality.strip(),  
-                "Province": province.strip(),
+                "LastName": "Dela Cruz",
+                "FirstName": "Juan",
+                "MidName": "M",,
                 
             }
 
