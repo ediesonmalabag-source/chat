@@ -234,22 +234,36 @@ st.markdown("""
         box-shadow: 0 0 5px #4A90E2 !important;
         }
         
-        /* ✅ Force light styling on selectbox */
-        [data-testid="stSelectbox"] label,
+       /* ✅ Force light styling on selectbox wrapper */
+        [data-testid="stSelectbox"] {
+            background-color: #ffffff !important;
+            color: #222 !important;
+            border-radius: 6px !important;
+            padding: 4px !important;
+        }
+
+        /* ✅ Force light styling on label */
+        [data-testid="stSelectbox"] label {
+            color: #222 !important;
+            font-weight: 500 !important;
+        }
+
+        /* ✅ Force light styling on selected value */
         [data-testid="stSelectbox"] div[role="combobox"] {
-            color: #222 !important;           /* Dark text */
-            background-color: #f0f8ff !important;  /* Light background */
+            background-color: #ffffff !important;
+            color: #222 !important;
             border: 1px solid #4A90E2 !important;
-            border-radius: 8px !important;
+            border-radius: 6px !important;
             padding: 6px !important;
             font-size: 16px !important;
             font-family: 'Segoe UI', sans-serif !important;
         }
 
-        /* ✅ Dropdown options */
-        [data-testid="stSelectbox"] ul {
+        /* ✅ Dropdown menu (may require trial-and-error) */
+        .stSelectbox [data-baseweb="popover"] {
             background-color: #ffffff !important;
             color: #222 !important;
+        }
     
     </style>
 """, unsafe_allow_html=True)
