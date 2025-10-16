@@ -542,14 +542,17 @@ if st.session_state.get("show_enrolment_form") == "form":
                 if not ok:
                     st.error(f"PDF generation failed: {err}")
                 else:
+                    # TEMP: do not flatten here — confirm filled values appear in viewers that respect NeedAppearances
                     with open(tmp_out_path, "rb") as f:
-                        st.success("✅ Your TESDA form has been filled.")
+                        st.success("✅ Your TESDA form has been filled (not flattened).")
                         st.download_button(
-                            "📥 Download Your Filled Form",
+                            "📥 Download Your Filled Form (unflattened)",
                             f,
-                            file_name="TESDABIT_Registration.pdf",
+                            file_name="TESDA_Registration_unflattened.pdf",
                             mime="application/pdf",
-                        )
+                        )    
+
+                    
             except FileNotFoundError:
                 st.error("Template PDF not found. Place tesdabit_regform.pdf in the app folder.")
             except Exception as e:
