@@ -76,7 +76,8 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
                                     x, y = float(rect[0]), float(rect[1])
                                     can.setFont("DejaVuSans", 10)
                                     can.drawString(x + 2, y + 2, str(data_dict[key]))
-                                
+    
+                                 
                                 
                                 
                             
