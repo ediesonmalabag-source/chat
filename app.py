@@ -68,10 +68,10 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
                             # ✅ Debug line — use 4 levels of indentation (typically 8 spaces)
                             print(f"Field: {key}, Export Value: {a.get(PdfName('AP'))}, Current Value: {a.get(PdfName('V'))}")
                             
-                                # ✅ Handle regular text fields
-                                    x, y = float(rect[0]), float(rect[1])
-                                    can.setFont("DejaVuSans", 10)
-                                    can.drawString(x + 2, y + 2, str(data_dict[key]))
+                            # ✅ Handle regular text fields
+                            x, y = float(rect[0]), float(rect[1])
+                            can.setFont("DejaVuSans", 10)
+                            can.drawString(x + 2, y + 2, str(data_dict[key]))
     
                                  
                                 
