@@ -61,20 +61,29 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
             if annots:
                 for a in annots:
                     if a.get(PdfName("Subtype")) == PdfName("Widget"):
-                        t = a.get(PdfName("T"))
-                        rect = a.get(PdfName("Rect"))
-                        if t and rect:
-                            key = t.to_unicode().strip("()") if hasattr(t, "to_unicode") else t[1:-1]
-                            # ✅ Debug line — use 4 levels of indentation (typically 8 spaces)
-                            print(f"Field: {key}, Export Value: {a.get(PdfName('AP'))}, Current Value: {a.get(PdfName('V'))}")
-                            
-                            # ✅ Handle regular text fields and THE CHECKBOX
-                        if key in data_dict and key not in ["sex_male", "sex_female"]:
+                    t = a.get(PdfName("T"))
+                    rect = a.get(PdfName("Rect"))
+                    if t and rect:
+                        key = t.to_unicode().strip("()") if hasattr(t, "to_unicode") else t[1:-1]
+
+                        # ✅ Draw "X" for gender fields
+                        if key == "sex_male" and data_dict.get("Sex") == "Male":
+                            x, y = float(rect[0]), float(rect[1])
+                            can.setFont("DejaVuSans", 12)
+                            can.drawString(x + 3, y + 3, "X")
+
+                        elif key == "sex_female" and data_dict.get("Sex") == "Female":
+                            x, y = float(rect[0]), float(rect[1])
+                            can.setFont("DejaVuSans", 12)
+                            can.drawString(x + 3, y + 3, "X")
+
+                        # ✅ Draw regular text fields (skip gender boxes)
+                        elif key in data_dict:
                             x, y = float(rect[0]), float(rect[1])
                             can.setFont("DejaVuSans", 10)
-                            can.drawString(x + 2, y + 2, str(data_dict[key]))  
-                            
-                                 
+                            can.drawString(x + 2, y + 2, str(data_dict[key]))
+
+
                                 
                                 
                             
