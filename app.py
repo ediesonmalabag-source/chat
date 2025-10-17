@@ -21,6 +21,9 @@ from reportlab.lib.pagesizes import letter
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 
+# 🧠 In-memory stream for overlay
+from io import BytesIO
+
 # 🌐 External Resources
 import urllib.request
 
