@@ -83,11 +83,11 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
                 if key == "sex_male" and data_dict.get("Sex") == "Male":
                     x, y = float(rect[0]), float(rect[1])
                     can.setFont("DejaVuSans", 12)
-                    can.drawString(x + 3, y + 3, "X")
+                    can.drawString(x + 3, y + 3, "■")
                 elif key == "sex_female" and data_dict.get("Sex") == "Female":
                     x, y = float(rect[0]), float(rect[1])
                     can.setFont("DejaVuSans", 12)
-                    can.drawString(x + 3, y + 3, "X")
+                    can.drawString(x + 3, y + 3, "■")
             
            
 
