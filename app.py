@@ -61,8 +61,8 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
             if annots:
                 for a in annots:
                     if a.get(PdfName("Subtype")) == PdfName("Widget"):
-                    t = a.get(PdfName("T"))
-                    rect = a.get(PdfName("Rect"))
+                        t = a.get(PdfName("T"))
+                        rect = a.get(PdfName("Rect"))
                     if t and rect:
                         key = t.to_unicode().strip("()") if hasattr(t, "to_unicode") else t[1:-1]
 
