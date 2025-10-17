@@ -70,12 +70,12 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
                         if key == "sex_male" and data_dict.get("Sex") == "Male":
                             x, y = float(rect[0]), float(rect[1])
                             can.setFont("DejaVuSans", 12)
-                            can.drawString(x + 2, y + 2, "X")
+                            can.drawString(x + 1, y + 1, "X")
 
                         elif key == "sex_female" and data_dict.get("Sex") == "Female":
                             x, y = float(rect[0]), float(rect[1])
                             can.setFont("DejaVuSans", 12)
-                            can.drawString(x + 2, y + 2, "X")
+                            can.drawString(x + 1, y + 1, "X")
 
                         # ✅ Draw regular text fields (skip gender boxes)
                         elif key in data_dict:
