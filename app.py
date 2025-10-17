@@ -688,6 +688,11 @@ if st.session_state.get("show_enrolment_form") == "form":
             
         submitted = st.form_submit_button("Generate PDF")
 
+        # ✅ Add Cancel button outside the form
+        if st.button("❌ Cancel / Close Form"):
+            st.session_state.show_enrolment_form = "idle"
+            st.rerun()
+
     # ✅ Only run this block if form is submitted
     if submitted:
         if not last_name.strip() or not first_name.strip():
@@ -751,7 +756,8 @@ if st.session_state.get("show_enrolment_form") == "form":
                             file_name=filename,
                             mime="application/pdf",
                             )
-
+                        # CANCEL BUTTON clears the form idle
+                        st.session_state.show_enrolment_form = "idle"
                     
             except FileNotFoundError:
                 st.error("Template PDF not found. Place tesdabit_regform.pdf in the app folder.")
