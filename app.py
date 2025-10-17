@@ -67,13 +67,7 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
                             key = t.to_unicode().strip("()") if hasattr(t, "to_unicode") else t[1:-1]
                             # ✅ Debug line — use 4 levels of indentation (typically 8 spaces)
                             print(f"Field: {key}, Export Value: {a.get(PdfName('AP'))}, Current Value: {a.get(PdfName('V'))}")
-                            if key in data_dict:
-                                # ✅ Handle checkboxes first
-                                if key == "sex_male" and data_dict.get("Sex") == "Male":
-                                    a.update(PdfDict(V=PdfName("Yes"), AS=PdfName("Yes")))
-                                elif key == "sex_female" and data_dict.get("Sex") == "Female":
-                                    a.update(PdfDict(V=PdfName("Yes"), AS=PdfName("Yes")))
-                                else:
+                            
                                 # ✅ Handle regular text fields
                                     x, y = float(rect[0]), float(rect[1])
                                     can.setFont("DejaVuSans", 10)
@@ -83,19 +77,17 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
                                 
                                 
                             
-            # ✅ Checkboxes
+            # ✅ CheckBOX USING TEXTBOX CHECK MARK
             if key == "sex_male" and data_dict.get("Sex") == "Male":
-                a.update(PdfDict(
-                    V=PdfName("Yes"),
-                    AS=PdfName("Yes"),
-                    AP=PdfDict(N=PdfDict(Yes=PdfDict(stream=b"", Type=PdfName("XObject"))))
-                ))
+                x, y = float(rect[0]), float(rect[1])
+                can.setFont("DejaVuSans", 12)
+                can.drawString(x + 3, y + 3, "✓")
+
             elif key == "sex_female" and data_dict.get("Sex") == "Female":
-                a.update(PdfDict(
-                    V=PdfName("Yes"),
-                    AS=PdfName("Yes"),
-                    AP=PdfDict(N=PdfDict(Yes=PdfDict(stream=b"", Type=PdfName("XObject"))))
-                ))
+                x, y = float(rect[0]), float(rect[1])
+                can.setFont("DejaVuSans", 12)
+                can.drawString(x + 3, y + 3, "✓")
+            
            
 
             can.save()
