@@ -1,21 +1,30 @@
+# 🌐 Streamlit and UI
 import streamlit as st
 import time
 import re
 from streamlit_javascript import st_javascript
-from pdfrw import PdfReader, PdfWriter, PdfDict, PdfName
-from reportlab.pdfgen import canvas
-from reportlab.lib.pagesizes import letter
-from io import BytesIO
+
+# 📅 Date and Time
+from datetime import date
+
+# 📄 PDF Handling (pdfrw)
+from pdfrw import (
+    PdfReader, PdfWriter, PdfDict, PdfName,
+    PdfString, PdfArray, PdfObject
+)
 from pdfrw.buildxobj import pagexobj
 from pdfrw.toreportlab import makerl
 
-from datetime import date
-
-from pdfrw import PdfString, PdfArray
-
-import urllib.request
+# 🖋️ PDF Drawing (ReportLab)
+from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import letter
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
+
+# 🌐 External Resources
+import urllib.request
+
+# 🗂️ File System
 import os  # ✅ Needed for checking file existence
 
 # ✅ Download font from GitHub if not already present
@@ -36,7 +45,10 @@ except Exception as e:
 def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
     try:
         template_pdf = PdfReader(input_pdf_path)
-
+        # ✅ Force checkbox appearance rendering
+        from pdfrw import PdfObject
+        template_pdf.Root.AcroForm.update(PdfDict(NeedAppearances=PdfObject("true")))
+        
         for page_index, page in enumerate(template_pdf.pages):
             # Create overlay canvas for this page
             packet = BytesIO()
