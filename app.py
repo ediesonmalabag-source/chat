@@ -688,10 +688,10 @@ if st.session_state.get("show_enrolment_form") == "form":
             
         submitted = st.form_submit_button("Generate PDF")
 
-        # ✅ Add Cancel button outside the form
-        if st.button("❌ Cancel / Close Form"):
-            st.session_state.show_enrolment_form = "idle"
-            st.rerun()
+    # ✅ Add Cancel button outside the form
+    if st.button("❌ Cancel / Close Form"):
+        st.session_state.show_enrolment_form = "idle"
+        st.rerun()
 
     # ✅ Only run this block if form is submitted
     if submitted:
