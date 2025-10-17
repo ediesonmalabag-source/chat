@@ -11,6 +11,8 @@ from pdfrw.toreportlab import makerl
 
 from datetime import date
 
+from pdfrw import PdfString, PdfArray
+
 import urllib.request
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
@@ -55,9 +57,17 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
                             
             # ✅ Checkboxes
             if key == "sex_male" and data_dict.get("Sex") == "Male":
-                a.update(PdfDict(V=PdfName("Yes"), AS=PdfName("Yes")))
+                a.update(PdfDict(
+                    V=PdfName("Yes"),
+                    AS=PdfName("Yes"),
+                    AP=PdfDict(N=PdfDict(Yes=PdfDict(stream=b"", Type=PdfName("XObject"))))
+                ))
             elif key == "sex_female" and data_dict.get("Sex") == "Female":
-                a.update(PdfDict(V=PdfName("Yes"), AS=PdfName("Yes")))
+                a.update(PdfDict(
+                    V=PdfName("Yes"),
+                    AS=PdfName("Yes"),
+                    AP=PdfDict(N=PdfDict(Yes=PdfDict(stream=b"", Type=PdfName("XObject"))))
+                ))
            
 
             can.save()
