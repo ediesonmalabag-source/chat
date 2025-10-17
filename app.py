@@ -109,9 +109,7 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
                     else:
                         page.Contents = overlay_page.Contents
 
-            # Remove form fields - commented out 20251017
-           # if PdfName("Annots") in page:
-           #     del page[PdfName("Annots")]
+            
 
         PdfWriter().write(output_pdf_path, template_pdf)
         return True, None
