@@ -737,6 +737,11 @@ if st.session_state.get("show_enrolment_form") == "form":
                             del page[PdfName("Annots")]
                     PdfWriter().write(tmp_out_path, flattened_pdf)
 
+                    # ✅ Extract and format the filename
+                    last_name = form_data["LastName"].strip().lower()
+                    first_name = form_data["FirstName"].strip().lower()
+                    filename = f"{last_name}_{first_name}-registration_form.pdf"
+
                     # ✅ Serve the file for download
                     with open(tmp_out_path, "rb") as f:
                         st.success("✅ Your TESDA form has been filled and flattened.")
