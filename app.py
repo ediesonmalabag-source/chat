@@ -70,33 +70,18 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
                         if key == "sex_male" and data_dict.get("Sex") == "Male":
                             x, y = float(rect[0]), float(rect[1])
                             can.setFont("DejaVuSans", 12)
-                            can.drawString(x + 3, y + 3, "X")
+                            can.drawString(x + 4, y + 2, "X")
 
                         elif key == "sex_female" and data_dict.get("Sex") == "Female":
                             x, y = float(rect[0]), float(rect[1])
                             can.setFont("DejaVuSans", 12)
-                            can.drawString(x + 3, y + 3, "X")
+                            can.drawString(x + 4, y + 2, "X")
 
                         # ✅ Draw regular text fields (skip gender boxes)
                         elif key in data_dict:
                             x, y = float(rect[0]), float(rect[1])
                             can.setFont("DejaVuSans", 10)
-                            can.drawString(x + 2, y + 2, str(data_dict[key]))
-
-
-                                
-                                
-                            
-            # ✅ CheckBOX USING TEXTBOX CHECK MARK ✓
-            if key in ["sex_male", "sex_female"]:
-                if key == "sex_male" and data_dict.get("Sex") == "Male":
-                    x, y = float(rect[0]), float(rect[1])
-                    can.setFont("DejaVuSans", 12)
-                    can.drawString(x + 3, y + 3, "X")
-                elif key == "sex_female" and data_dict.get("Sex") == "Female":
-                    x, y = float(rect[0]), float(rect[1])
-                    can.setFont("DejaVuSans", 12)
-                    can.drawString(x + 3, y + 3, "X")
+                            can.drawString(x + 2, y + 2, str(data_dict[key]
             
            
 
