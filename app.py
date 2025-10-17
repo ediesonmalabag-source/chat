@@ -52,21 +52,12 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
                                 x, y = float(rect[0]), float(rect[1])
                                 can.setFont("DejaVuSans", 10)
                                 can.drawString(x + 2, y + 2, str(data_dict[key]))
-            
-            # ✅ Draw circle-based SEX SELECTION: MALE OR FEMALE
-            if page_index == 0:
-                can.setStrokeColorRGB(0, 0, 0)  # Black outline
-                can.setFillColorRGB(0, 0, 0)    # Black fill for selected
-
-            # Draw empty circles
-                can.circle(40, 350, 4, stroke=1, fill=0)  # Male
-                can.circle(40, 333, 4, stroke=1, fill=0)  # Female
-
-            # Fill selected circle
-            if data_dict.get("Sex") == "Male":
-                can.circle(40, 350, 3, stroke=0, fill=1)
-            elif data_dict.get("Sex") == "Female":
-                can.circle(40, 333, 3, stroke=0, fill=1)
+            # ✅ Checkboxes
+            if key == "sex_male" and data_dict.get("Sex") == "Male":
+                a.update(PdfDict(V=PdfName("Yes"), AS=PdfName("Yes")))
+            elif key == "sex_female" and data_dict.get("Sex") == "Female":
+                a.update(PdfDict(V=PdfName("Yes"), AS=PdfName("Yes")))
+           
 
             can.save()
             packet.seek(0)
