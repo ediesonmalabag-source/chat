@@ -58,6 +58,13 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
             can = canvas.Canvas(packet, pagesize=letter)
 
             annots = page.get(PdfName("Annots"))
+            
+            # ✅ Gender MAP    
+            sex_map = {
+                "Male": "sex_male",
+                "Female": "sex_female"
+            }
+            
             if annots:
                 for a in annots:
                     if a.get(PdfName("Subtype")) == PdfName("Widget"):
@@ -66,13 +73,8 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
                     if t and rect:
                         key = t.to_unicode().strip("()") if hasattr(t, "to_unicode") else t[1:-1]
 
-                        # ✅ Draw "X" for gender fields
-                        if key == "sex_male" and data_dict.get("Sex") == "Male":
-                            x, y = float(rect[0]), float(rect[1])
-                            can.setFont("DejaVuSans", 12)
-                            can.drawString(x + 1, y + 1, "X")
-
-                        elif key == "sex_female" and data_dict.get("Sex") == "Female":
+                         # ✅ Gender checkbox Mark X
+                        if key == sex_map.get(data_dict.get("Sex")):
                             x, y = float(rect[0]), float(rect[1])
                             can.setFont("DejaVuSans", 12)
                             can.drawString(x + 1, y + 1, "X")
