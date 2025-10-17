@@ -65,6 +65,8 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
                         rect = a.get(PdfName("Rect"))
                         if t and rect:
                             key = t.to_unicode().strip("()") if hasattr(t, "to_unicode") else t[1:-1]
+                            # ✅ Debug line — use 4 levels of indentation (typically 8 spaces)
+                            print(f"Field: {key}, Export Value: {a.get(PdfName('AP'))}, Current Value: {a.get(PdfName('V'))}")
                             if key in data_dict:
                                 # ✅ Handle checkboxes first
                                 if key == "sex_male" and data_dict.get("Sex") == "Male":
