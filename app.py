@@ -52,6 +52,7 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
                                 x, y = float(rect[0]), float(rect[1])
                                 can.setFont("DejaVuSans", 10)
                                 can.drawString(x + 2, y + 2, str(data_dict[key]))
+                            
             # ✅ Checkboxes
             if key == "sex_male" and data_dict.get("Sex") == "Male":
                 a.update(PdfDict(V=PdfName("Yes"), AS=PdfName("Yes")))
