@@ -710,7 +710,10 @@ if st.session_state.get("show_enrolment_form") == "form":
                 "Sex": sex,
                 
             }
-
+            
+            # ✅ Generate lowercase filename from form inputs
+            filename = f"{last_name.strip().lower()}_{first_name.strip().lower()}-registration_form.pdf"
+            
             import tempfile, os
             try:
                 with st.spinner("Filling PDF..."):
@@ -748,7 +751,7 @@ if st.session_state.get("show_enrolment_form") == "form":
                         st.download_button(
                             "📥 Download Your Filled Form",
                             f,
-                            file_name="TESDA_Registration.pdf",
+                            file_name=filename,
                             mime="application/pdf",
                             )
 
