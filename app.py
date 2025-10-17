@@ -51,9 +51,19 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
                         if t and rect:
                             key = t.to_unicode().strip("()") if hasattr(t, "to_unicode") else t[1:-1]
                             if key in data_dict:
-                                x, y = float(rect[0]), float(rect[1])
-                                can.setFont("DejaVuSans", 10)
-                                can.drawString(x + 2, y + 2, str(data_dict[key]))
+                                # ✅ Handle checkboxes first
+                                if key == "sex_male" and data_dict.get("Sex") == "Male":
+                                    a.update(PdfDict(V=PdfName("Yes"), AS=PdfName("Yes")))
+                                elif key == "sex_female" and data_dict.get("Sex") == "Female":
+                                    a.update(PdfDict(V=PdfName("Yes"), AS=PdfName("Yes")))
+                                else:
+                                # ✅ Handle regular text fields
+                                    x, y = float(rect[0]), float(rect[1])
+                                    can.setFont("DejaVuSans", 10)
+                                    can.drawString(x + 2, y + 2, str(data_dict[key]))
+                                
+                                
+                                
                             
             # ✅ Checkboxes
             if key == "sex_male" and data_dict.get("Sex") == "Male":
