@@ -59,10 +59,17 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
 
             annots = page.get(PdfName("Annots"))
             
-            # ✅ Gender MAP    
+            # ✅ MAPPING gender, status, employment    
             sex_map = {
                 "Male": "sex_male",
                 "Female": "sex_female"
+            }
+            civil_map = {
+                "Single": "civilstatus_single",
+                "Married": "civilstatus_married",
+                "Divorced": "civilstatus_divorce",
+                "Widowed": "status_widow",
+                "Live-in": "status_livein"
             }
             
             if annots:
@@ -75,6 +82,12 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
 
                          # ✅ Gender checkbox Mark X
                         if key == sex_map.get(data_dict.get("Sex")):
+                            x, y = float(rect[0]), float(rect[1])
+                            can.setFont("DejaVuSans", 12)
+                            can.drawString(x + 1, y + 1, "X")
+                        
+                        # ✅ Civil Status checkbox Mark X
+                        if key == civil_map.get(data_dict.get("CivilStatus")):
                             x, y = float(rect[0]), float(rect[1])
                             can.setFont("DejaVuSans", 12)
                             can.drawString(x + 1, y + 1, "X")
@@ -683,7 +696,14 @@ if st.session_state.get("show_enrolment_form") == "form":
             "Other"
         ])
         sex = st.selectbox("Sex", ["Male", "Female"])
-        
+
+        civil_status = st.selectbox("Civil Status", [
+            "Single",
+            "Married",
+            "Divorced",
+            "Widowed",
+            "Live-in"
+        ])
 
             
         submitted = st.form_submit_button("Generate PDF")
@@ -713,7 +733,7 @@ if st.session_state.get("show_enrolment_form") == "form":
                 "Region": region,
                 "Nationality": nationality,
                 "Sex": sex,
-                
+                "CivilStatus": civil_status,
             }
             
             # ✅ Generate lowercase filename from form inputs
