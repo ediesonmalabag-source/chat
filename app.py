@@ -68,8 +68,8 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
                 "Single": "civilstatus_single",
                 "Married": "civilstatus_married",
                 "Divorced": "civilstatus_divorce",
-                "Widowed": "status_widow",
-                "Live-in": "status_livein"
+                "Widowed": "civilstatus_widow",
+                "Live-in": "civilstatus_livein"
             }
             
             if annots:
