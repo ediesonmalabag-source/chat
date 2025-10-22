@@ -779,6 +779,7 @@ if st.session_state.get("show_enrolment_form") == "form":
                 "Sex": sex,
                 "CivilStatus": civil_status,
                 "EmploymentStatus": employment_status,
+                "EmploymentType": employment_type,
             }
             
             # ✅ Generate lowercase filename from form inputs
