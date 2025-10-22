@@ -719,10 +719,10 @@ if st.session_state.get("show_enrolment_form") == "form":
         ])
 
         employment_status = st.selectbox("Employment Status", [
+            "Unemployed",
             "Wage Employed",
             "Underemployed",
-            "Self-Employed",
-            "Unemployed"
+            "Self-Employed"
         ])
             
         submitted = st.form_submit_button("Generate PDF")
