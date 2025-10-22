@@ -99,7 +99,7 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
                             can.drawString(x + 1, y + 1, "X")
                         
                         # ✅ Employment Status checkbox Mark X
-                        if key == employment_map.get(data_dict.get("EmploymentStatus")):
+                        if key == employmentstatus_map.get(data_dict.get("EmploymentStatus")):
                             x, y = float(rect[0]), float(rect[1])
                             can.setFont("DejaVuSans", 12)
                             can.drawString(x + 1, y + 1, "X")
