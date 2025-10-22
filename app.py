@@ -72,10 +72,11 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
                 "Live-in": "civilstatus_livein"
             }
             employmentstatus_map = {
+                "Unemployed": "empstatus_unemp",
                 "Wage Employed": "empstatus_wage",
                 "Underemployed": "empstatus_under",
-                "Self-Employed": "empstatus_self",
-                "Unemployed": "empstatus_unemp"
+                "Self-Employed": "empstatus_self"
+                
             }
             
             if annots:
