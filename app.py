@@ -71,12 +71,21 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
                 "Widowed": "civilstatus_widow",
                 "Live-in": "civilstatus_livein"
             }
-            employmentstatus_map = {
+            employment_status_map = {
                 "Unemployed": "empstatus_unemp",
                 "Wage Employed": "empstatus_wage",
                 "Underemployed": "empstatus_under",
                 "Self-Employed": "empstatus_self"
-                
+            }
+            employment_type_map = {
+                "None": "emptype_none",
+                "Casual": "emptype_casual",
+                "Probationary": "emptype_probationary",
+                "Contractual": "emptype_contractual",
+                "Regular": "emptype_regular",
+                "Job Order": "emptype_joborder",
+                "Permanent": "emptype_permanent",
+                "Temporary": "emptype_temporary"
             }
             
             if annots:
@@ -100,7 +109,13 @@ def fill_pdf(input_pdf_path, output_pdf_path, data_dict):
                             can.drawString(x + 1, y + 1, "X")
                         
                         # ✅ Employment Status checkbox Mark X
-                        if key == employmentstatus_map.get(data_dict.get("EmploymentStatus")):
+                        if key == employment_status_map.get(data_dict.get("EmploymentStatus")):
+                            x, y = float(rect[0]), float(rect[1])
+                            can.setFont("DejaVuSans", 12)
+                            can.drawString(x + 1, y + 1, "X")
+                            
+                        # ✅ Employment Type checkbox Mark X
+                        if key == employment_type_map.get(data_dict.get("EmploymentType")):
                             x, y = float(rect[0]), float(rect[1])
                             can.setFont("DejaVuSans", 12)
                             can.drawString(x + 1, y + 1, "X")
@@ -723,6 +738,16 @@ if st.session_state.get("show_enrolment_form") == "form":
             "Wage Employed",
             "Underemployed",
             "Self-Employed"
+        ])
+        employment_type = st.selectbox("Employment Type", [
+            "None",
+            "Casual",
+            "Probationary",
+            "Contractual",
+            "Regular",
+            "Job Order",
+            "Permanent",
+            "Temporary"
         ])
             
         submitted = st.form_submit_button("Generate PDF")
