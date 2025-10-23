@@ -736,7 +736,7 @@ if st.session_state.get("show_enrolment_form") == "form":
        # Convert month name to number
         month_number = list(calendar.month_name).index(birth_month)
 
-        # Calculate age
+       # Calculate age
         try:
             birthdate = date(birth_year, month_number, birth_day)
             today = date.today()
@@ -745,9 +745,9 @@ if st.session_state.get("show_enrolment_form") == "form":
         except ValueError:
             age_display = ""
 
-        # ✅ Editable textbox (prefilled with computed age)
+        # ✅ Read-only textbox (prefilled with computed age)
         with col10:
-            age_input = st.text_input("Age", value=age_display, key="age_input")
+            age_input = st.text_input("Age", value=age_display, key="age_input", disabled=True)
             
     # ---------------------------------------------------
     
