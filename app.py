@@ -828,9 +828,9 @@ if st.session_state.get("show_enrolment_form") == "form":
                 "Sex": sex,
                 "CivilStatus": civil_status,
 
-                "BirthMonth": birth_month,
-                "BirthDay": birth_day,
-                "BirthYear": birth_year,
+                "birth_month": birth_month,
+                "birth_day": birth_day,
+                "birth_year": birth_year,
                 "Age": age_input,
                 
                 "EmploymentStatus": employment_status,
