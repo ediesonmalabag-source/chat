@@ -731,31 +731,7 @@ if st.session_state.get("show_enrolment_form") == "form":
                 "Region VI", "Region VII", "Region VIII", "Region IX", "Region X", "Region XI",
                 "Region XII", "Region XIII", "NCR", "CAR", "BARMM"
             ])
-            number_street = st.text_input("Number & Street", value="")
-            barangay = st.text_input("Barangay", value="")
-            municipality = st.text_input("Municipality", value="")
-            province = st.text_input("Province", value="")
-        
-            cong_district = st.selectbox("Congressional District", ["District 1", "District 2"])
-                region = st.selectbox("Region", [
-                    "Region I",
-                    "Region II",
-                    "Region III",
-                    "Region IV-A",
-                    "Region IV-B",
-                    "Region V",
-                    "Region VI",
-                    "Region VII",
-                    "Region VIII",
-                    "Region IX",
-                    "Region X",
-                    "Region XI",
-                    "Region XII",
-                    "Region XIII",
-                    "NCR",
-                    "CAR",
-                    "BARMM"
-                ])
+           
         
         nationality = st.selectbox("Nationality", [
             "Filipino",
