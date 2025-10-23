@@ -682,9 +682,20 @@ if st.session_state.get("show_enrolment_form") == "form":
 
     with st.form("tesda_form"):
         entry_date = st.date_input("Entry Date (MM/DD/YY)", value=date.today())
-        last_name = st.text_input("Last Name", value="")
-        first_name = st.text_input("First Name", value="")
-        middle_name = st.text_input("Middle Name", value="")
+        # ✅ FULL NAME on 1 row
+        st.markdown("**Full Name**")
+        col1, col2, col3 = st.columns(3)
+
+        with col1:
+            last_name = st.text_input("Last Name", value="")
+
+        with col2:
+            first_name = st.text_input("First Name", value="")
+
+        with col3:
+            middle_name = st.text_input("Middle Name", value=""
+        
+        
         number_street = st.text_input("Number & Street", value="")
         barangay = st.text_input("Barangay", value="")
         municipality = st.text_input("Municipality", value="")
