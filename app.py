@@ -741,7 +741,7 @@ if st.session_state.get("show_enrolment_form") == "form":
             age_display = ""
 
         with col10:
-            st.text_input("Age", value=age_display, key="age_display")
+            st.text_input("Age", value=age_display, key=f"age_display_{age_display}")
             
     # ---------------------------------------------------
     
