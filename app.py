@@ -31,6 +31,9 @@ import urllib.request
 # 🗂️ File System
 import os  # ✅ Needed for checking file existence
 
+# Clear cache at the top
+st.cache_data.clear()
+
 # ✅ Download font from GitHub if not already present
 font_url = "https://raw.githubusercontent.com/ediesonmalabag-source/chat/main/DejaVuSans.ttf"
 font_path = "DejaVuSans.ttf"
@@ -733,10 +736,10 @@ if st.session_state.get("show_enrolment_form") == "form":
         with col9:
             birth_year = st.selectbox("Year", list(range(1950, date.today().year + 1)), key="birth_year")
 
-       # Convert month name to number
+      # Convert month name to number
         month_number = list(calendar.month_name).index(birth_month)
 
-       # Calculate age
+        # Calculate age FIRST
         try:
             birthdate = date(birth_year, month_number, birth_day)
             today = date.today()
@@ -745,7 +748,7 @@ if st.session_state.get("show_enrolment_form") == "form":
         except ValueError:
             age_display = ""
 
-        # ✅ Read-only textbox (prefilled with computed age)
+        # ✅ THEN create the textbox with the calculated age
         with col10:
             age_input = st.text_input("Age", value=age_display, key="age_input", disabled=True)
             
