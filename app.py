@@ -750,7 +750,7 @@ if st.session_state.get("show_enrolment_form") == "form":
 
         # ✅ THEN create the textbox with the calculated age
         with col10:
-            age_input = st.text_input("Age", value=age_display, key="age_input", disabled=True)
+            age_input = st.text_input("Age", value=age_display, key="age_input")
             
     # ---------------------------------------------------
     
