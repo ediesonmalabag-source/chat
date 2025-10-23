@@ -718,30 +718,36 @@ if st.session_state.get("show_enrolment_form") == "form":
         st.markdown("**Birthdate**")
         col7, col8, col9, col10 = st.columns(4)
 
+        # Month selector
         with col7:
             birth_month = st.selectbox("Month", [
                 "January", "February", "March", "April", "May", "June",
                 "July", "August", "September", "October", "November", "December"
-            ])
+            ], key="birth_month")
+
+        # Day selector
         with col8:
-            birth_day = st.selectbox("Day", list(range(1, 32)))
+            birth_day = st.selectbox("Day", list(range(1, 32)), key="birth_day")
+
+        # Year selector
         with col9:
-            birth_year = st.selectbox("Year", list(range(1950, date.today().year + 1)))
+            birth_year = st.selectbox("Year", list(range(1950, date.today().year + 1)), key="birth_year")
 
         # Convert month name to number
-        month_number = list(calendar.month_name).index(birth_month)
+        month_number = list(calendar.month_name).index(st.session_state.birth_month)
 
         # Calculate age
         try:
-            birthdate = date(birth_year, month_number, birth_day)
+            birthdate = date(st.session_state.birth_year, month_number, st.session_state.birth_day)
             today = date.today()
             age = today.year - birthdate.year - ((today.month, today.day) < (birthdate.month, birthdate.day))
             age_display = str(age)
         except ValueError:
             age_display = ""
 
+        # Reactive textbox
         with col10:
-            st.text_input("Age", value=age_display, key=f"age_display_{age_display}")
+            st.text_input("Age", value=age_display, key="age_display", disabled=True)            
             
     # ---------------------------------------------------
     
