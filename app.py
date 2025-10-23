@@ -745,17 +745,24 @@ if st.session_state.get("show_enrolment_form") == "form":
             today = date.today()
             age = today.year - birthdate.year - ((today.month, today.day) < (birthdate.month, birthdate.day))
             age_display = str(age)
+    
+            # FORCE update session state
+            st.session_state.age_value = age_display
+    
         except ValueError as e:
             age_display = ""
+            st.session_state.age_value = ""
 
-        # Debug information (keep this to see what's happening)
-        st.write(f"Debug - Selected: {birth_month} {birth_day}, {birth_year}")
-        st.write(f"Debug - Calculated age: {age_display}")
+        # Initialize if not set
+        if 'age_value' not in st.session_state:
+            st.session_state.age_value = ""
 
-        # ✅ Textbox with the calculated age
+        # ✅ Textbox with the calculated age FROM SESSION STATE
         with col10:
-            age_input = st.text_input("Age", value=age_display, key=f"age_input_{birth_year}_{month_number}_{birth_day}")
-            
+            age_input = st.text_input("Age", value=st.session_state.age_value, key="age_input")
+
+
+        
     # ---------------------------------------------------
     
         email = st.text_input("Email", value="")
