@@ -815,6 +815,7 @@ if st.session_state.get("show_enrolment_form") == "form":
                 "LastName": last_name.strip(),
                 "FirstName": first_name.strip(),
                 "MidName": middle_name.strip(),
+                
                 "NumberStreet": number_street.strip(),
                 "Barangay": barangay.strip(),
                 "Municipality": municipality.strip(),
@@ -826,6 +827,12 @@ if st.session_state.get("show_enrolment_form") == "form":
                 "Nationality": nationality,
                 "Sex": sex,
                 "CivilStatus": civil_status,
+
+                "BirthMonth": birth_month,
+                "BirthDay": birth_day,
+                "BirthYear": birth_year,
+                "Age": age_input,
+                
                 "EmploymentStatus": employment_status,
                 "EmploymentType": employment_type,
             }
