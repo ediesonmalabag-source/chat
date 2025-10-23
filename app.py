@@ -701,33 +701,62 @@ if st.session_state.get("show_enrolment_form") == "form":
         with col3:
             middle_name = st.text_input("Middle Name", value="")
         
-        
-        number_street = st.text_input("Number & Street", value="")
-        barangay = st.text_input("Barangay", value="")
-        municipality = st.text_input("Municipality", value="")
-        province = st.text_input("Province", value="")
         email = st.text_input("Email", value="")
         contact_no = st.text_input("Contact No.", value="")
-        cong_district = st.selectbox("Congressional District", ["District 1", "District 2"])
-        region = st.selectbox("Region", [
-            "Region I",
-            "Region II",
-            "Region III",
-            "Region IV-A",
-            "Region IV-B",
-            "Region V",
-            "Region VI",
-            "Region VII",
-            "Region VIII",
-            "Region IX",
-            "Region X",
-            "Region XI",
-            "Region XII",
-            "Region XIII",
-            "NCR",
-            "CAR",
-            "BARMM"
-        ])
+        
+         # ✅ ADDRESS INFORMATION
+        st.markdown("### 📍 Address Information")
+
+        # Row 1: Number & Street + Barangay
+        col1, col2 = st.columns(2)
+        with col1:
+            number_street = st.text_input("Number & Street", value="")
+        with col2:
+            barangay = st.text_input("Barangay", value="")
+
+        # Row 2: Municipality + Province
+            col3, col4 = st.columns(2)
+        with col3:
+            municipality = st.text_input("Municipality", value="")
+        with col4:
+            province = st.text_input("Province", value="")
+
+        # Row 3: Congressional District + Region
+        col5, col6 = st.columns(2)
+        with col5:
+            cong_district = st.selectbox("Congressional District", ["District 1", "District 2"])
+        with col6:
+            region = st.selectbox("Region", [
+                "Region I", "Region II", "Region III", "Region IV-A", "Region IV-B", "Region V",
+                "Region VI", "Region VII", "Region VIII", "Region IX", "Region X", "Region XI",
+                "Region XII", "Region XIII", "NCR", "CAR", "BARMM"
+            ])
+            number_street = st.text_input("Number & Street", value="")
+            barangay = st.text_input("Barangay", value="")
+            municipality = st.text_input("Municipality", value="")
+            province = st.text_input("Province", value="")
+        
+            cong_district = st.selectbox("Congressional District", ["District 1", "District 2"])
+                region = st.selectbox("Region", [
+                    "Region I",
+                    "Region II",
+                    "Region III",
+                    "Region IV-A",
+                    "Region IV-B",
+                    "Region V",
+                    "Region VI",
+                    "Region VII",
+                    "Region VIII",
+                    "Region IX",
+                    "Region X",
+                    "Region XI",
+                    "Region XII",
+                    "Region XIII",
+                    "NCR",
+                    "CAR",
+                    "BARMM"
+                ])
+        
         nationality = st.selectbox("Nationality", [
             "Filipino",
             "American",
