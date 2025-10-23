@@ -685,7 +685,7 @@ if st.session_state.get("show_enrolment_form") == "form":
         col_date, _ = st.columns([1, 3])  # Adjust width ratio as needed
 
         with col_date:
-            entry_date = st.date_input("Entry Date (MM/DD/YYYY)", value=date.today())
+            entry_date = st.date_input("Entry Date (MM/DD/YY)", value=date.today())
         
         
         # ✅ FULL NAME on 1 row
