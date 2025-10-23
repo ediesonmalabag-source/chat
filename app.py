@@ -693,7 +693,7 @@ if st.session_state.get("show_enrolment_form") == "form":
             first_name = st.text_input("First Name", value="")
 
         with col3:
-            middle_name = st.text_input("Middle Name", value=""
+            middle_name = st.text_input("Middle Name", value="")
         
         
         number_street = st.text_input("Number & Street", value="")
