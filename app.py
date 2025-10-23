@@ -6,6 +6,7 @@ from streamlit_javascript import st_javascript
 
 # 📅 Date and Time
 from datetime import date
+import calendar    
 
 # 📄 PDF Handling (pdfrw)
 from pdfrw import (
@@ -713,9 +714,10 @@ if st.session_state.get("show_enrolment_form") == "form":
                 "Japanese", "Korean", "Indian", "Australian", "Other"
             ])
 
-        # Row 3: Birthdate (Month, Day, Year)
+        # Row 3: Birthdate (Month, Day, Year, Age)
         st.markdown("**Birthdate**")
-        col7, col8, col9 = st.columns(3)
+        col7, col8, col9, col10 = st.columns(4)
+
         with col7:
             birth_month = st.selectbox("Month", [
                 "January", "February", "March", "April", "May", "June",
@@ -724,8 +726,22 @@ if st.session_state.get("show_enrolment_form") == "form":
         with col8:
             birth_day = st.selectbox("Day", list(range(1, 32)))
         with col9:
-            birth_year = st.selectbox("Year", list(range(1950, 2026)))
+            birth_year = st.selectbox("Year", list(range(1950, date.today().year + 1)))
 
+        # Convert month name to number
+        month_number = list(calendar.month_name).index(birth_month)
+
+        # Calculate age
+        try:
+            birthdate = date(birth_year, month_number, birth_day)
+            today = date.today()
+            age = today.year - birthdate.year - ((today.month, today.day) < (birthdate.month, birthdate.day))
+        except ValueError:
+            age = ""
+
+        with col10:
+            st.text_input("Age", value=str(age), disabled=True)
+            
     # ---------------------------------------------------
     
         email = st.text_input("Email", value="")
