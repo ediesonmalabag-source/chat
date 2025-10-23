@@ -681,7 +681,13 @@ if st.session_state.get("show_enrolment_form") == "form":
     st.subheader("🧠 Fill the TESDA registration form")
 
     with st.form("tesda_form"):
-        entry_date = st.date_input("Entry Date (MM/DD/YY)", value=date.today())
+        # ✅ ENTRY DATE
+        col_date, _ = st.columns([1, 3])  # Adjust width ratio as needed
+
+        with col_date:
+            entry_date = st.date_input("Entry Date (MM/DD/YYYY)", value=date.today())
+        
+        
         # ✅ FULL NAME on 1 row
         st.markdown("**Full Name**")
         col1, col2, col3 = st.columns(3)
