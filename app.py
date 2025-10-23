@@ -736,21 +736,26 @@ if st.session_state.get("show_enrolment_form") == "form":
         with col9:
             birth_year = st.selectbox("Year", list(range(1950, date.today().year + 1)), key="birth_year")
 
-      # Convert month name to number
-        month_number = list(calendar.month_name).index(birth_month)
+     # Debug information
+    st.write(f"Debug - Selected: {birth_month} {birth_day}, {birth_year}")
 
-        # Calculate age FIRST
-        try:
-            birthdate = date(birth_year, month_number, birth_day)
-            today = date.today()
-            age = today.year - birthdate.year - ((today.month, today.day) < (birthdate.month, birthdate.day))
-            age_display = str(age)
-        except ValueError:
-            age_display = ""
+    # Convert month name to number
+    month_number = list(calendar.month_name).index(birth_month)
 
-        # ✅ THEN create the textbox with the calculated age
-        with col10:
-            age_input = st.text_input("Age", value=age_display, key="age_input")
+    # Calculate age
+    try:
+        birthdate = date(birth_year, month_number, birth_day)
+        today = date.today()
+        age = today.year - birthdate.year - ((today.month, today.day) < (birthdate.month, birthdate.day))
+        age_display = str(age)
+        st.write(f"Debug - Calculated age: {age}")
+    except ValueError as e:
+        age_display = ""
+        st.write(f"Debug - Error: {e}")
+
+    # ✅ Textbox with the calculated age
+    with col10:
+        age_input = st.text_input("Age", value=age_display, key="age_input")
             
     # ---------------------------------------------------
     
