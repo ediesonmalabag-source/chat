@@ -736,11 +736,12 @@ if st.session_state.get("show_enrolment_form") == "form":
             birthdate = date(birth_year, month_number, birth_day)
             today = date.today()
             age = today.year - birthdate.year - ((today.month, today.day) < (birthdate.month, birthdate.day))
+            age_display = str(age)
         except ValueError:
-            age = ""
+            age_display = ""
 
         with col10:
-            st.text_input("Age", value=str(age), disabled=True)
+            st.text_input("Age", value=age_display, key="age_display")
             
     # ---------------------------------------------------
     
