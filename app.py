@@ -714,15 +714,12 @@ if st.session_state.get("show_enrolment_form") == "form":
         with col2:
             barangay = st.text_input("Barangay", value="")
 
-        # Row 2: Municipality + Province
-            col3, col4 = st.columns(2)
+       # Row 2: Municipality + Province + Congressional District + Region
+        col3, col4, col5, col6 = st.columns(4)
         with col3:
             municipality = st.text_input("Municipality", value="")
         with col4:
             province = st.text_input("Province", value="")
-
-        # Row 3: Congressional District + Region
-        col5, col6 = st.columns(2)
         with col5:
             cong_district = st.selectbox("Congressional District", ["District 1", "District 2"])
         with col6:
