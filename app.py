@@ -681,26 +681,53 @@ if st.session_state.get("show_enrolment_form") == "form":
     st.subheader("🧠 Fill the TESDA registration form")
 
     with st.form("tesda_form"):
+        
         # ✅ ENTRY DATE
         col_date, _ = st.columns([1, 3])  # Adjust width ratio as needed
-
         with col_date:
             entry_date = st.date_input("Entry Date (MM/DD/YY)", value=date.today())
-        
-        
-        # ✅ FULL NAME on 1 row
-        st.markdown("**Full Name**")
-        col1, col2, col3 = st.columns(3)
 
+        # ✅ PERSONAL INFORMATION
+        st.markdown("### 👤 Personal Information")
+
+        # Row 1: Last Name, First Name, Middle Name
+        col1, col2, col3 = st.columns(3)
         with col1:
             last_name = st.text_input("Last Name", value="")
-
         with col2:
             first_name = st.text_input("First Name", value="")
-
         with col3:
             middle_name = st.text_input("Middle Name", value="")
-        
+
+        # Row 2: Sex, Civil Status, Nationality
+        col4, col5, col6 = st.columns(3)
+        with col4:
+            sex = st.selectbox("Sex", ["Male", "Female"])
+        with col5:
+            civil_status = st.selectbox("Civil Status", [
+                "Single", "Married", "Divorced", "Widowed", "Live-in"
+            ])
+        with col6:
+            nationality = st.selectbox("Nationality", [
+                "Filipino", "American", "British", "Canadian", "Chinese",
+                "Japanese", "Korean", "Indian", "Australian", "Other"
+            ])
+
+        # Row 3: Birthdate (Month, Day, Year)
+        st.markdown("**Birthdate**")
+        col7, col8, col9 = st.columns(3)
+        with col7:
+            birth_month = st.selectbox("Month", [
+                "January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+            ])
+        with col8:
+            birth_day = st.selectbox("Day", list(range(1, 32)))
+        with col9:
+            birth_year = st.selectbox("Year", list(range(1950, 2026)))
+
+    # ---------------------------------------------------
+    
         email = st.text_input("Email", value="")
         contact_no = st.text_input("Contact No.", value="")
         
@@ -730,28 +757,7 @@ if st.session_state.get("show_enrolment_form") == "form":
             ])
            
         
-        nationality = st.selectbox("Nationality", [
-            "Filipino",
-            "American",
-            "British",
-            "Canadian",
-            "Chinese",
-            "Japanese",
-            "Korean",
-            "Indian",
-            "Australian",
-            "Other"
-        ])
-        sex = st.selectbox("Sex", ["Male", "Female"])
-
-        civil_status = st.selectbox("Civil Status", [
-            "Single",
-            "Married",
-            "Divorced",
-            "Widowed",
-            "Live-in"
-        ])
-
+    
         employment_status = st.selectbox("Employment Status", [
             "Unemployed",
             "Wage Employed",
