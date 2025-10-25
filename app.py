@@ -6,6 +6,7 @@ from streamlit_javascript import st_javascript
 
 # 📅 Date and Time
 from datetime import date
+import calendar    
 
 # 📄 PDF Handling (pdfrw)
 from pdfrw import (
@@ -29,6 +30,9 @@ import urllib.request
 
 # 🗂️ File System
 import os  # ✅ Needed for checking file existence
+
+# Clear cache at the top
+st.cache_data.clear()
 
 # ✅ Download font from GitHub if not already present
 font_url = "https://raw.githubusercontent.com/ediesonmalabag-source/chat/main/DejaVuSans.ttf"
@@ -681,58 +685,116 @@ if st.session_state.get("show_enrolment_form") == "form":
     st.subheader("🧠 Fill the TESDA registration form")
 
     with st.form("tesda_form"):
-        entry_date = st.date_input("Entry Date (MM/DD/YY)", value=date.today())
-        last_name = st.text_input("Last Name", value="")
-        first_name = st.text_input("First Name", value="")
-        middle_name = st.text_input("Middle Name", value="")
-        number_street = st.text_input("Number & Street", value="")
-        barangay = st.text_input("Barangay", value="")
-        municipality = st.text_input("Municipality", value="")
-        province = st.text_input("Province", value="")
+        
+        # ✅ ENTRY DATE
+        col_date, _ = st.columns([1, 3])  # Adjust width ratio as needed
+        with col_date:
+            entry_date = st.date_input("Entry Date (MM/DD/YY)", value=date.today())
+
+        # ✅ PERSONAL INFORMATION
+        st.markdown("### 👤 Personal Information")
+
+        # Row 1: Last Name, First Name, Middle Name
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            last_name = st.text_input("Last Name", value="")
+        with col2:
+            first_name = st.text_input("First Name", value="")
+        with col3:
+            middle_name = st.text_input("Middle Name", value="")
+
+        # Row 2: Sex, Civil Status, Nationality
+        col4, col5, col6 = st.columns(3)
+        with col4:
+            sex = st.selectbox("Sex", ["Male", "Female"])
+        with col5:
+            civil_status = st.selectbox("Civil Status", [
+                "Single", "Married", "Divorced", "Widowed", "Live-in"
+            ])
+        with col6:
+            nationality = st.selectbox("Nationality", [
+                "Filipino", "American", "British", "Canadian", "Chinese",
+                "Japanese", "Korean", "Indian", "Australian", "Other"
+            ])
+
+        # Row 3: Birthdate (Month, Day, Year, Age)
+        st.markdown("**Birthdate**")
+        col7, col8, col9, col10 = st.columns(4)
+
+        # Month selector
+        with col7:
+            birth_month = st.selectbox("Month", [
+                "January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+            ], key="birth_month")
+
+        # Day selector
+        with col8:
+            birth_day = st.selectbox("Day", list(range(1, 32)), key="birth_day")
+
+        # Year selector
+        with col9:
+            birth_year = st.selectbox("Year", list(range(1950, date.today().year + 1)), key="birth_year")
+
+        # Convert month name to number
+        month_number = list(calendar.month_name).index(birth_month)
+
+        # Calculate age
+        try:
+            birthdate = date(birth_year, month_number, birth_day)
+            today = date.today()
+            age = today.year - birthdate.year - ((today.month, today.day) < (birthdate.month, birthdate.day))
+            age_display = str(age)
+    
+            # FORCE update session state
+            st.session_state.age_value = age_display
+    
+        except ValueError as e:
+            age_display = ""
+            st.session_state.age_value = ""
+
+        # Initialize if not set
+        if 'age_value' not in st.session_state:
+            st.session_state.age_value = ""
+
+        # ✅ Textbox with the calculated age FROM SESSION STATE
+        with col10:
+            age_input = st.text_input("Age", value=st.session_state.age_value, key="age_input")
+
+
+        
+    # ---------------------------------------------------
+    
         email = st.text_input("Email", value="")
         contact_no = st.text_input("Contact No.", value="")
-        cong_district = st.selectbox("Congressional District", ["District 1", "District 2"])
-        region = st.selectbox("Region", [
-            "Region I",
-            "Region II",
-            "Region III",
-            "Region IV-A",
-            "Region IV-B",
-            "Region V",
-            "Region VI",
-            "Region VII",
-            "Region VIII",
-            "Region IX",
-            "Region X",
-            "Region XI",
-            "Region XII",
-            "Region XIII",
-            "NCR",
-            "CAR",
-            "BARMM"
-        ])
-        nationality = st.selectbox("Nationality", [
-            "Filipino",
-            "American",
-            "British",
-            "Canadian",
-            "Chinese",
-            "Japanese",
-            "Korean",
-            "Indian",
-            "Australian",
-            "Other"
-        ])
-        sex = st.selectbox("Sex", ["Male", "Female"])
+        
+         # ✅ ADDRESS INFORMATION
+        st.markdown("### 📍 Address Information")
 
-        civil_status = st.selectbox("Civil Status", [
-            "Single",
-            "Married",
-            "Divorced",
-            "Widowed",
-            "Live-in"
-        ])
+        # Row 1: Number & Street + Barangay
+        col1, col2 = st.columns(2)
+        with col1:
+            number_street = st.text_input("Number & Street", value="")
+        with col2:
+            barangay = st.text_input("Barangay", value="")
 
+       # Row 2: Municipality + Province + Congressional District + Region
+        col3, col4, col5, col6 = st.columns(4)
+        with col3:
+            municipality = st.text_input("Municipality", value="")
+        with col4:
+            province = st.text_input("Province", value="")
+        with col5:
+            cong_district = st.selectbox("Congressional District", ["District 1", "District 2"])
+        with col6:
+            region = st.selectbox("Region", [
+                "Region I", "Region II", "Region III", "Region IV-A", "Region IV-B", "Region V",
+                "Region VI", "Region VII", "Region VIII", "Region IX", "Region X", "Region XI",
+                "Region XII", "Region XIII", "NCR", "CAR", "BARMM"
+            ])
+           
+        
+    
         employment_status = st.selectbox("Employment Status", [
             "Unemployed",
             "Wage Employed",
@@ -767,6 +829,7 @@ if st.session_state.get("show_enrolment_form") == "form":
                 "LastName": last_name.strip(),
                 "FirstName": first_name.strip(),
                 "MidName": middle_name.strip(),
+                
                 "NumberStreet": number_street.strip(),
                 "Barangay": barangay.strip(),
                 "Municipality": municipality.strip(),
@@ -778,6 +841,12 @@ if st.session_state.get("show_enrolment_form") == "form":
                 "Nationality": nationality,
                 "Sex": sex,
                 "CivilStatus": civil_status,
+
+                "birth_month": birth_month,
+                "birth_day": birth_day,
+                "birth_year": birth_year,
+                "Age": age_input,
+                
                 "EmploymentStatus": employment_status,
                 "EmploymentType": employment_type,
             }
