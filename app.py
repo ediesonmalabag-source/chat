@@ -8,8 +8,7 @@ from streamlit_javascript import st_javascript
 from datetime import date
 import calendar    
 
-#CLEAR CACHE
-st.cache_data.clear()
+
 
 # 📄 PDF Handling (pdfrw)
 from pdfrw import (
