@@ -31,8 +31,7 @@ import urllib.request
 # 🗂️ File System
 import os  # ✅ Needed for checking file existence
 
-# Clear cache at the top
-st.cache_data.clear()
+
 
 # ✅ Download font from GitHub if not already present
 font_url = "https://raw.githubusercontent.com/ediesonmalabag-source/chat/main/DejaVuSans.ttf"
