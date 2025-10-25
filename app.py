@@ -31,8 +31,7 @@ import urllib.request
 # 🗂️ File System
 import os  # ✅ Needed for checking file existence
 
-# Clear cache at the top
-st.cache_data.clear()
+
 
 # ✅ Download font from GitHub if not already present
 font_url = "https://raw.githubusercontent.com/ediesonmalabag-source/chat/main/DejaVuSans.ttf"
@@ -736,7 +735,7 @@ if st.session_state.get("show_enrolment_form") == "form":
         with col9:
             birth_year = st.selectbox("Year", list(range(1950, date.today().year + 1)), key="birth_year")
 
-        # Convert month name to number
+       # Convert month name to number
         month_number = list(calendar.month_name).index(birth_month)
 
         # Calculate age
@@ -745,22 +744,12 @@ if st.session_state.get("show_enrolment_form") == "form":
             today = date.today()
             age = today.year - birthdate.year - ((today.month, today.day) < (birthdate.month, birthdate.day))
             age_display = str(age)
-    
-            # FORCE update session state
-            st.session_state.age_value = age_display
-    
-        except ValueError as e:
+        except ValueError:
             age_display = ""
-            st.session_state.age_value = ""
 
-        # Initialize if not set
-        if 'age_value' not in st.session_state:
-            st.session_state.age_value = ""
-
-        # ✅ Textbox with the calculated age FROM SESSION STATE
+        # ✅ Display age directly (editable textbox)
         with col10:
-            age_input = st.text_input("Age", value=st.session_state.age_value, key="age_input")
-
+            age_input = st.text_input("Age", value=age_display)
 
         
     # ---------------------------------------------------
